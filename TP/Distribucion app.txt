@@ -1,0 +1,15 @@
+1. Login y seguridad  				=> Yovana
+2. ABM de Rol					=> Yovana
+3. Registro de Usuario				=> Yovana
+4. ABM de Cliente (comprador/vendedor)		=> Yovana
+5. ABM de Empresa (Vendedor)			=> Yovana
+6. ABM de Rubro	
+7. ABM visibilidad de publicación		=> Yovana
+8. Generar Publicación				=> Pablo
+9. Editar Publicación				=> Pablo
+10. Gestión de Preguntas			=> Pablo
+11. Comprar/Ofertar				=> Pablo
+12. Historial del cliente.
+13. Calificar al Vendedor
+14. Facturar Publicaciones
+15. Listado Estadístico
