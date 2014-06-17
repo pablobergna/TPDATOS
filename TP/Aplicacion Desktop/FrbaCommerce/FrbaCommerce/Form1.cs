@@ -27,5 +27,11 @@ namespace FrbaCommerce
             Form cv = new Calificar_Vendedor.Form1();
             cv.Show();
         }
+
+        private void FacturarPublicaciones_Click(object sender, EventArgs e)
+        {
+            Form fp = new Facturar_Publicaciones.FacturarPublicaciones();
+            fp.Show();
+        }
     }
 }

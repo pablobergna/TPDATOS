@@ -9,7 +9,7 @@
 9. Editar Publicación				=> Pablo
 10. Gestión de Preguntas			=> Pablo
 11. Comprar/Ofertar				=> Pablo
-12. Historial del cliente.
-13. Calificar al Vendedor
-14. Facturar Publicaciones
-15. Listado Estadístico
+12. Historial del cliente.			=> Juan Pablo
+13. Calificar al Vendedor			=> Juan Pablo
+14. Facturar Publicaciones			=> Juan Pablo
+15. Listado Estadístico				=> Juan Pablo
