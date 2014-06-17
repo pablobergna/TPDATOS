@@ -15,5 +15,11 @@ namespace FrbaCommerce
         {
             InitializeComponent();
         }
+
+        private void HistorialClientes_Click(object sender, EventArgs e)
+        {
+            Form hc = new Historial_Cliente.Form1();
+            hc.Show();
+        }
     }
 }

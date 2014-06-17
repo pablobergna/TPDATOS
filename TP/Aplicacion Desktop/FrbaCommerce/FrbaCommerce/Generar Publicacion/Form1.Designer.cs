@@ -68,7 +68,10 @@
             this.txt_precio.Name = "txt_precio";
             this.txt_precio.Size = new System.Drawing.Size(68, 20);
             this.txt_precio.TabIndex = 3;
-            this.txt_precio.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            
+            // 2014-06-17 - JPB - Linea comentada debido a que da error. Solucionar.
+            //this.txt_precio.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            
             // 
             // lst_rubros
             // 
