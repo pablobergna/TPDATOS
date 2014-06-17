@@ -32,6 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CalificarVendedor = new System.Windows.Forms.Button();
             this.FacturarPublicaciones = new System.Windows.Forms.Button();
+            this.ListadoEstadistico = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,12 +48,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ListadoEstadistico);
             this.groupBox1.Controls.Add(this.FacturarPublicaciones);
             this.groupBox1.Controls.Add(this.CalificarVendedor);
             this.groupBox1.Controls.Add(this.HistorialClientes);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 146);
+            this.groupBox1.Size = new System.Drawing.Size(200, 159);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Secciones";
@@ -77,6 +79,16 @@
             this.FacturarPublicaciones.UseVisualStyleBackColor = true;
             this.FacturarPublicaciones.Click += new System.EventHandler(this.FacturarPublicaciones_Click);
             // 
+            // ListadoEstadistico
+            // 
+            this.ListadoEstadistico.Location = new System.Drawing.Point(33, 117);
+            this.ListadoEstadistico.Name = "ListadoEstadistico";
+            this.ListadoEstadistico.Size = new System.Drawing.Size(130, 23);
+            this.ListadoEstadistico.TabIndex = 3;
+            this.ListadoEstadistico.Text = "Listado Estadistico";
+            this.ListadoEstadistico.UseVisualStyleBackColor = true;
+            this.ListadoEstadistico.Click += new System.EventHandler(this.ListadoEstadistico_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,6 +108,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button CalificarVendedor;
         private System.Windows.Forms.Button FacturarPublicaciones;
+        private System.Windows.Forms.Button ListadoEstadistico;
     }
 }
 

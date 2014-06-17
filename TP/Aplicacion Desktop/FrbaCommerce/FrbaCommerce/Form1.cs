@@ -33,5 +33,11 @@ namespace FrbaCommerce
             Form fp = new Facturar_Publicaciones.FacturarPublicaciones();
             fp.Show();
         }
+
+        private void ListadoEstadistico_Click(object sender, EventArgs e)
+        {
+            Form le = new Listado_Estadistico.Form1();
+            le.Show();
+        }
     }
 }
