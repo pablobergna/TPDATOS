@@ -30,6 +30,7 @@
         {
             this.HistorialClientes = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CalificarVendedor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +46,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CalificarVendedor);
             this.groupBox1.Controls.Add(this.HistorialClientes);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -52,6 +54,16 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Secciones";
+            // 
+            // CalificarVendedor
+            // 
+            this.CalificarVendedor.Location = new System.Drawing.Point(33, 60);
+            this.CalificarVendedor.Name = "CalificarVendedor";
+            this.CalificarVendedor.Size = new System.Drawing.Size(130, 23);
+            this.CalificarVendedor.TabIndex = 1;
+            this.CalificarVendedor.Text = "Calificar Vendedor";
+            this.CalificarVendedor.UseVisualStyleBackColor = true;
+            this.CalificarVendedor.Click += new System.EventHandler(this.CalificarVendedor_Click);
             // 
             // Form1
             // 
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.Button HistorialClientes;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button CalificarVendedor;
     }
 }
 

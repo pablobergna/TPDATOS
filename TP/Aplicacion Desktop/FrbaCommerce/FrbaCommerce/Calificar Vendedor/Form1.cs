@@ -15,5 +15,32 @@ namespace FrbaCommerce.Calificar_Vendedor
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch ( comboBox1.GetItemText(comboBox1.SelectedItem) )
+            {
+                case "Producto 1":
+                    label2.Text = "Vendedor 1";
+                    break;
+                case "Producto 2":
+                    label2.Text = "Vendedor 2";
+                    break;
+                case "Producto 3":
+                    label2.Text = "Vendedor 3";
+                    break;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Calificar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Calificacion otorgada");
+            this.Close();
+        }
     }
 }

@@ -21,5 +21,11 @@ namespace FrbaCommerce
             Form hc = new Historial_Cliente.Form1();
             hc.Show();
         }
+
+        private void CalificarVendedor_Click(object sender, EventArgs e)
+        {
+            Form cv = new Calificar_Vendedor.Form1();
+            cv.Show();
+        }
     }
 }
