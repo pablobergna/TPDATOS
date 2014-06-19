@@ -1,5 +1,21 @@
 --SIN TERMINAR
 
+SELECT TOP 10 P1.prod_codigo, P1.prod_detalle, SUM(IF1.item_cantidad)
+FROM Producto as P1
+, Item_Factura IF1
+WHERE IF1.item_producto = P1.prod_codigo
+IN ()
+GROUP BY P1.prod_codigo, P1.prod_detalle, IF1.item_numero, IF1.item_sucursal, IF1.item_tipo
+ORDER BY 3 DESC
+UNION
+SELECT TOP 10 P1.prod_codigo, P1.prod_detalle, SUM(IF1.item_cantidad)
+FROM Producto as P1
+, Item_Factura IF1
+WHERE IF1.item_producto = P1.prod_codigo
+IN ()
+GROUP BY P1.prod_codigo, P1.prod_detalle, IF1.item_numero, IF1.item_sucursal, IF1.item_tipo
+ORDER BY 3 DESC
+
 SELECT TOP 10 P.prod_codigo, SUM(ITF.item_cantidad), (	SELECT Factura.fact_cliente 
 														FROM Factura 
 														WHERE Factura.fact_numero = (SELECT Item_Factura.item_numero
