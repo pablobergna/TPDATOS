@@ -26,6 +26,101 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+		
+		/* esta sería la parte de logica que va, es el login*/
+		  private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.logUser = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.logPassw = new System.Windows.Forms.TextBox();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Usuario:";
+            // 
+            // logUser
+            // 
+            this.logUser.Location = new System.Drawing.Point(74, 32);
+            this.logUser.Name = "logUser";
+            this.logUser.Size = new System.Drawing.Size(138, 20);
+            this.logUser.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Password:";
+            // 
+            // logPassw
+            // 
+            this.logPassw.Location = new System.Drawing.Point(74, 70);
+            this.logPassw.Name = "logPassw";
+            this.logPassw.Size = new System.Drawing.Size(138, 20);
+            this.logPassw.TabIndex = 5;
+            // 
+            // buttonLogin
+            // 
+            this.buttonLogin.Location = new System.Drawing.Point(74, 135);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogin.TabIndex = 6;
+            this.buttonLogin.Text = "Login";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click_1);
+            // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Location = new System.Drawing.Point(162, 135);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelar.TabIndex = 7;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(311, 230);
+            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.buttonLogin);
+            this.Controls.Add(this.logPassw);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.logUser);
+            this.Controls.Add(this.label1);
+            this.Name = "Form1";
+            this.Text = "Login";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox logUser;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox logPassw;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Button buttonCancelar;
+
+    }
+
+
+		/* esta logíca no debería ir acá, sino en la ventana main
         private void InitializeComponent()
         {
             this.HistorialClientes = new System.Windows.Forms.Button();
@@ -110,5 +205,8 @@
         private System.Windows.Forms.Button FacturarPublicaciones;
         private System.Windows.Forms.Button ListadoEstadistico;
     }
+	*/
+	
+	
 }
 

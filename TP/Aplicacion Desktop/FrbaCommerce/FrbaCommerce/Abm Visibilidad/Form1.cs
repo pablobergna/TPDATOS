@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Abm_Visibilidad
 {
-    public partial class Form1 : Form
+    public partial class Alta_Visibilidad : Form
     {
-        public Form1()
+        public Alta_Visibilidad()
         {
             InitializeComponent();
         }

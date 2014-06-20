@@ -9,11 +9,26 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Abm_Empresa
 {
-    public partial class Form1 : Form
+    public partial class Alta_Empresa : Form
     {
-        public Form1()
+        public Alta_Empresa()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
