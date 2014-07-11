@@ -74,28 +74,29 @@
             // altaRolToolStripMenuItem
             // 
             this.altaRolToolStripMenuItem.Name = "altaRolToolStripMenuItem";
-            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altaRolToolStripMenuItem.Text = "Alta Rol";
             this.altaRolToolStripMenuItem.Visible = false;
+            this.altaRolToolStripMenuItem.Click += new System.EventHandler(this.altaRolToolStripMenuItem_Click);
             // 
             // bajaRolToolStripMenuItem
             // 
             this.bajaRolToolStripMenuItem.Name = "bajaRolToolStripMenuItem";
-            this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajaRolToolStripMenuItem.Text = "Baja Rol";
             this.bajaRolToolStripMenuItem.Visible = false;
             // 
             // modificarRolToolStripMenuItem
             // 
             this.modificarRolToolStripMenuItem.Name = "modificarRolToolStripMenuItem";
-            this.modificarRolToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.modificarRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarRolToolStripMenuItem.Text = "Modificar Rol";
             this.modificarRolToolStripMenuItem.Visible = false;
             // 
             // listarRolesToolStripMenuItem
             // 
             this.listarRolesToolStripMenuItem.Name = "listarRolesToolStripMenuItem";
-            this.listarRolesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.listarRolesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.listarRolesToolStripMenuItem.Text = "Listar Roles";
             this.listarRolesToolStripMenuItem.Visible = false;
             // 
@@ -179,14 +180,14 @@
             // altaProfesionalToolStripMenuItem
             // 
             this.altaProfesionalToolStripMenuItem.Name = "altaProfesionalToolStripMenuItem";
-            this.altaProfesionalToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.altaProfesionalToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.altaProfesionalToolStripMenuItem.Text = "Alta Visibilidad";
             this.altaProfesionalToolStripMenuItem.Visible = false;
             // 
             // bajaProfesionalToolStripMenuItem
             // 
             this.bajaProfesionalToolStripMenuItem.Name = "bajaProfesionalToolStripMenuItem";
-            this.bajaProfesionalToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.bajaProfesionalToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.bajaProfesionalToolStripMenuItem.Text = "Baja Visibilidad";
             this.bajaProfesionalToolStripMenuItem.Visible = false;
             // 
@@ -200,7 +201,7 @@
             // listarProfesionalToolStripMenuItem
             // 
             this.listarProfesionalToolStripMenuItem.Name = "listarProfesionalToolStripMenuItem";
-            this.listarProfesionalToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.listarProfesionalToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.listarProfesionalToolStripMenuItem.Text = "Listar Profesional";
             this.listarProfesionalToolStripMenuItem.Visible = false;
             // 

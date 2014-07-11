@@ -15,5 +15,10 @@ namespace FrbaCommerce.ABM_Rol
         {
             InitializeComponent();
         }
+
+        private void rolFuncionalidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

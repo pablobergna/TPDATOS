@@ -40,5 +40,10 @@ namespace FrbaCommerce
         
         }
 
+        private void altaRolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         }
 }

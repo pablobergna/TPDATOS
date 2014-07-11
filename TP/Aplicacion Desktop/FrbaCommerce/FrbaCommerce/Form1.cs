@@ -83,5 +83,11 @@ namespace FrbaCommerce
             Form le = new Listado_Estadistico.Form1();
             le.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Registro_de_Usuario.Registro_Form regF = new FrbaCommerce.Registro_de_Usuario.Registro_Form();
+            regF.Show();
+        }
     }
 }

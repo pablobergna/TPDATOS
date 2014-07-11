@@ -117,6 +117,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Alta_Visibilidad";
             this.Text = "Alta Visibilidad de Publicación";
+            this.Load += new System.EventHandler(this.Alta_Visibilidad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -61,8 +61,8 @@ namespace FrbaCommerce
 
         public QueryResult BuscarUsuario(string user, string password)
         {
-            QueryResult Resultado;  
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GD2013"].ConnectionString))
+            QueryResult Resultado;
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GD1C2014"].ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();

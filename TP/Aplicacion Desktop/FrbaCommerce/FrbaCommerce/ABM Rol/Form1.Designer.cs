@@ -66,6 +66,7 @@
             this.rolFuncionalidades.Name = "rolFuncionalidades";
             this.rolFuncionalidades.Size = new System.Drawing.Size(120, 34);
             this.rolFuncionalidades.TabIndex = 3;
+            this.rolFuncionalidades.SelectedIndexChanged += new System.EventHandler(this.rolFuncionalidades_SelectedIndexChanged);
             // 
             // Alta_Rol
             // 

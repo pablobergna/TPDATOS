@@ -15,5 +15,10 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
             InitializeComponent();
         }
+
+        private void Alta_Visibilidad_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
