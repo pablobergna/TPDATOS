@@ -9,11 +9,18 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Gestion_de_Preguntas
 {
-    public partial class Form1 : Form
+    public partial class Gestion_de_Preguntas : Form
     {
-        public Form1()
+        public Gestion_de_Preguntas()
         {
             InitializeComponent();
         }
+
+        private void Gestion_de_Preguntas_Load(object sender, EventArgs e)
+        {
+            //Codigo para cargar en el group box el usuario activo, rol y demas datos
+            //lbl_usuario.Text = lbl_usuario.Text + "usuario"
+        }
+
     }
 }
