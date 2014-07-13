@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Data;
 
 
-namespace FrbaCommerce.AppModel
+namespace FrbaCommerce.Model
 {
     class ConectorSQL //objeto que hace de interfaz con la base de datos
     {

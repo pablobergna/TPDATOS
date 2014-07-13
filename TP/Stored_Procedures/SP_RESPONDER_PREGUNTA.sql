@@ -1,4 +1,4 @@
-CREATE PROCEDURE RESPONDER_PREGUNTA(@id_pregunta int,@respuesta varchar(255),@resultado varchar(100))
+CREATE PROCEDURE LOS_GESTORES.GP_RESPONDER_PREGUNTA(@id_pregunta int,@respuesta varchar(255),@RETURN_VALUE int OUTPUT)
 AS
 BEGIN
 
@@ -9,7 +9,7 @@ BEGIN
 		, id_estado = (SELECT id_estado FROM GD1C2014.LOS_GESTORES.Estado E WHERE UPPER(E.descripcion) = UPPER('Respondida')) 
 		, fecha_respuesta = GETDATE();
 		
-		SET @resultado = '0'
+		SET @RETURN_VALUE = 0
 	END
-	ELSE SET @resultado = 'No se encontro la pregunta pendiente esperada'
+	ELSE SET @RETURN_VALUE = -1
 END
