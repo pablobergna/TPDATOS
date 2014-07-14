@@ -30,9 +30,6 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void Alta_Cliente_Load(object sender, EventArgs e)
         {
-
-            MessageBox.Show(this.usr_nombre);
-
             string sql_qry = "LOS_GESTORES.sp_app_getTipoDoc";
 
             // Abro la conexion
@@ -62,16 +59,16 @@ namespace FrbaCommerce.Abm_Cliente
         
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
 
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             int documento = 0;
-            int telefono = 0;
             int nro_calle_val = 0;
             int nro_piso_val = 0;
+            int cuil_val = 0;
             string tipoDoc = "";
 
             List<string> listaValidacion = new List<string>();
@@ -142,20 +139,20 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                telefono = Convert.ToInt32(this.cliTelefono.Text);
-            }
-            catch
-            {
-                listaValidacion.Add("El Telefono debe ser numerico");
-            }
-
-            try
-            {
                 nro_calle_val = Convert.ToInt32(this.nroCalle.Text);
             }
             catch
             {
                 listaValidacion.Add("El Nro de calle debe ser numerico");
+            }
+
+            try
+            {
+                cuil_val = Convert.ToInt32(this.cuil.Text);
+            }
+            catch
+            {
+                listaValidacion.Add("El CUIL debe ser numerico");
             }
 
             try
@@ -183,7 +180,60 @@ namespace FrbaCommerce.Abm_Cliente
                 return;
             }
 
+            //Verifico que el TELEFONO no este repetido
+            System.Data.SqlClient.SqlCommand comDupTel = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioXTelefono");
+
+            //Defino los parametros
+            System.Data.SqlClient.SqlParameter pTel = new System.Data.SqlClient.SqlParameter("@telefono", cliTelefono.Text.Trim());
+            comDupTel.Parameters.Add(pTel);
+
+            // Abro la conexion
+            AccesoDatos.getInstancia().abrirConexion();
+
+            System.Data.SqlClient.SqlDataReader dupTel = AccesoDatos.getInstancia().ejecutaSP(comDupTel);
+
+            if (dupTel.HasRows)
+            {
+                MessageBox.Show("Ya existe un usuario con ese numero de Telefono.");
+                // Cierro la conexion
+                dupTel.Close();
+                AccesoDatos.getInstancia().cerrarConexion();
+                return;
+            }
+
+            // Cierro la conexion
+            dupTel.Close();
+            AccesoDatos.getInstancia().cerrarConexion();
+
+
+            /////////////////////////////////////////////////////////////
             //ACA TENGO QUE AGREGAR EL CODIGO DE VALIDACION DEL CUIL/CUIT
+            /////////////////////////////////////////////////////////////
+            
+            //Verifico que el CUIT / CUIL no este repetido
+            System.Data.SqlClient.SqlCommand comDupCUIT = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioXCUIT");
+
+            //Defino los parametros
+            System.Data.SqlClient.SqlParameter pcuit1 = new System.Data.SqlClient.SqlParameter("@cuit", cuil.Text.Trim());
+            comDupCUIT.Parameters.Add(pcuit1);
+
+            // Abro la conexion
+            AccesoDatos.getInstancia().abrirConexion();
+
+            System.Data.SqlClient.SqlDataReader dupCUIT = AccesoDatos.getInstancia().ejecutaSP(comDupCUIT);
+
+            if (dupCUIT.HasRows)
+            {
+                MessageBox.Show("Ya existe un usuario con ese numero de CUIT - CUIL.");
+                // Cierro la conexion
+                dupCUIT.Close();
+                AccesoDatos.getInstancia().cerrarConexion();
+                return;
+            }
+
+            // Cierro la conexion
+            dupCUIT.Close();
+            AccesoDatos.getInstancia().cerrarConexion();
             
             
             //Verifico que el dni no este repetido
@@ -213,7 +263,11 @@ namespace FrbaCommerce.Abm_Cliente
             // Cierro la conexion
             dup.Close();
             AccesoDatos.getInstancia().cerrarConexion();
-            
+
+            ///////////////////////////////
+            //Persisto el usuario cliente//
+            ///////////////////////////////
+
             tipoDoc = this.cliTipoDoc.SelectedValue.ToString();
 
             // Nombre del SP
@@ -274,7 +328,7 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlParameter cuil_usu = new System.Data.SqlClient.SqlParameter("@cuil", this.cuil.Text);
             com.Parameters.Add(cuil_usu);
 
-            System.Data.SqlClient.SqlParameter tel_usu = new System.Data.SqlClient.SqlParameter("@tel", telefono.ToString());
+            System.Data.SqlClient.SqlParameter tel_usu = new System.Data.SqlClient.SqlParameter("@tel", cliTelefono.Text.Trim());
             com.Parameters.Add(tel_usu);
 
 
@@ -289,9 +343,10 @@ namespace FrbaCommerce.Abm_Cliente
             // Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
 
-            this.Dispose();
+            this.Close();
         }
 
+        
            
     }
 }

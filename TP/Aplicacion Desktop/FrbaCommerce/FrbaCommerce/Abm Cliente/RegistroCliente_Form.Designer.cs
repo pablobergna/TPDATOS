@@ -62,6 +62,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,6 +266,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.cliCiudad);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.nroCalle);
@@ -381,6 +383,15 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(226, 242);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "(solo numeros)";
+            // 
             // Alta_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,6 +446,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox cliCiudad;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label11;
 
     }
 }

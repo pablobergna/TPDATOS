@@ -122,7 +122,7 @@ namespace FrbaCommerce.Registro_de_Usuario
                 regCliente.nombre = usr_nombre.Text;
                 regCliente.pass = pass_encriptado;
                 regCliente.ShowDialog();
-                this.Dispose();
+                this.Close();
             }
             else
             {
@@ -131,13 +131,13 @@ namespace FrbaCommerce.Registro_de_Usuario
                 regEmpresa.nombre = usr_nombre.Text;
                 regEmpresa.pass = pass_encriptado;
                 regEmpresa.ShowDialog();
-
+                this.Close();
             }
         }
 
         private void btn_reg_canelar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
     }
