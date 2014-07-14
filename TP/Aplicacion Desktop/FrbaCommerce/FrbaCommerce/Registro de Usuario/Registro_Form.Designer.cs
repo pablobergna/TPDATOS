@@ -76,6 +76,7 @@
             // 
             this.usr_pass.Location = new System.Drawing.Point(275, 121);
             this.usr_pass.Name = "usr_pass";
+            this.usr_pass.PasswordChar = '*';
             this.usr_pass.Size = new System.Drawing.Size(100, 20);
             this.usr_pass.TabIndex = 4;
             // 
@@ -97,6 +98,7 @@
             this.btn_reg_canelar.TabIndex = 7;
             this.btn_reg_canelar.Text = "Cancelar";
             this.btn_reg_canelar.UseVisualStyleBackColor = true;
+            this.btn_reg_canelar.Click += new System.EventHandler(this.btn_reg_canelar_Click);
             // 
             // reg_comboRoles
             // 

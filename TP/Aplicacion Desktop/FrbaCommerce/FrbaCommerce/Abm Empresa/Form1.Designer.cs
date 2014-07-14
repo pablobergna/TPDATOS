@@ -48,10 +48,10 @@
             this.empDpto = new System.Windows.Forms.TextBox();
             this.empLocalidad = new System.Windows.Forms.TextBox();
             this.empCodPostal = new System.Windows.Forms.TextBox();
-            this.empCiudad = new System.Windows.Forms.ComboBox();
             this.empCuit = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.empFechaCre = new System.Windows.Forms.DateTimePicker();
+            this.ciudad = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // razonSocial
@@ -220,14 +220,6 @@
             this.empCodPostal.Size = new System.Drawing.Size(64, 20);
             this.empCodPostal.TabIndex = 20;
             // 
-            // empCiudad
-            // 
-            this.empCiudad.FormattingEnabled = true;
-            this.empCiudad.Location = new System.Drawing.Point(96, 230);
-            this.empCiudad.Name = "empCiudad";
-            this.empCiudad.Size = new System.Drawing.Size(150, 21);
-            this.empCiudad.TabIndex = 21;
-            // 
             // empCuit
             // 
             this.empCuit.Location = new System.Drawing.Point(96, 258);
@@ -249,15 +241,22 @@
             this.empFechaCre.Size = new System.Drawing.Size(200, 20);
             this.empFechaCre.TabIndex = 24;
             // 
+            // ciudad
+            // 
+            this.ciudad.Location = new System.Drawing.Point(98, 231);
+            this.ciudad.Name = "ciudad";
+            this.ciudad.Size = new System.Drawing.Size(100, 20);
+            this.ciudad.TabIndex = 25;
+            // 
             // Alta_Empresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 540);
+            this.Controls.Add(this.ciudad);
             this.Controls.Add(this.empFechaCre);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.empCuit);
-            this.Controls.Add(this.empCiudad);
             this.Controls.Add(this.empCodPostal);
             this.Controls.Add(this.empLocalidad);
             this.Controls.Add(this.empDpto);
@@ -280,6 +279,7 @@
             this.Controls.Add(this.razonSocial);
             this.Name = "Alta_Empresa";
             this.Text = "Alta Empresa";
+            this.Load += new System.EventHandler(this.Alta_Empresa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,9 +307,9 @@
         private System.Windows.Forms.TextBox empDpto;
         private System.Windows.Forms.TextBox empLocalidad;
         private System.Windows.Forms.TextBox empCodPostal;
-        private System.Windows.Forms.ComboBox empCiudad;
         private System.Windows.Forms.TextBox empCuit;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker empFechaCre;
+        private System.Windows.Forms.TextBox ciudad;
     }
 }

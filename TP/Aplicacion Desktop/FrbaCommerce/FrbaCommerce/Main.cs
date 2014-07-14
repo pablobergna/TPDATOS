@@ -45,5 +45,10 @@ namespace FrbaCommerce
 
         }
 
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
         }
 }

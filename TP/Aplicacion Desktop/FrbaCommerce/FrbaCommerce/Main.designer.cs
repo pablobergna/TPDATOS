@@ -74,7 +74,7 @@
             // altaRolToolStripMenuItem
             // 
             this.altaRolToolStripMenuItem.Name = "altaRolToolStripMenuItem";
-            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.altaRolToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.altaRolToolStripMenuItem.Text = "Alta Rol";
             this.altaRolToolStripMenuItem.Visible = false;
             this.altaRolToolStripMenuItem.Click += new System.EventHandler(this.altaRolToolStripMenuItem_Click);
@@ -82,21 +82,21 @@
             // bajaRolToolStripMenuItem
             // 
             this.bajaRolToolStripMenuItem.Name = "bajaRolToolStripMenuItem";
-            this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bajaRolToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.bajaRolToolStripMenuItem.Text = "Baja Rol";
             this.bajaRolToolStripMenuItem.Visible = false;
             // 
             // modificarRolToolStripMenuItem
             // 
             this.modificarRolToolStripMenuItem.Name = "modificarRolToolStripMenuItem";
-            this.modificarRolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modificarRolToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.modificarRolToolStripMenuItem.Text = "Modificar Rol";
             this.modificarRolToolStripMenuItem.Visible = false;
             // 
             // listarRolesToolStripMenuItem
             // 
             this.listarRolesToolStripMenuItem.Name = "listarRolesToolStripMenuItem";
-            this.listarRolesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listarRolesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.listarRolesToolStripMenuItem.Text = "Listar Roles";
             this.listarRolesToolStripMenuItem.Visible = false;
             // 
@@ -222,6 +222,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
