@@ -34,11 +34,16 @@
             this.gb_usuario = new System.Windows.Forms.GroupBox();
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.gb_responder_preguntas = new System.Windows.Forms.GroupBox();
+            this.btn_responder = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_respuesta = new System.Windows.Forms.RichTextBox();
+            this.lst_preguntas = new System.Windows.Forms.ListBox();
             this.gb_ver_respuestas = new System.Windows.Forms.GroupBox();
-            this.lst_respuestas = new System.Windows.Forms.ListBox();
             this.dg_respuestas = new System.Windows.Forms.DataGridView();
             this.gb_opciones.SuspendLayout();
             this.gb_usuario.SuspendLayout();
+            this.gb_responder_preguntas.SuspendLayout();
             this.gb_ver_respuestas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_respuestas)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +77,7 @@
             this.btn_responder_preguntas.TabIndex = 0;
             this.btn_responder_preguntas.Text = "Responder Preguntas";
             this.btn_responder_preguntas.UseVisualStyleBackColor = true;
+            this.btn_responder_preguntas.Click += new System.EventHandler(this.btn_responder_preguntas_Click);
             // 
             // gb_usuario
             // 
@@ -94,50 +100,90 @@
             // 
             // gb_responder_preguntas
             // 
+            this.gb_responder_preguntas.Controls.Add(this.btn_responder);
+            this.gb_responder_preguntas.Controls.Add(this.label2);
+            this.gb_responder_preguntas.Controls.Add(this.label1);
+            this.gb_responder_preguntas.Controls.Add(this.txt_respuesta);
+            this.gb_responder_preguntas.Controls.Add(this.lst_preguntas);
             this.gb_responder_preguntas.Location = new System.Drawing.Point(17, 153);
             this.gb_responder_preguntas.Name = "gb_responder_preguntas";
-            this.gb_responder_preguntas.Size = new System.Drawing.Size(661, 309);
+            this.gb_responder_preguntas.Size = new System.Drawing.Size(849, 432);
             this.gb_responder_preguntas.TabIndex = 2;
             this.gb_responder_preguntas.TabStop = false;
             this.gb_responder_preguntas.Text = "Responder Preguntas";
             this.gb_responder_preguntas.Visible = false;
             // 
+            // btn_responder
+            // 
+            this.btn_responder.Location = new System.Drawing.Point(418, 317);
+            this.btn_responder.Name = "btn_responder";
+            this.btn_responder.Size = new System.Drawing.Size(397, 52);
+            this.btn_responder.TabIndex = 4;
+            this.btn_responder.Text = "Responder";
+            this.btn_responder.UseVisualStyleBackColor = true;
+            this.btn_responder.Click += new System.EventHandler(this.btn_responder_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(419, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Respuesta";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(227, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Preguntas: (Seleccionar pregunta a responder)";
+            // 
+            // txt_respuesta
+            // 
+            this.txt_respuesta.Location = new System.Drawing.Point(418, 59);
+            this.txt_respuesta.Name = "txt_respuesta";
+            this.txt_respuesta.Size = new System.Drawing.Size(401, 241);
+            this.txt_respuesta.TabIndex = 1;
+            this.txt_respuesta.Text = "";
+            // 
+            // lst_preguntas
+            // 
+            this.lst_preguntas.FormattingEnabled = true;
+            this.lst_preguntas.Location = new System.Drawing.Point(22, 59);
+            this.lst_preguntas.Name = "lst_preguntas";
+            this.lst_preguntas.Size = new System.Drawing.Size(345, 355);
+            this.lst_preguntas.TabIndex = 0;
+            // 
             // gb_ver_respuestas
             // 
             this.gb_ver_respuestas.Controls.Add(this.dg_respuestas);
-            this.gb_ver_respuestas.Controls.Add(this.lst_respuestas);
-            this.gb_ver_respuestas.Location = new System.Drawing.Point(17, 153);
+            this.gb_ver_respuestas.Location = new System.Drawing.Point(660, 23);
             this.gb_ver_respuestas.Name = "gb_ver_respuestas";
-            this.gb_ver_respuestas.Size = new System.Drawing.Size(661, 309);
+            this.gb_ver_respuestas.Size = new System.Drawing.Size(849, 430);
             this.gb_ver_respuestas.TabIndex = 3;
             this.gb_ver_respuestas.TabStop = false;
             this.gb_ver_respuestas.Text = "Ver Respuestas";
-            // 
-            // lst_respuestas
-            // 
-            this.lst_respuestas.FormattingEnabled = true;
-            this.lst_respuestas.Location = new System.Drawing.Point(25, 27);
-            this.lst_respuestas.Name = "lst_respuestas";
-            this.lst_respuestas.Size = new System.Drawing.Size(456, 264);
-            this.lst_respuestas.TabIndex = 0;
-            this.lst_respuestas.SelectedIndexChanged += new System.EventHandler(this.lst_respuestas_SelectedIndexChanged);
             // 
             // dg_respuestas
             // 
             this.dg_respuestas.AllowUserToOrderColumns = true;
             this.dg_respuestas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_respuestas.Location = new System.Drawing.Point(505, 31);
+            this.dg_respuestas.Location = new System.Drawing.Point(21, 21);
             this.dg_respuestas.Name = "dg_respuestas";
-            this.dg_respuestas.Size = new System.Drawing.Size(140, 259);
+            this.dg_respuestas.Size = new System.Drawing.Size(624, 269);
             this.dg_respuestas.TabIndex = 1;
+            this.dg_respuestas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_respuestas_CellContentClick);
             // 
             // Gestion_de_Preguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 474);
-            this.Controls.Add(this.gb_ver_respuestas);
+            this.ClientSize = new System.Drawing.Size(1448, 772);
             this.Controls.Add(this.gb_responder_preguntas);
+            this.Controls.Add(this.gb_ver_respuestas);
             this.Controls.Add(this.gb_usuario);
             this.Controls.Add(this.gb_opciones);
             this.Name = "Gestion_de_Preguntas";
@@ -146,6 +192,8 @@
             this.gb_opciones.ResumeLayout(false);
             this.gb_usuario.ResumeLayout(false);
             this.gb_usuario.PerformLayout();
+            this.gb_responder_preguntas.ResumeLayout(false);
+            this.gb_responder_preguntas.PerformLayout();
             this.gb_ver_respuestas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dg_respuestas)).EndInit();
             this.ResumeLayout(false);
@@ -161,7 +209,11 @@
         private System.Windows.Forms.Button btn_responder_preguntas;
         private System.Windows.Forms.GroupBox gb_responder_preguntas;
         private System.Windows.Forms.GroupBox gb_ver_respuestas;
-        private System.Windows.Forms.ListBox lst_respuestas;
         private System.Windows.Forms.DataGridView dg_respuestas;
+        private System.Windows.Forms.ListBox lst_preguntas;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox txt_respuesta;
+        private System.Windows.Forms.Button btn_responder;
+        private System.Windows.Forms.Label label2;
     }
 }

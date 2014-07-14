@@ -6,7 +6,7 @@ BEGIN
 	BEGIN
 		UPDATE GD1C2014.LOS_GESTORES.Pregunta 
 		SET txt_respuesta = @respuesta
-		, id_estado = (SELECT id_estado FROM GD1C2014.LOS_GESTORES.Estado E WHERE UPPER(E.descripcion) = UPPER('Respondida')) 
+		, id_estado = (SELECT TOP 1 E.id_estado FROM GD1C2014.LOS_GESTORES.Estado E WHERE UPPER(E.descripcion) = UPPER('Respondida')) 
 		, fecha_respuesta = GETDATE();
 		
 		SET @RETURN_VALUE = 0
