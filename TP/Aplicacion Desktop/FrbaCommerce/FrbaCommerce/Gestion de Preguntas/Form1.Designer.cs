@@ -105,7 +105,7 @@
             this.gb_responder_preguntas.Controls.Add(this.label1);
             this.gb_responder_preguntas.Controls.Add(this.txt_respuesta);
             this.gb_responder_preguntas.Controls.Add(this.lst_preguntas);
-            this.gb_responder_preguntas.Location = new System.Drawing.Point(17, 153);
+            this.gb_responder_preguntas.Location = new System.Drawing.Point(20, 160);
             this.gb_responder_preguntas.Name = "gb_responder_preguntas";
             this.gb_responder_preguntas.Size = new System.Drawing.Size(849, 432);
             this.gb_responder_preguntas.TabIndex = 2;
@@ -160,7 +160,7 @@
             // gb_ver_respuestas
             // 
             this.gb_ver_respuestas.Controls.Add(this.dg_respuestas);
-            this.gb_ver_respuestas.Location = new System.Drawing.Point(660, 23);
+            this.gb_ver_respuestas.Location = new System.Drawing.Point(20, 162);
             this.gb_ver_respuestas.Name = "gb_ver_respuestas";
             this.gb_ver_respuestas.Size = new System.Drawing.Size(849, 430);
             this.gb_ver_respuestas.TabIndex = 3;
@@ -173,7 +173,7 @@
             this.dg_respuestas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_respuestas.Location = new System.Drawing.Point(21, 21);
             this.dg_respuestas.Name = "dg_respuestas";
-            this.dg_respuestas.Size = new System.Drawing.Size(624, 269);
+            this.dg_respuestas.Size = new System.Drawing.Size(798, 384);
             this.dg_respuestas.TabIndex = 1;
             this.dg_respuestas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_respuestas_CellContentClick);
             // 
@@ -181,11 +181,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1448, 772);
-            this.Controls.Add(this.gb_responder_preguntas);
+            this.ClientSize = new System.Drawing.Size(929, 641);
             this.Controls.Add(this.gb_ver_respuestas);
             this.Controls.Add(this.gb_usuario);
             this.Controls.Add(this.gb_opciones);
+            this.Controls.Add(this.gb_responder_preguntas);
             this.Name = "Gestion_de_Preguntas";
             this.Text = "Gestion de Preguntas";
             this.Load += new System.EventHandler(this.Gestion_de_Preguntas_Load);
