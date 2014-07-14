@@ -31,9 +31,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgCompras = new System.Windows.Forms.DataGridView();
-            this.dgOfertas = new System.Windows.Forms.DataGridView();
             this.dgcProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgcFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgOfertas = new System.Windows.Forms.DataGridView();
             this.dgoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgoSubasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgoFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +86,18 @@
             this.dgCompras.TabIndex = 2;
             this.dgCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCompras_CellContentClick);
             // 
+            // dgcProducto
+            // 
+            this.dgcProducto.HeaderText = "Producto";
+            this.dgcProducto.Name = "dgcProducto";
+            this.dgcProducto.ReadOnly = true;
+            // 
+            // dgcFecha
+            // 
+            this.dgcFecha.HeaderText = "Fecha";
+            this.dgcFecha.Name = "dgcFecha";
+            this.dgcFecha.ReadOnly = true;
+            // 
             // dgOfertas
             // 
             this.dgOfertas.AllowUserToAddRows = false;
@@ -100,18 +112,6 @@
             this.dgOfertas.ReadOnly = true;
             this.dgOfertas.Size = new System.Drawing.Size(589, 174);
             this.dgOfertas.TabIndex = 3;
-            // 
-            // dgcProducto
-            // 
-            this.dgcProducto.HeaderText = "Producto";
-            this.dgcProducto.Name = "dgcProducto";
-            this.dgcProducto.ReadOnly = true;
-            // 
-            // dgcFecha
-            // 
-            this.dgcFecha.HeaderText = "Fecha";
-            this.dgcFecha.Name = "dgcFecha";
-            this.dgcFecha.ReadOnly = true;
             // 
             // dgoProducto
             // 
