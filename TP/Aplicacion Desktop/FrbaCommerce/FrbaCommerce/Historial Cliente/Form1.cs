@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
 
+using FrbaCommerce.Model;
+
 namespace FrbaCommerce.Historial_Cliente
 {
     public partial class Form1 : Form
@@ -54,11 +56,12 @@ namespace FrbaCommerce.Historial_Cliente
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            dgCalificaciones.DataSource = ConectorSQL.traerDataTable("getCalificacionesHC",73);
+
             dgCompras.Hide();
             dgOfertas.Hide();
             dgCalificaciones.Hide();
-
-            puebaQuery();
 
         }
 
@@ -136,6 +139,11 @@ namespace FrbaCommerce.Historial_Cliente
             
             sqlConnection1.Close();
         
+        }
+
+        private void dgCalificaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

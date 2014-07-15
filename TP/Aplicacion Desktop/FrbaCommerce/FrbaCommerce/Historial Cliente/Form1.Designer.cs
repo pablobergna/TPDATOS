@@ -38,9 +38,6 @@
             this.dgoSubasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgoFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCalificaciones = new System.Windows.Forms.DataGridView();
-            this.dgcaProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcaCalificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcaFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgOfertas)).BeginInit();
@@ -136,33 +133,12 @@
             this.dgCalificaciones.AllowUserToAddRows = false;
             this.dgCalificaciones.AllowUserToDeleteRows = false;
             this.dgCalificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCalificaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgcaProducto,
-            this.dgcaCalificacion,
-            this.dgcaFecha});
             this.dgCalificaciones.Location = new System.Drawing.Point(6, 75);
             this.dgCalificaciones.Name = "dgCalificaciones";
             this.dgCalificaciones.ReadOnly = true;
             this.dgCalificaciones.Size = new System.Drawing.Size(589, 174);
             this.dgCalificaciones.TabIndex = 4;
-            // 
-            // dgcaProducto
-            // 
-            this.dgcaProducto.HeaderText = "Producto";
-            this.dgcaProducto.Name = "dgcaProducto";
-            this.dgcaProducto.ReadOnly = true;
-            // 
-            // dgcaCalificacion
-            // 
-            this.dgcaCalificacion.HeaderText = "Calificacion";
-            this.dgcaCalificacion.Name = "dgcaCalificacion";
-            this.dgcaCalificacion.ReadOnly = true;
-            // 
-            // dgcaFecha
-            // 
-            this.dgcaFecha.HeaderText = "Fecha";
-            this.dgcaFecha.Name = "dgcaFecha";
-            this.dgcaFecha.ReadOnly = true;
+            this.dgCalificaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCalificaciones_CellContentClick);
             // 
             // Form1
             // 
@@ -196,8 +172,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgoSubasta;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgoFecha;
         private System.Windows.Forms.DataGridView dgCalificaciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcaProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcaCalificacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcaFecha;
     }
 }
