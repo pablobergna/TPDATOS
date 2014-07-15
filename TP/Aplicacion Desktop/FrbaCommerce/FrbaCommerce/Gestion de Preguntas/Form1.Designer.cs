@@ -100,6 +100,7 @@
             // 
             // gb_responder_preguntas
             // 
+            this.gb_responder_preguntas.Controls.Add(this.gb_ver_respuestas);
             this.gb_responder_preguntas.Controls.Add(this.btn_responder);
             this.gb_responder_preguntas.Controls.Add(this.label2);
             this.gb_responder_preguntas.Controls.Add(this.label1);
@@ -160,7 +161,7 @@
             // gb_ver_respuestas
             // 
             this.gb_ver_respuestas.Controls.Add(this.dg_respuestas);
-            this.gb_ver_respuestas.Location = new System.Drawing.Point(20, 162);
+            this.gb_ver_respuestas.Location = new System.Drawing.Point(0, 2);
             this.gb_ver_respuestas.Name = "gb_ver_respuestas";
             this.gb_ver_respuestas.Size = new System.Drawing.Size(849, 430);
             this.gb_ver_respuestas.TabIndex = 3;
@@ -182,7 +183,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 641);
-            this.Controls.Add(this.gb_ver_respuestas);
             this.Controls.Add(this.gb_usuario);
             this.Controls.Add(this.gb_opciones);
             this.Controls.Add(this.gb_responder_preguntas);
