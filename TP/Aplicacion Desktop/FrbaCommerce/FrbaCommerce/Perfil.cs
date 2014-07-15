@@ -7,45 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaCommerce;
+using System.Collections;
 
 namespace FrbaCommerce
 {
     public partial class Perfil : Form
     {
-        private Int32 user_id;
-        public Form parent;
-        private DataAccessLayer dataAccess;
+        private int id_rol;
 
-
-        public Perfil()
+        public int getRolSeleccionado()
         {
-            InitializeComponent();
+            return id_rol;
         }
 
-        public Perfil(Int32 usuario)
+        public Perfil(ArrayList lista)
         {
             InitializeComponent();
-            this.user_id = usuario;
+
+            cmbPerfil.DataSource = lista;
+            cmbPerfil.DisplayMember = "descRol";
+            cmbPerfil.ValueMember = "idRol";
         }
 
 
         private void buttonAceptar_Click_1(object sender, EventArgs e)
         {
-            Main menuPrincipal = new Main(this.dataAccess.getUser(this.user_id, Convert.ToInt32(comboBox1.SelectedValue)));
-            menuPrincipal.Show();
-            menuPrincipal.parentForm = parent;
-            this.Hide();
-        }
-
-        private void buttonCancelar_Click_1(object sender, EventArgs e)
-        {
+            id_rol = Convert.ToInt32(cmbPerfil.SelectedValue);
             this.Close();
-            parent.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+
     }
 }
