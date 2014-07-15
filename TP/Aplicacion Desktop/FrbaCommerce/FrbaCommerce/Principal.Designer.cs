@@ -38,13 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelPpal = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.volverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelInicio.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.panelPpal.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInicio
@@ -70,7 +67,7 @@
             this.login_btnIngresar.Location = new System.Drawing.Point(283, 287);
             this.login_btnIngresar.Name = "login_btnIngresar";
             this.login_btnIngresar.Size = new System.Drawing.Size(102, 33);
-            this.login_btnIngresar.TabIndex = 7;
+            this.login_btnIngresar.TabIndex = 6;
             this.login_btnIngresar.Text = "Ingresar";
             this.login_btnIngresar.UseVisualStyleBackColor = true;
             this.login_btnIngresar.Click += new System.EventHandler(this.login_btnIngresar_Click);
@@ -82,7 +79,7 @@
             this.link_registro.Location = new System.Drawing.Point(254, 352);
             this.link_registro.Name = "link_registro";
             this.link_registro.Size = new System.Drawing.Size(159, 20);
-            this.link_registro.TabIndex = 6;
+            this.link_registro.TabIndex = 7;
             this.link_registro.TabStop = true;
             this.link_registro.Text = "Deseo Registrarme...";
             this.link_registro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_registro_LinkClicked);
@@ -92,6 +89,7 @@
             this.login_txtpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_txtpass.Location = new System.Drawing.Point(308, 238);
             this.login_txtpass.Name = "login_txtpass";
+            this.login_txtpass.PasswordChar = '*';
             this.login_txtpass.Size = new System.Drawing.Size(206, 26);
             this.login_txtpass.TabIndex = 5;
             // 
@@ -152,57 +150,38 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panelPpal
             // 
-            this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(684, 462);
-            this.panel1.TabIndex = 1;
+            this.panelPpal.Controls.Add(this.menuStrip1);
+            this.panelPpal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPpal.Location = new System.Drawing.Point(0, 0);
+            this.panelPpal.Name = "panelPpal";
+            this.panelPpal.Size = new System.Drawing.Size(684, 462);
+            this.panelPpal.TabIndex = 1;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aaaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(684, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // aaaToolStripMenuItem
-            // 
-            this.aaaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.volverToolStripMenuItem});
-            this.aaaToolStripMenuItem.Name = "aaaToolStripMenuItem";
-            this.aaaToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.aaaToolStripMenuItem.Text = "aaa";
-            // 
-            // volverToolStripMenuItem
-            // 
-            this.volverToolStripMenuItem.Name = "volverToolStripMenuItem";
-            this.volverToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.volverToolStripMenuItem.Text = "Volver";
-            this.volverToolStripMenuItem.Click += new System.EventHandler(this.volverToolStripMenuItem_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 462);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelInicio);
+            this.Controls.Add(this.panelPpal);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.panelInicio.ResumeLayout(false);
             this.panelInicio.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.panelPpal.ResumeLayout(false);
+            this.panelPpal.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -219,9 +198,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button login_btnIngresar;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelPpal;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aaaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem volverToolStripMenuItem;
     }
 }
