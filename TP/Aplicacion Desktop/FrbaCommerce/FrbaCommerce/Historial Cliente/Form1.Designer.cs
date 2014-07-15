@@ -31,12 +31,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgCompras = new System.Windows.Forms.DataGridView();
-            this.dgcProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgcFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgOfertas = new System.Windows.Forms.DataGridView();
-            this.dgoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgoSubasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgoFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCalificaciones = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompras)).BeginInit();
@@ -73,9 +68,6 @@
             this.dgCompras.AllowUserToAddRows = false;
             this.dgCompras.AllowUserToDeleteRows = false;
             this.dgCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgcProducto,
-            this.dgcFecha});
             this.dgCompras.Location = new System.Drawing.Point(6, 75);
             this.dgCompras.Name = "dgCompras";
             this.dgCompras.ReadOnly = true;
@@ -83,50 +75,16 @@
             this.dgCompras.TabIndex = 2;
             this.dgCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCompras_CellContentClick);
             // 
-            // dgcProducto
-            // 
-            this.dgcProducto.HeaderText = "Producto";
-            this.dgcProducto.Name = "dgcProducto";
-            this.dgcProducto.ReadOnly = true;
-            // 
-            // dgcFecha
-            // 
-            this.dgcFecha.HeaderText = "Fecha";
-            this.dgcFecha.Name = "dgcFecha";
-            this.dgcFecha.ReadOnly = true;
-            // 
             // dgOfertas
             // 
             this.dgOfertas.AllowUserToAddRows = false;
             this.dgOfertas.AllowUserToDeleteRows = false;
             this.dgOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgOfertas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgoProducto,
-            this.dgoSubasta,
-            this.dgoFecha});
             this.dgOfertas.Location = new System.Drawing.Point(6, 75);
             this.dgOfertas.Name = "dgOfertas";
             this.dgOfertas.ReadOnly = true;
             this.dgOfertas.Size = new System.Drawing.Size(589, 174);
             this.dgOfertas.TabIndex = 3;
-            // 
-            // dgoProducto
-            // 
-            this.dgoProducto.HeaderText = "Producto";
-            this.dgoProducto.Name = "dgoProducto";
-            this.dgoProducto.ReadOnly = true;
-            // 
-            // dgoSubasta
-            // 
-            this.dgoSubasta.HeaderText = "Subasta";
-            this.dgoSubasta.Name = "dgoSubasta";
-            this.dgoSubasta.ReadOnly = true;
-            // 
-            // dgoFecha
-            // 
-            this.dgoFecha.HeaderText = "Fecha";
-            this.dgoFecha.Name = "dgoFecha";
-            this.dgoFecha.ReadOnly = true;
             // 
             // dgCalificaciones
             // 
@@ -145,10 +103,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 257);
-            this.Controls.Add(this.dgCalificaciones);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgOfertas);
             this.Controls.Add(this.dgCompras);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dgCalificaciones);
             this.Name = "Form1";
             this.Text = "Historial de Cliente";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -166,11 +124,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgCompras;
         private System.Windows.Forms.DataGridView dgOfertas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgcFecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgoProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgoSubasta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgoFecha;
         private System.Windows.Forms.DataGridView dgCalificaciones;
     }
 }

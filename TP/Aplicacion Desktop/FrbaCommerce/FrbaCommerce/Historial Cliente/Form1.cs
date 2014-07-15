@@ -57,7 +57,9 @@ namespace FrbaCommerce.Historial_Cliente
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            dgCalificaciones.DataSource = ConectorSQL.traerDataTable("getCalificacionesHC",73);
+            dgCompras.DataSource        = ConectorSQL.traerDataTable("getComprasHC", 12); // Reemplazar Usuario
+            dgOfertas.DataSource        = ConectorSQL.traerDataTable("getOfertasHC", 12); // Reemplazar Usuario
+            dgCalificaciones.DataSource = ConectorSQL.traerDataTable("getCalificacionesHC", 73); // Reemplazar Usuario
 
             dgCompras.Hide();
             dgOfertas.Hide();
