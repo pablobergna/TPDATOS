@@ -22,6 +22,7 @@ namespace FrbaCommerce
         private void buttonLogin_Click(object sender, EventArgs e)
         {
 //desde aca YP
+            /* ESTE FORM NO SE USA COMENTO LO QUE TIRA ERROR
  if (this.logUser.Text != string.Empty && this.logPassw.Text != string.Empty)
             {
                 this.dataAccess = new DataAccessLayer();
@@ -40,7 +41,7 @@ namespace FrbaCommerce
             {
                 MessageBox.Show("El Usuario y/o la Password no pueden estar vacios", "Error");
             }
-			
+			*/
 			//hasta aca YP
 			//esta logica no debería ir acá
             Form hc = new Historial_Cliente.Form1();
