@@ -261,6 +261,82 @@ namespace FrbaCommerce
             
         }
 
+        private void linkSalir_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MessageBox.Show("¿Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo)
+                  == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
+
+        private void linkSalirLogueado_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MessageBox.Show("¿Desea cerrar la sesion?", "Salir", MessageBoxButtons.YesNo)
+                  == DialogResult.Yes)
+            {
+                this.panelPpal.Hide();
+                this.panelInicio.Show();
+            }
+        }
+
+        private void btnSeleccion_Click(object sender, EventArgs e)
+        {
+            string funcion = listaFunciones.Text.Trim();
+
+            //Muestro el form que corresponda segun la seleccion
+            switch (funcion)
+            {
+                case "Publicar":
+                    Generar_Publicacion.Form1 fPub = new FrbaCommerce.Generar_Publicacion.Form1();
+                    fPub.ShowDialog();
+                    break;
+                
+                case "Comprar":
+                    
+                    break;
+                
+                case "Facturar Publicaciones":
+                    Facturar_Publicaciones.FacturarPublicaciones fFact = new FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones();
+                    fFact.ShowDialog();
+                    break;
+                
+                case "Listar Estadisticas":
+                    Listado_Estadistico.Form1 fEst = new FrbaCommerce.Listado_Estadistico.Form1();
+                    fEst.ShowDialog();
+                    break;
+                
+                case "Visualizar Historial":
+                    Historial_Cliente.Form1 fHis = new FrbaCommerce.Historial_Cliente.Form1();
+                    fHis.ShowDialog();
+                    break;
+                
+                case "ABM Roles":
+                
+                    break;
+                
+                case "ABM Usuarios":
+                
+                    break;
+                
+                case "ABM Rubros":
+                
+                    break;
+                
+                case "ABM Visibilidad":
+                
+                    break;
+                
+                default:
+                
+                    break;
+            }
+        }
+
+        
+
+        
+
         
     }
 }
