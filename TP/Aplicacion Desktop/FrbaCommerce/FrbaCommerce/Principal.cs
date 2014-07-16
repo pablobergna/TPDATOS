@@ -316,7 +316,8 @@ namespace FrbaCommerce
                     break;
                 
                 case "ABM Usuarios":
-                
+                    Abm_Cliente.Listado fLista = new FrbaCommerce.Abm_Cliente.Listado();
+                    fLista.ShowDialog();
                     break;
                 
                 case "ABM Rubros":

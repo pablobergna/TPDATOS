@@ -53,6 +53,7 @@
             this.cliCodPostal = new System.Windows.Forms.TextBox();
             this.cliFechaNac = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.cliCiudad = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.nroCalle = new System.Windows.Forms.TextBox();
@@ -62,7 +63,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -305,6 +305,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(226, 242);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "(solo numeros)";
+            // 
             // cliCiudad
             // 
             this.cliCiudad.Location = new System.Drawing.Point(122, 395);
@@ -382,15 +391,6 @@
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(226, 242);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 13);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "(solo numeros)";
             // 
             // Alta_Cliente
             // 
