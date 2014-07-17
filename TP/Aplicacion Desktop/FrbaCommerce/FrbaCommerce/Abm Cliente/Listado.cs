@@ -114,6 +114,7 @@ namespace FrbaCommerce.Abm_Cliente
             Abm_Cliente.AMCliente fCli = new AMCliente();
             fCli.idusuario = id_usuario;
             fCli.ShowDialog();
+            this.btnBuscar.PerformClick();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -192,6 +193,13 @@ namespace FrbaCommerce.Abm_Cliente
 
             }
 
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            Abm_Cliente.AMCliente fCli = new AMCliente();
+            fCli.ShowDialog();
+            this.btnBuscar.PerformClick();
         }
 
         

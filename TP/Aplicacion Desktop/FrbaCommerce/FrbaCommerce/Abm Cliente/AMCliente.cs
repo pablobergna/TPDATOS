@@ -58,7 +58,7 @@ namespace FrbaCommerce.Abm_Cliente
             cliTipoDoc.ValueMember = "idRol";
 
             //Chequeo si es una modificacion
-            if(this.id_usuario != -1)
+            if (this.id_usuario != -1)
             {
 
                 //Traigo la informacion del usuario
@@ -101,6 +101,11 @@ namespace FrbaCommerce.Abm_Cliente
                 // Cierro la conexion
                 usuario.Close();
                 AccesoDatos.getInstancia().cerrarConexion();
+            }
+            else
+            {
+                this.lblUsu.Text += "AUTOGENERADO";
+                this.lblEstado.Text += "Habilitado";
             }
 
         }
@@ -363,6 +368,9 @@ namespace FrbaCommerce.Abm_Cliente
                 string nombre_generado = "AUTO_" + this.cliTipoDoc.Text.Trim() + this.cliDni.Text.Trim();
                 string pass_generada = Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes("inicio1234"))); ;
 
+                // Los agrego al txt de confirmacion
+                txt_confirmacion += "\nUsuario: " + nombre_generado + "\nPass: inicio1234";
+                
                 System.Data.SqlClient.SqlParameter nombre_usu = new System.Data.SqlClient.SqlParameter("@nombre_usu", nombre_generado);
                 com.Parameters.Add(nombre_usu);
 
@@ -431,11 +439,11 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlDataReader datos
                 = AccesoDatos.getInstancia().ejecutaSP(com);
 
-            MessageBox.Show(txt_confirmacion);
-
             // Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
 
+
+            MessageBox.Show(txt_confirmacion);
             this.Close();
         }
 

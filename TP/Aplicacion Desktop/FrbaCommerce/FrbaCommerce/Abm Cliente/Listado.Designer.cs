@@ -174,6 +174,7 @@
             this.btnCrear.TabIndex = 46;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnBuscar
             // 
