@@ -173,11 +173,6 @@ namespace FrbaCommerce.Generar_Publicacion
             if (rb_pausada.Checked)
             { publicacion.estado = rb_pausada.Text; }
 
-            //SETEO DEL USUARIO
-           
-            //<FALTA>
-            //publicacion.id_usuario = algo;
-
             publicacion.id = 0;
 
             //llamar SP de creacion publicacion
@@ -188,7 +183,7 @@ namespace FrbaCommerce.Generar_Publicacion
             else {
                 if (rb_subasta.Checked)
                 {
-                    publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_SUBASTA");
+                    publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_SUBASTA", publicacion.id_usuario, publicacion.estado, publicacion.visibilidad, publicacion.tipo_publicacion, publicacion.descripcion, publicacion.permitir_preguntas, publicacion.precio);
                 } else {
                     MessageBox.Show("Error, ningun tipo de publicacion seleccionado", "Frba Commerce", MessageBoxButtons.OK);
                     return;
