@@ -14,7 +14,6 @@ namespace FrbaCommerce.Abm_Cliente
     public partial class AMCliente : Form
     {
 
-
         private string usr_nombre;
         private string usr_pass;
         private int id_usuario = -1;

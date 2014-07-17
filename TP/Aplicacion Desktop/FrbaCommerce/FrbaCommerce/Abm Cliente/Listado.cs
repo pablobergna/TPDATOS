@@ -493,6 +493,45 @@ namespace FrbaCommerce.Abm_Cliente
             
         }
 
+        private void btnCliPass_Click(object sender, EventArgs e)
+        {
+            if (dataGridClientes.SelectedRows.Count != 1) return;
+
+            int id_usuario = Convert.ToInt32(this.dataGridClientes.SelectedRows[0].Cells[0].Value);
+
+            Pass.ModPass fPas = new FrbaCommerce.Pass.ModPass();
+            
+            fPas.idusuario = id_usuario;
+            fPas.ShowDialog();
+            this.btnBuscar.PerformClick();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridEmpresa.SelectedRows.Count != 1) return;
+
+            int id_usuario = Convert.ToInt32(this.dataGridEmpresa.SelectedRows[0].Cells[0].Value);
+
+            Pass.ModPass fPas = new FrbaCommerce.Pass.ModPass();
+
+            fPas.idusuario = id_usuario;
+            fPas.ShowDialog();
+            this.btnBuscarEmp.PerformClick();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridAdm.SelectedRows.Count != 1) return;
+
+            int id_usuario = Convert.ToInt32(this.dataGridAdm.SelectedRows[0].Cells[0].Value);
+
+            Pass.ModPass fPas = new FrbaCommerce.Pass.ModPass();
+
+            fPas.idusuario = id_usuario;
+            fPas.ShowDialog();
+            this.btnBuscarAdm.PerformClick();
+        }
+
 
     }
 }
