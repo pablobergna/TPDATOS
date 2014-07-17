@@ -21,6 +21,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         private void Gestion_de_Preguntas_Load(object sender, EventArgs e)
         {
             //Codigo para cargar en el group box el usuario activo, rol y demas datos
+            //<FALTA>
             //lbl_usuario.Text = lbl_usuario.Text + "usuario"\
             gb_responder_preguntas.Hide();
             gb_ver_respuestas.Hide();
@@ -33,7 +34,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             dg_respuestas.Rows.Clear();
             dg_respuestas.Refresh();
             //carga las respuestas
-            dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS"); //<LLENAR> , FrbaCommerce.Main.usuario);
+            dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS"); //<FALTA> , FrbaCommerce.Main.usuario);
         }
 
         private void btn_responder_preguntas_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             txt_respuesta.Text = "";
             lst_preguntas.Items.Clear();
             //carga la lista con las preguntas pendientes
-            lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS"); //<LLENAR> ,FrbaCommerce.Main.usuario.id);
+            lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS"); //<FALTA> ,FrbaCommerce.Main.usuario.id);
             lst_preguntas.DisplayMember = "txt_pregunta";
             lst_preguntas.ValueMember = "id_pregunta";
         }

@@ -288,7 +288,7 @@ namespace FrbaCommerce
             switch (funcion)
             {
                 case "Publicar":
-                    Generar_Publicacion.Form1 fPub = new FrbaCommerce.Generar_Publicacion.Form1();
+                    Generar_Publicacion.Form1 fPub = new FrbaCommerce.Generar_Publicacion.Form1(ppal_id_usuario);
                     fPub.ShowDialog();
                     break;
                 

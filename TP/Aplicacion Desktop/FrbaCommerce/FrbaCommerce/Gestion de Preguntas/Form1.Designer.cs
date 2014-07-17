@@ -34,13 +34,13 @@
             this.gb_usuario = new System.Windows.Forms.GroupBox();
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.gb_responder_preguntas = new System.Windows.Forms.GroupBox();
+            this.gb_ver_respuestas = new System.Windows.Forms.GroupBox();
+            this.dg_respuestas = new System.Windows.Forms.DataGridView();
             this.btn_responder = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_respuesta = new System.Windows.Forms.RichTextBox();
             this.lst_preguntas = new System.Windows.Forms.ListBox();
-            this.gb_ver_respuestas = new System.Windows.Forms.GroupBox();
-            this.dg_respuestas = new System.Windows.Forms.DataGridView();
             this.gb_opciones.SuspendLayout();
             this.gb_usuario.SuspendLayout();
             this.gb_responder_preguntas.SuspendLayout();
@@ -100,7 +100,6 @@
             // 
             // gb_responder_preguntas
             // 
-            this.gb_responder_preguntas.Controls.Add(this.gb_ver_respuestas);
             this.gb_responder_preguntas.Controls.Add(this.btn_responder);
             this.gb_responder_preguntas.Controls.Add(this.label2);
             this.gb_responder_preguntas.Controls.Add(this.label1);
@@ -113,6 +112,26 @@
             this.gb_responder_preguntas.TabStop = false;
             this.gb_responder_preguntas.Text = "Responder Preguntas";
             this.gb_responder_preguntas.Visible = false;
+            // 
+            // gb_ver_respuestas
+            // 
+            this.gb_ver_respuestas.Controls.Add(this.dg_respuestas);
+            this.gb_ver_respuestas.Location = new System.Drawing.Point(20, 162);
+            this.gb_ver_respuestas.Name = "gb_ver_respuestas";
+            this.gb_ver_respuestas.Size = new System.Drawing.Size(849, 430);
+            this.gb_ver_respuestas.TabIndex = 3;
+            this.gb_ver_respuestas.TabStop = false;
+            this.gb_ver_respuestas.Text = "Ver Respuestas";
+            // 
+            // dg_respuestas
+            // 
+            this.dg_respuestas.AllowUserToOrderColumns = true;
+            this.dg_respuestas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_respuestas.Location = new System.Drawing.Point(21, 21);
+            this.dg_respuestas.Name = "dg_respuestas";
+            this.dg_respuestas.Size = new System.Drawing.Size(798, 384);
+            this.dg_respuestas.TabIndex = 1;
+            this.dg_respuestas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_respuestas_CellContentClick);
             // 
             // btn_responder
             // 
@@ -158,31 +177,12 @@
             this.lst_preguntas.Size = new System.Drawing.Size(345, 355);
             this.lst_preguntas.TabIndex = 0;
             // 
-            // gb_ver_respuestas
-            // 
-            this.gb_ver_respuestas.Controls.Add(this.dg_respuestas);
-            this.gb_ver_respuestas.Location = new System.Drawing.Point(0, 2);
-            this.gb_ver_respuestas.Name = "gb_ver_respuestas";
-            this.gb_ver_respuestas.Size = new System.Drawing.Size(849, 430);
-            this.gb_ver_respuestas.TabIndex = 3;
-            this.gb_ver_respuestas.TabStop = false;
-            this.gb_ver_respuestas.Text = "Ver Respuestas";
-            // 
-            // dg_respuestas
-            // 
-            this.dg_respuestas.AllowUserToOrderColumns = true;
-            this.dg_respuestas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_respuestas.Location = new System.Drawing.Point(21, 21);
-            this.dg_respuestas.Name = "dg_respuestas";
-            this.dg_respuestas.Size = new System.Drawing.Size(798, 384);
-            this.dg_respuestas.TabIndex = 1;
-            this.dg_respuestas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_respuestas_CellContentClick);
-            // 
             // Gestion_de_Preguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 641);
+            this.Controls.Add(this.gb_ver_respuestas);
             this.Controls.Add(this.gb_usuario);
             this.Controls.Add(this.gb_opciones);
             this.Controls.Add(this.gb_responder_preguntas);
