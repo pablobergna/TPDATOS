@@ -30,6 +30,9 @@
         {
             this.tabUsuarios = new System.Windows.Forms.TabControl();
             this.tabPageCliente = new System.Windows.Forms.TabPage();
+            this.btnHabilitar = new System.Windows.Forms.Button();
+            this.btnInhabilitar = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -48,9 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageEmpresa = new System.Windows.Forms.TabPage();
             this.tabPageAdmin = new System.Windows.Forms.TabPage();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.btnInhabilitar = new System.Windows.Forms.Button();
-            this.btnHabilitar = new System.Windows.Forms.Button();
             this.tabUsuarios.SuspendLayout();
             this.tabPageCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
@@ -99,6 +99,40 @@
             this.tabPageCliente.TabIndex = 0;
             this.tabPageCliente.Text = "Usuarios Cliente";
             // 
+            // btnHabilitar
+            // 
+            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitar.Location = new System.Drawing.Point(421, 387);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(125, 30);
+            this.btnHabilitar.TabIndex = 52;
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.UseVisualStyleBackColor = true;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
+            // 
+            // btnInhabilitar
+            // 
+            this.btnInhabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInhabilitar.Location = new System.Drawing.Point(288, 387);
+            this.btnInhabilitar.Name = "btnInhabilitar";
+            this.btnInhabilitar.Size = new System.Drawing.Size(125, 30);
+            this.btnInhabilitar.TabIndex = 51;
+            this.btnInhabilitar.Text = "Inhabilitar";
+            this.btnInhabilitar.UseVisualStyleBackColor = true;
+            this.btnInhabilitar.Click += new System.EventHandler(this.btnInhabilitar_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(572, 14);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(109, 17);
+            this.linkLabel1.TabIndex = 50;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Limpiar Campos";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -116,7 +150,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(125, 30);
             this.btnEliminar.TabIndex = 48;
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Text = "Dar de Baja";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -278,40 +312,6 @@
             this.tabPageAdmin.TabIndex = 2;
             this.tabPageAdmin.Text = "Administradores";
             this.tabPageAdmin.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(572, 14);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(109, 17);
-            this.linkLabel1.TabIndex = 50;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Limpiar Campos";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // btnInhabilitar
-            // 
-            this.btnInhabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInhabilitar.Location = new System.Drawing.Point(288, 387);
-            this.btnInhabilitar.Name = "btnInhabilitar";
-            this.btnInhabilitar.Size = new System.Drawing.Size(125, 30);
-            this.btnInhabilitar.TabIndex = 51;
-            this.btnInhabilitar.Text = "Inhabilitar";
-            this.btnInhabilitar.UseVisualStyleBackColor = true;
-            this.btnInhabilitar.Click += new System.EventHandler(this.btnInhabilitar_Click);
-            // 
-            // btnHabilitar
-            // 
-            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHabilitar.Location = new System.Drawing.Point(421, 387);
-            this.btnHabilitar.Name = "btnHabilitar";
-            this.btnHabilitar.Size = new System.Drawing.Size(125, 30);
-            this.btnHabilitar.TabIndex = 52;
-            this.btnHabilitar.Text = "Habilitar";
-            this.btnHabilitar.UseVisualStyleBackColor = true;
-            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
             // 
             // Listado
             // 

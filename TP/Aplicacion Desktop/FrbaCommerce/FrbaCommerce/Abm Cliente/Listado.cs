@@ -107,11 +107,19 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (dataGridClientes.SelectedRows.Count != 1) return;
             
+            int id_usuario = Convert.ToInt32(this.dataGridClientes.SelectedRows[0].Cells[0].Value);
+            
+            Abm_Cliente.AMCliente fCli = new AMCliente();
+            fCli.idusuario = id_usuario;
+            fCli.ShowDialog();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (dataGridClientes.SelectedRows.Count != 1) return;
+            
             int id_usuario = Convert.ToInt32(this.dataGridClientes.SelectedRows[0].Cells[0].Value);
 
             if (MessageBox.Show("¿Confirma la eliminacion del usuario?", "Eliminacion", MessageBoxButtons.YesNo)
@@ -136,6 +144,8 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btnInhabilitar_Click(object sender, EventArgs e)
         {
+            if (dataGridClientes.SelectedRows.Count != 1) return;
+
             int id_usuario = Convert.ToInt32(this.dataGridClientes.SelectedRows[0].Cells[0].Value);
 
             if (MessageBox.Show("¿Confirma la Inhabilitacion del usuario?", "Inhabilitacion", MessageBoxButtons.YesNo)
@@ -160,6 +170,8 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btnHabilitar_Click(object sender, EventArgs e)
         {
+            if (dataGridClientes.SelectedRows.Count != 1) return;
+            
             int id_usuario = Convert.ToInt32(this.dataGridClientes.SelectedRows[0].Cells[0].Value);
 
             if (MessageBox.Show("¿Confirma la Habilitacion del usuario?", "Habilitacion", MessageBoxButtons.YesNo)
