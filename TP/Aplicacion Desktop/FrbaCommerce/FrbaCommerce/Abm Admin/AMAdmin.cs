@@ -155,62 +155,29 @@ namespace FrbaCommerce.Abm_Admin
                 return;
             }
 
-            ////////////////////////////////////////////////
-            //Verifico que el CUIT / CUIL no este repetido//
-            ////////////////////////////////////////////////
-            System.Data.SqlClient.SqlCommand comDupCUIT = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioXCUIT");
+            /////////////////////////////////////////////////
+            //Verifico que EL LEGAJO no este repetida//
+            /////////////////////////////////////////////////
+            System.Data.SqlClient.SqlCommand comLeg = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getAdminXLegajo");
 
             //Defino los parametros
-            System.Data.SqlClient.SqlParameter pcuit1 = new System.Data.SqlClient.SqlParameter("@cuit", empCuit.Text.Trim());
-            comDupCUIT.Parameters.Add(pcuit1);
+            System.Data.SqlClient.SqlParameter p1 = new System.Data.SqlClient.SqlParameter("@legajo", txtLegajo.Text.Trim());
+            comLeg.Parameters.Add(p1);
 
             if (this.id_usuario != -1)
             {
                 System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
-                comDupCUIT.Parameters.Add(pid_usu);
+                comLeg.Parameters.Add(pid_usu);
             }
 
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
 
-            System.Data.SqlClient.SqlDataReader dupCUIT = AccesoDatos.getInstancia().ejecutaSP(comDupCUIT);
-
-            if (dupCUIT.HasRows)
-            {
-                MessageBox.Show("Ya existe un usuario con ese numero de CUIT - CUIL.");
-                // Cierro la conexion
-                dupCUIT.Close();
-                AccesoDatos.getInstancia().cerrarConexion();
-                return;
-            }
-
-            // Cierro la conexion
-            dupCUIT.Close();
-            AccesoDatos.getInstancia().cerrarConexion();
-
-            /////////////////////////////////////////////////
-            //Verifico que LA RAZON SOCIAL no este repetida//
-            /////////////////////////////////////////////////
-            System.Data.SqlClient.SqlCommand comDup = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getEmpresaXRazon");
-
-            //Defino los parametros
-            System.Data.SqlClient.SqlParameter p1 = new System.Data.SqlClient.SqlParameter("@razon", empRazSocial.Text.Trim());
-            comDup.Parameters.Add(p1);
-
-            if (this.id_usuario != -1)
-            {
-                System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
-                comDup.Parameters.Add(pid_usu);
-            }
-
-            // Abro la conexion
-            AccesoDatos.getInstancia().abrirConexion();
-
-            System.Data.SqlClient.SqlDataReader dup = AccesoDatos.getInstancia().ejecutaSP(comDup);
+            System.Data.SqlClient.SqlDataReader dup = AccesoDatos.getInstancia().ejecutaSP(comLeg);
 
             if (dup.HasRows)
             {
-                MessageBox.Show("Ya existe un usuario con esa Razon Social.");
+                MessageBox.Show("Ya existe un empleado con ese Legajo.");
                 // Cierro la conexion
                 dup.Close();
                 AccesoDatos.getInstancia().cerrarConexion();
@@ -227,19 +194,19 @@ namespace FrbaCommerce.Abm_Admin
             if (this.id_usuario == -1)
             {
                 // Nombre del SP para creacion
-                sql_qry = "LOS_GESTORES.sp_app_creaUsuarioEmpresa";
+                sql_qry = "LOS_GESTORES.sp_app_creaUsuarioAdmin";
                 txt_confirmacion = "Se ha creado el usuario correctamente";
             }
             else
             {
                 // Nombre del SP para modificacion
-                sql_qry = "LOS_GESTORES.sp_app_modificaUsuarioEmpresa";
+                sql_qry = "LOS_GESTORES.sp_app_modificaUsuarioAdmin";
                 txt_confirmacion = "Se ha modificado el usuario correctamente";
             }
 
 
             ////////////////////////
-            // Persisto la Empresa//
+            // Persisto el Admin  //
             ////////////////////////
 
             //comando pasado como parametro
@@ -250,7 +217,7 @@ namespace FrbaCommerce.Abm_Admin
             {
                 // Solo paso nombre usuario y pass si es un usuario nuevo
                 // Los genero automaticamente
-                string nombre_generado = "AUTO_" + this.empRazSocial.Text.Trim();
+                string nombre_generado = "ADM_" + this.txtLegajo.Text.Trim();
                 string pass_generada = Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes("inicio1234"))); ;
 
                 // Los agrego al txt de confirmacion
@@ -269,48 +236,38 @@ namespace FrbaCommerce.Abm_Admin
                 com.Parameters.Add(id_usu);
             }
 
-            System.Data.SqlClient.SqlParameter calle_usu = new System.Data.SqlClient.SqlParameter("@calle", this.empDireccion.Text);
+            System.Data.SqlClient.SqlParameter calle_usu = new System.Data.SqlClient.SqlParameter("@calle", this.txtCalle.Text);
             com.Parameters.Add(calle_usu);
 
             System.Data.SqlClient.SqlParameter nro_calle_usu = new System.Data.SqlClient.SqlParameter("@nro_calle", nro_calle_val);
             com.Parameters.Add(nro_calle_usu);
 
-            if (this.empNroPiso.Text != String.Empty)
+            if (this.txtNroPiso.Text != String.Empty)
             {
                 System.Data.SqlClient.SqlParameter piso_usu = new System.Data.SqlClient.SqlParameter("@piso", nro_piso_val);
                 com.Parameters.Add(piso_usu);
             }
 
-            System.Data.SqlClient.SqlParameter depto_usu = new System.Data.SqlClient.SqlParameter("@depto", this.empDpto.Text);
+            System.Data.SqlClient.SqlParameter depto_usu = new System.Data.SqlClient.SqlParameter("@depto", this.txtDepto.Text);
             com.Parameters.Add(depto_usu);
 
-            System.Data.SqlClient.SqlParameter cp_usu = new System.Data.SqlClient.SqlParameter("@cp", this.empCodPostal.Text);
+            System.Data.SqlClient.SqlParameter cp_usu = new System.Data.SqlClient.SqlParameter("@cp", this.txtCP.Text);
             com.Parameters.Add(cp_usu);
 
-            System.Data.SqlClient.SqlParameter loc_usu = new System.Data.SqlClient.SqlParameter("@loc", this.empLocalidad.Text);
+            System.Data.SqlClient.SqlParameter loc_usu = new System.Data.SqlClient.SqlParameter("@loc", this.txtLocalidad.Text);
             com.Parameters.Add(loc_usu);
 
-            System.Data.SqlClient.SqlParameter ciudad_usu = new System.Data.SqlClient.SqlParameter("@ciudad", this.ciudad.Text);
+            System.Data.SqlClient.SqlParameter ciudad_usu = new System.Data.SqlClient.SqlParameter("@ciudad", this.txtCiudad.Text);
             com.Parameters.Add(ciudad_usu);
 
-            System.Data.SqlClient.SqlParameter mail_usu = new System.Data.SqlClient.SqlParameter("@mail", this.empMail.Text);
+            System.Data.SqlClient.SqlParameter mail_usu = new System.Data.SqlClient.SqlParameter("@mail", this.txtMail.Text);
             com.Parameters.Add(mail_usu);
 
-            System.Data.SqlClient.SqlParameter razon_usu = new System.Data.SqlClient.SqlParameter("@razon", empRazSocial.Text.Trim());
-            com.Parameters.Add(razon_usu);
+            System.Data.SqlClient.SqlParameter leg_usu = new System.Data.SqlClient.SqlParameter("@legajo", this.txtLegajo.Text);
+            com.Parameters.Add(leg_usu);
 
-            System.Data.SqlClient.SqlParameter cuit_usu = new System.Data.SqlClient.SqlParameter("@cuit", empCuit.Text.Trim());
-            com.Parameters.Add(cuit_usu);
-
-            System.Data.SqlClient.SqlParameter fcrea_usu = new System.Data.SqlClient.SqlParameter("@f_crea", this.empFechaCre.Value);
-            com.Parameters.Add(fcrea_usu);
-
-            System.Data.SqlClient.SqlParameter contacto_usu = new System.Data.SqlClient.SqlParameter("@nom_contacto", empContacto.Text.Trim());
-            com.Parameters.Add(contacto_usu);
-
-            System.Data.SqlClient.SqlParameter telefono_usu = new System.Data.SqlClient.SqlParameter("@telefono", empTelefono.Text.Trim());
-            com.Parameters.Add(telefono_usu);
-
+            System.Data.SqlClient.SqlParameter suc_usu = new System.Data.SqlClient.SqlParameter("@sucursal", this.txtSuc.Text);
+            com.Parameters.Add(suc_usu);
 
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();

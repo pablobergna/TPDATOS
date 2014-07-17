@@ -70,7 +70,7 @@
             this.txtNroCalle.Location = new System.Drawing.Point(146, 191);
             this.txtNroCalle.Name = "txtNroCalle";
             this.txtNroCalle.Size = new System.Drawing.Size(100, 20);
-            this.txtNroCalle.TabIndex = 81;
+            this.txtNroCalle.TabIndex = 82;
             // 
             // label10
             // 
@@ -96,49 +96,49 @@
             this.txtCiudad.Location = new System.Drawing.Point(146, 356);
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(100, 20);
-            this.txtCiudad.TabIndex = 86;
+            this.txtCiudad.TabIndex = 87;
             // 
             // txtCP
             // 
             this.txtCP.Location = new System.Drawing.Point(146, 323);
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(64, 20);
-            this.txtCP.TabIndex = 85;
+            this.txtCP.TabIndex = 86;
             // 
             // txtLocalidad
             // 
             this.txtLocalidad.Location = new System.Drawing.Point(146, 290);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(121, 20);
-            this.txtLocalidad.TabIndex = 84;
+            this.txtLocalidad.TabIndex = 85;
             // 
             // txtDepto
             // 
             this.txtDepto.Location = new System.Drawing.Point(146, 257);
             this.txtDepto.Name = "txtDepto";
             this.txtDepto.Size = new System.Drawing.Size(43, 20);
-            this.txtDepto.TabIndex = 83;
+            this.txtDepto.TabIndex = 84;
             // 
             // txtNroPiso
             // 
             this.txtNroPiso.Location = new System.Drawing.Point(146, 224);
             this.txtNroPiso.Name = "txtNroPiso";
             this.txtNroPiso.Size = new System.Drawing.Size(43, 20);
-            this.txtNroPiso.TabIndex = 82;
+            this.txtNroPiso.TabIndex = 83;
             // 
             // txtCalle
             // 
             this.txtCalle.Location = new System.Drawing.Point(146, 158);
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(230, 20);
-            this.txtCalle.TabIndex = 80;
+            this.txtCalle.TabIndex = 81;
             // 
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(146, 125);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(212, 20);
-            this.txtMail.TabIndex = 78;
+            this.txtMail.TabIndex = 80;
             // 
             // label6
             // 
@@ -218,7 +218,7 @@
             this.txtSuc.Location = new System.Drawing.Point(146, 94);
             this.txtSuc.Name = "txtSuc";
             this.txtSuc.Size = new System.Drawing.Size(212, 20);
-            this.txtSuc.TabIndex = 95;
+            this.txtSuc.TabIndex = 79;
             // 
             // label7
             // 
@@ -234,7 +234,7 @@
             this.txtLegajo.Location = new System.Drawing.Point(146, 64);
             this.txtLegajo.Name = "txtLegajo";
             this.txtLegajo.Size = new System.Drawing.Size(212, 20);
-            this.txtLegajo.TabIndex = 97;
+            this.txtLegajo.TabIndex = 78;
             // 
             // label8
             // 
@@ -250,7 +250,7 @@
             this.btnGrabar.Location = new System.Drawing.Point(281, 427);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(75, 23);
-            this.btnGrabar.TabIndex = 99;
+            this.btnGrabar.TabIndex = 89;
             this.btnGrabar.Text = "Grabar";
             this.btnGrabar.UseVisualStyleBackColor = true;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
@@ -260,7 +260,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(65, 427);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 98;
+            this.btnCancelar.TabIndex = 88;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
