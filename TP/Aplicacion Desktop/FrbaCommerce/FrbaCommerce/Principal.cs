@@ -287,6 +287,11 @@ namespace FrbaCommerce
             //Muestro el form que corresponda segun la seleccion
             switch (funcion)
             {
+                case "Gestionar Preguntas":
+                    Gestion_de_Preguntas.Gestion_de_Preguntas fGpreg = new FrbaCommerce.Gestion_de_Preguntas.Gestion_de_Preguntas(ppal_id_usuario);
+                    fGpreg.ShowDialog();
+                    break;
+
                 case "Publicar":
                     Generar_Publicacion.Form1 fPub = new FrbaCommerce.Generar_Publicacion.Form1(ppal_id_usuario);
                     fPub.ShowDialog();

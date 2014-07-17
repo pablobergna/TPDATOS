@@ -36,7 +36,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             dg_respuestas.Rows.Clear();
             dg_respuestas.Refresh();
             //carga las respuestas
-            dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS"); //<FALTA> , FrbaCommerce.Main.usuario);
+            dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS", usuario);
         }
 
         private void btn_responder_preguntas_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             txt_respuesta.Text = "";
             lst_preguntas.Items.Clear();
             //carga la lista con las preguntas pendientes
-            lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS"); //<FALTA> ,FrbaCommerce.Main.usuario.id);
+            lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS", usuario);
             lst_preguntas.DisplayMember = "txt_pregunta";
             lst_preguntas.ValueMember = "id_pregunta";
         }
