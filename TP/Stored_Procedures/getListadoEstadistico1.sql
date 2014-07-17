@@ -39,8 +39,19 @@ BEGIN
 									else @p_trimestre
 								end															
 	and MONTH(p.fecha)		=	case @p_mes
-									when -1 then MONTH(p.fecha)
-									else @p_mes
+									when 1 then @p_mes
+									when 2 then @p_mes
+									when 3 then @p_mes
+									when 4 then @p_mes
+									when 5 then @p_mes
+									when 6 then @p_mes
+									when 7 then @p_mes
+									when 8 then @p_mes
+									when 9 then @p_mes
+									when 10 then @p_mes
+									when 11 then @p_mes
+									when 12 then @p_mes
+									else MONTH(p.fecha)
 								end		
 	and p.id_visibilidad	=	case @p_id_visibilidad
 									when -1 then p.id_visibilidad
