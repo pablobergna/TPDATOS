@@ -6,25 +6,79 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace FrbaCommerce.Abm_Empresa
 {
-    public partial class Alta_Empresa : Form
+    public partial class AMEmpresa : Form
     {
-
         private string usr_nombre;
         private string usr_pass;
+        private int id_usuario = -1;
 
         public string nombre { get { return usr_nombre; } set { usr_nombre = value; } }
 
         public string pass { get { return usr_pass; } set { usr_pass = value; } }
 
-        public Alta_Empresa()
+        public int idusuario { get { return id_usuario; } set { id_usuario = value; } }
+
+        public AMEmpresa()
         {
             InitializeComponent();
         }
 
-        
+        private void AMEmpresa_Load(object sender, EventArgs e)
+        {
+            //Chequeo si es una modificacion
+            if (this.id_usuario != -1)
+            {
+
+                //Traigo la informacion del usuario
+                System.Data.SqlClient.SqlCommand comUsu = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioEmpresaXId");
+
+                //Defino los parametros
+                System.Data.SqlClient.SqlParameter pUsu = new System.Data.SqlClient.SqlParameter("@id", this.id_usuario);
+                comUsu.Parameters.Add(pUsu);
+
+                // Abro la conexion
+                AccesoDatos.getInstancia().abrirConexion();
+
+                System.Data.SqlClient.SqlDataReader usuario = AccesoDatos.getInstancia().ejecutaSP(comUsu);
+
+                if (!usuario.HasRows)
+                {
+                    MessageBox.Show("Usuario invalido");
+                    return;
+                }
+
+                usuario.Read();
+                this.lblUsu.Text += usuario.GetString(0);
+                this.lblEstado.Text += usuario.GetString(1);
+                this.empRazSocial.Text = usuario.GetString(2);
+                this.empMail.Text = usuario.GetString(3).Trim();
+                this.empTelefono.Text = usuario.GetString(4).Trim();
+                this.empDireccion.Text = usuario.GetString(5).Trim();
+                this.empNroCalle.Text = usuario.GetDecimal(6).ToString().Trim();
+                this.empNroPiso.Text = usuario.GetDecimal(7).ToString().Trim();
+                this.empDpto.Text = usuario.GetString(8).Trim();
+                this.empLocalidad.Text = usuario.GetString(9).Trim();
+                this.empCodPostal.Text = usuario.GetString(10).Trim();
+                this.ciudad.Text = usuario.GetString(11).Trim();
+                this.empCuit.Text = usuario.GetString(12).Trim();
+                this.empFechaCre.Value = usuario.GetDateTime(13);
+                
+
+                // Cierro la conexion
+                usuario.Close();
+                AccesoDatos.getInstancia().cerrarConexion();
+            }
+            else
+            {
+                this.lblUsu.Text += "AUTOGENERADO";
+                this.lblEstado.Text += "Habilitado";
+            }
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -35,6 +89,7 @@ namespace FrbaCommerce.Abm_Empresa
             int nro_calle_val = 0;
             int nro_piso_val = 0;
             int cuit_val = 0;
+            SHA256Managed encriptacionSha256 = new SHA256Managed();
 
             List<string> listaValidacion = new List<string>();
 
@@ -135,6 +190,12 @@ namespace FrbaCommerce.Abm_Empresa
             System.Data.SqlClient.SqlParameter pcuit1 = new System.Data.SqlClient.SqlParameter("@cuit", empCuit.Text.Trim());
             comDupCUIT.Parameters.Add(pcuit1);
 
+            if (this.id_usuario != -1)
+            {
+                System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                comDupCUIT.Parameters.Add(pid_usu);
+            }
+
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
 
@@ -162,6 +223,12 @@ namespace FrbaCommerce.Abm_Empresa
             System.Data.SqlClient.SqlParameter p1 = new System.Data.SqlClient.SqlParameter("@razon", empRazSocial.Text.Trim());
             comDup.Parameters.Add(p1);
 
+            if (this.id_usuario != -1)
+            {
+                System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                comDup.Parameters.Add(pid_usu);
+            }
+
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
 
@@ -180,22 +247,53 @@ namespace FrbaCommerce.Abm_Empresa
             dup.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
+            string sql_qry = "";
+            string txt_confirmacion = "";
+
+            if (this.id_usuario == -1)
+            {
+                // Nombre del SP para creacion
+                sql_qry = "LOS_GESTORES.sp_app_creaUsuarioEmpresa";
+                txt_confirmacion = "Se ha creado el usuario correctamente";
+            }
+            else
+            {
+                // Nombre del SP para modificacion
+                sql_qry = "LOS_GESTORES.sp_app_modificaUsuarioEmpresa";
+                txt_confirmacion = "Se ha modificado el usuario correctamente";
+            }
+
+                        
             ////////////////////////
             // Persisto la Empresa//
             ////////////////////////
-
-            // Nombre del SP
-            string sql_qry = "LOS_GESTORES.sp_app_creaUsuarioEmpresa";
 
             //comando pasado como parametro
             System.Data.SqlClient.SqlCommand com = new System.Data.SqlClient.SqlCommand(sql_qry);
 
             //Defino los parametros y los agrego a la lista de parametros
-            System.Data.SqlClient.SqlParameter nombre_usu = new System.Data.SqlClient.SqlParameter("@nombre_usu", this.usr_nombre);
-            com.Parameters.Add(nombre_usu);
+            if (this.id_usuario == -1)
+            {
+                // Solo paso nombre usuario y pass si es un usuario nuevo
+                // Los genero automaticamente
+                string nombre_generado = "AUTO_" + this.empRazSocial.Text.Trim();
+                string pass_generada = Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes("inicio1234"))); ;
 
-            System.Data.SqlClient.SqlParameter pass_usu = new System.Data.SqlClient.SqlParameter("@pass", this.usr_pass);
-            com.Parameters.Add(pass_usu);
+                // Los agrego al txt de confirmacion
+                txt_confirmacion += "\nUsuario: " + nombre_generado + "\nPass: inicio1234";
+
+                System.Data.SqlClient.SqlParameter nombre_usu = new System.Data.SqlClient.SqlParameter("@nombre_usu", nombre_generado);
+                com.Parameters.Add(nombre_usu);
+
+                System.Data.SqlClient.SqlParameter pass_usu = new System.Data.SqlClient.SqlParameter("@pass", pass_generada);
+                com.Parameters.Add(pass_usu);
+            }
+            else
+            {
+                // Solo paso nombre id si es una modificacion
+                System.Data.SqlClient.SqlParameter id_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                com.Parameters.Add(id_usu);
+            }
 
             System.Data.SqlClient.SqlParameter calle_usu = new System.Data.SqlClient.SqlParameter("@calle", this.empDireccion.Text);
             com.Parameters.Add(calle_usu);
@@ -246,11 +344,10 @@ namespace FrbaCommerce.Abm_Empresa
             System.Data.SqlClient.SqlDataReader datos
                 = AccesoDatos.getInstancia().ejecutaSP(com);
 
-            MessageBox.Show("Felicitaciones se ha registrado exitosamente");
-
             // Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
-
+            
+            MessageBox.Show(txt_confirmacion);
             this.Close();
 
         }

@@ -334,21 +334,21 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btnCrearEmp_Click(object sender, EventArgs e)
         {
-            Abm_Cliente.AMCliente fCli = new AMCliente();
-            fCli.ShowDialog();
-            this.btnBuscar.PerformClick();
+            Abm_Empresa.AMEmpresa fEmp = new FrbaCommerce.Abm_Empresa.AMEmpresa();
+            fEmp.ShowDialog();
+            this.btnBuscarEmp.PerformClick();
         }
 
         private void btnModificarEmp_Click(object sender, EventArgs e)
         {
-            if (dataGridClientes.SelectedRows.Count != 1) return;
+            if (dataGridEmpresa.SelectedRows.Count != 1) return;
 
-            int id_usuario = Convert.ToInt32(this.dataGridClientes.SelectedRows[0].Cells[0].Value);
+            int id_usuario = Convert.ToInt32(this.dataGridEmpresa.SelectedRows[0].Cells[0].Value);
 
-            Abm_Cliente.AMCliente fCli = new AMCliente();
-            fCli.idusuario = id_usuario;
-            fCli.ShowDialog();
-            this.btnBuscar.PerformClick();
+            Abm_Empresa.AMEmpresa fEmp = new FrbaCommerce.Abm_Empresa.AMEmpresa();
+            fEmp.idusuario = id_usuario;
+            fEmp.ShowDialog();
+            this.btnBuscarEmp.PerformClick();
         }
 
         

@@ -83,6 +83,12 @@
     <Compile Include="Abm Cliente\RegistroCliente_Form.Designer.cs">
       <DependentUpon>RegistroCliente_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Empresa\AMEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\AMEmpresa.Designer.cs">
+      <DependentUpon>AMEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Empresa\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\RegistroCliente_Form.resx">
       <DependentUpon>RegistroCliente_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\AMEmpresa.resx">
+      <DependentUpon>AMEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

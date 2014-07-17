@@ -344,7 +344,6 @@
             this.Controls.Add(this.razonSocial);
             this.Name = "Alta_Empresa";
             this.Text = "Alta Empresa";
-            this.Load += new System.EventHandler(this.Alta_Empresa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
