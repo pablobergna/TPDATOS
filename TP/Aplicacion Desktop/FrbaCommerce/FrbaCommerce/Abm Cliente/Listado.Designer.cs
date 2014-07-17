@@ -49,6 +49,8 @@
             this.tabPageEmpresa = new System.Windows.Forms.TabPage();
             this.tabPageAdmin = new System.Windows.Forms.TabPage();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.btnInhabilitar = new System.Windows.Forms.Button();
+            this.btnHabilitar = new System.Windows.Forms.Button();
             this.tabUsuarios.SuspendLayout();
             this.tabPageCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
@@ -70,6 +72,8 @@
             // tabPageCliente
             // 
             this.tabPageCliente.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPageCliente.Controls.Add(this.btnHabilitar);
+            this.tabPageCliente.Controls.Add(this.btnInhabilitar);
             this.tabPageCliente.Controls.Add(this.linkLabel1);
             this.tabPageCliente.Controls.Add(this.label8);
             this.tabPageCliente.Controls.Add(this.btnEliminar);
@@ -108,31 +112,33 @@
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(556, 387);
+            this.btnEliminar.Location = new System.Drawing.Point(554, 387);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(125, 30);
             this.btnEliminar.TabIndex = 48;
-            this.btnEliminar.Text = "Eliminar Cliente";
+            this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(275, 387);
+            this.btnModificar.Location = new System.Drawing.Point(155, 387);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(153, 30);
+            this.btnModificar.Size = new System.Drawing.Size(125, 30);
             this.btnModificar.TabIndex = 47;
-            this.btnModificar.Text = "Modificar Cliente";
+            this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnCrear
             // 
             this.btnCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrear.Location = new System.Drawing.Point(22, 387);
             this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(127, 30);
+            this.btnCrear.Size = new System.Drawing.Size(125, 30);
             this.btnCrear.TabIndex = 46;
-            this.btnCrear.Text = "Crear Cliente";
+            this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
@@ -150,10 +156,15 @@
             // 
             this.dataGridClientes.AllowUserToAddRows = false;
             this.dataGridClientes.AllowUserToDeleteRows = false;
+            this.dataGridClientes.AllowUserToResizeColumns = false;
+            this.dataGridClientes.AllowUserToResizeRows = false;
+            this.dataGridClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClientes.Location = new System.Drawing.Point(21, 124);
+            this.dataGridClientes.MultiSelect = false;
             this.dataGridClientes.Name = "dataGridClientes";
             this.dataGridClientes.ReadOnly = true;
+            this.dataGridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridClientes.Size = new System.Drawing.Size(660, 245);
             this.dataGridClientes.TabIndex = 44;
             // 
@@ -280,6 +291,28 @@
             this.linkLabel1.Text = "Limpiar Campos";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // btnInhabilitar
+            // 
+            this.btnInhabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInhabilitar.Location = new System.Drawing.Point(288, 387);
+            this.btnInhabilitar.Name = "btnInhabilitar";
+            this.btnInhabilitar.Size = new System.Drawing.Size(125, 30);
+            this.btnInhabilitar.TabIndex = 51;
+            this.btnInhabilitar.Text = "Inhabilitar";
+            this.btnInhabilitar.UseVisualStyleBackColor = true;
+            this.btnInhabilitar.Click += new System.EventHandler(this.btnInhabilitar_Click);
+            // 
+            // btnHabilitar
+            // 
+            this.btnHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabilitar.Location = new System.Drawing.Point(421, 387);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(125, 30);
+            this.btnHabilitar.TabIndex = 52;
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.UseVisualStyleBackColor = true;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
+            // 
             // Listado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,6 +353,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageAdmin;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button btnInhabilitar;
+        private System.Windows.Forms.Button btnHabilitar;
 
 
     }
