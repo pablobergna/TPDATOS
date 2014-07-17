@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="Model\ConectorSQL.cs" />
     <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Publicacion.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Perfil.cs">
       <SubType>Form</SubType>

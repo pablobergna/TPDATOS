@@ -14,7 +14,7 @@ namespace FrbaCommerce.Generar_Publicacion
     public partial class Form1 : Form
     {
 
-        private Publicacion publicacion;
+        private Publicacion publicacion = new Publicacion();
 
         public Form1(int id_usuario)
         {
