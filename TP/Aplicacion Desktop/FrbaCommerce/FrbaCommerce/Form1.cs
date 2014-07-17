@@ -50,8 +50,8 @@ namespace FrbaCommerce
 
         private void CalificarVendedor_Click(object sender, EventArgs e)
         {
-            Form cv = new Calificar_Vendedor.Form1();
-            cv.Show();
+            //Form cv = new Calificar_Vendedor.Form1();
+            //cv.Show();
         }
 		
 		
