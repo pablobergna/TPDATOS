@@ -264,6 +264,10 @@ namespace FrbaCommerce.Abm_Empresa
             //comando pasado como parametro
             System.Data.SqlClient.SqlCommand com = new System.Data.SqlClient.SqlCommand(sql_qry);
 
+            //Fuerzo el cambio de pass
+            System.Data.SqlClient.SqlParameter forzar_cambio = new System.Data.SqlClient.SqlParameter("@forzar", Convert.ToInt16(1));
+            com.Parameters.Add(forzar_cambio);
+
             //Defino los parametros y los agrego a la lista de parametros
             if (this.id_usuario == -1)
             {

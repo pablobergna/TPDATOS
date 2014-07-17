@@ -36,6 +36,8 @@ namespace FrbaCommerce
             string pass_ingresada;
             int id_usuario;
             int intentos_fallidos;
+            string estado_usu;
+            int forzar_cambio;
             SHA256Managed encriptacionSha256 = new SHA256Managed();
 
             //Validamos los campos obligatorios
@@ -64,9 +66,9 @@ namespace FrbaCommerce
                 return;
             }
             
-            ///////////////////////////
-            //Validacion del password
-            ////////////////////////////
+            /////////////////////////
+            //Validacion del login //
+            /////////////////////////
             pass_ingresada =
                 Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(this.login_txtpass.Text)));
 
@@ -97,14 +99,16 @@ namespace FrbaCommerce
             dup.Read();
             pass_BD = dup.GetString(0);
             intentos_fallidos = dup.GetInt16(1);
+            estado_usu = dup.GetString(2);
+            forzar_cambio = dup.GetInt16(3);
 
             // Cierro la conexion
             dup.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
-            if (intentos_fallidos == 3)
+            if (!estado_usu.Equals("Habilitado"))
             {
-                MessageBox.Show("Su usuario esta inhabilitado, contactese con los administradores");
+                MessageBox.Show("Su usuario no puede ingresar al sistema, contactese con los administradores");
                 return;
             }
             
@@ -192,6 +196,12 @@ namespace FrbaCommerce
             roles.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
+            if (listaRoles.Count == 0)
+            {
+                MessageBox.Show("No posee roles habilitados en el sistema. Contactese con los administradores");
+                return;
+            }
+
             //Si tiene mas de un rol despliego el form de seleccion
             int id_rol_seleccionado;
             if (listaRoles.Count > 1)
@@ -203,6 +213,16 @@ namespace FrbaCommerce
             else
             {
                 id_rol_seleccionado = ((DTO.RolDTO)listaRoles[0]).idRol;
+            }
+
+            if (forzar_cambio == 1)
+            {
+                MessageBox.Show("Debe modificar su contraseña.");
+
+                Pass.ModPass fPass = new FrbaCommerce.Pass.ModPass();
+                fPass.idusuario = this.ppal_id_usuario;
+                fPass.ShowDialog();
+                return;
             }
 
             this.ppal_id_rol = id_rol_seleccionado;
@@ -233,7 +253,9 @@ namespace FrbaCommerce
             listaFunciones.ValueMember = "idRol";
 
 
-            // Habilito el proximo panel
+            // Blanqueo y Habilito el proximo panel
+            this.login_txtUsr.Clear();
+            this.login_txtpass.Clear();
             this.panelInicio.Hide();
             this.panelPpal.Show();
         }
@@ -343,6 +365,14 @@ namespace FrbaCommerce
                 
                     break;
             }
+        }
+
+        private void btnModifPass_Click(object sender, EventArgs e)
+        {
+            Pass.ModPass fPas = new FrbaCommerce.Pass.ModPass();
+
+            fPas.idusuario = this.ppal_id_usuario;
+            fPas.ShowDialog();
         }
 
         
