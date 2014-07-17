@@ -310,9 +310,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(226, 242);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.Size = new System.Drawing.Size(131, 13);
             this.label11.TabIndex = 32;
-            this.label11.Text = "(solo numeros)";
+            this.label11.Text = "Formato XX-XXXXXXXX-X";
             // 
             // cliCiudad
             // 

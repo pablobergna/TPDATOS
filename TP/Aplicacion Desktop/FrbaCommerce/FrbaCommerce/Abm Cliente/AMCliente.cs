@@ -118,7 +118,6 @@ namespace FrbaCommerce.Abm_Cliente
             int documento = 0;
             int nro_calle_val = 0;
             int nro_piso_val = 0;
-            int cuil_val = 0;
             string tipoDoc = "";
             SHA256Managed encriptacionSha256 = new SHA256Managed();
 
@@ -200,15 +199,6 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                cuil_val = Convert.ToInt32(this.cuil.Text);
-            }
-            catch
-            {
-                listaValidacion.Add("El CUIL debe ser numerico");
-            }
-
-            try
-            {
                 if (this.cliPiso.Text != String.Empty)
                     nro_piso_val = Convert.ToInt32(this.cliPiso.Text);
             }
@@ -217,6 +207,10 @@ namespace FrbaCommerce.Abm_Cliente
                 listaValidacion.Add("El Piso debe ser numerico");
             }
 
+            //Valido el formato del CUIL
+            if (Tools.Validacion.validarCUIT(this.cuil.Text) == -1)
+                listaValidacion.Add("El CUIL esta mal formado");
+            
             //Muestro un mensaje con los datos mal cargados
             if (listaValidacion.Count > 0)
             {
@@ -263,10 +257,6 @@ namespace FrbaCommerce.Abm_Cliente
             dupTel.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
-
-            /////////////////////////////////////////////////////////////
-            //ACA TENGO QUE AGREGAR EL CODIGO DE VALIDACION DEL CUIL/CUIT
-            /////////////////////////////////////////////////////////////
 
             //Verifico que el CUIT / CUIL no este repetido
             System.Data.SqlClient.SqlCommand comDupCUIT = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioXCUIT");

@@ -66,6 +66,7 @@ namespace FrbaCommerce.Abm_Empresa
                 this.ciudad.Text = usuario.GetString(11).Trim();
                 this.empCuit.Text = usuario.GetString(12).Trim();
                 this.empFechaCre.Value = usuario.GetDateTime(13);
+                this.empContacto.Text = usuario.GetString(14);
                 
 
                 // Cierro la conexion
@@ -88,7 +89,6 @@ namespace FrbaCommerce.Abm_Empresa
         {
             int nro_calle_val = 0;
             int nro_piso_val = 0;
-            int cuit_val = 0;
             SHA256Managed encriptacionSha256 = new SHA256Managed();
 
             List<string> listaValidacion = new List<string>();
@@ -144,14 +144,7 @@ namespace FrbaCommerce.Abm_Empresa
             {
                 listaValidacion.Add("El Nro. de calle debe ser numerico");
             }
-            try
-            {
-                cuit_val = Convert.ToInt32(this.empCuit.Text);
-            }
-            catch
-            {
-                listaValidacion.Add("El CUIT debe ser numerico");
-            }
+
             try
             {
                 if (this.empNroPiso.Text != String.Empty)
@@ -162,6 +155,10 @@ namespace FrbaCommerce.Abm_Empresa
                 listaValidacion.Add("El Piso debe ser numerico");
             }
 
+            //Valido el formato del CUIL
+            if (Tools.Validacion.validarCUIT(this.empCuit.Text) == -1)
+                listaValidacion.Add("El CUIL esta mal formado");
+            
             //Muestro un mensaje con los datos mal cargados
             if (listaValidacion.Count > 0)
             {

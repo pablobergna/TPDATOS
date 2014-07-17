@@ -284,6 +284,7 @@
     <Compile Include="Registro de Usuario\Registro_Form.Designer.cs">
       <DependentUpon>Registro_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\Validacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

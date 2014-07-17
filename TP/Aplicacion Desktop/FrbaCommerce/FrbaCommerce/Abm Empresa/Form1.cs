@@ -34,7 +34,6 @@ namespace FrbaCommerce.Abm_Empresa
         {
             int nro_calle_val = 0;
             int nro_piso_val = 0;
-            int cuit_val = 0;
 
             List<string> listaValidacion = new List<string>();
 
@@ -91,14 +90,6 @@ namespace FrbaCommerce.Abm_Empresa
             }
             try
             {
-                cuit_val = Convert.ToInt32(this.empCuit.Text);
-            }
-            catch
-            {
-                listaValidacion.Add("El CUIT debe ser numerico");
-            }
-            try
-            {
                 if (this.empNroPiso.Text != String.Empty)
                     nro_piso_val = Convert.ToInt32(this.empNroPiso.Text);
             }
@@ -107,6 +98,11 @@ namespace FrbaCommerce.Abm_Empresa
                 listaValidacion.Add("El Piso debe ser numerico");
             }
 
+            //Valido el formato del CUIL
+            if (Tools.Validacion.validarCUIT(this.empCuit.Text) == -1)
+                listaValidacion.Add("El CUIT esta mal formado");
+
+            
             //Muestro un mensaje con los datos mal cargados
             if (listaValidacion.Count > 0)
             {
@@ -121,10 +117,6 @@ namespace FrbaCommerce.Abm_Empresa
                 MessageBox.Show(error.ToString());
                 return;
             }
-
-            /////////////////////////////////////////////////////////////
-            //ACA TENGO QUE AGREGAR EL CODIGO DE VALIDACION DEL CUIL/CUIT
-            /////////////////////////////////////////////////////////////
 
             ////////////////////////////////////////////////
             //Verifico que el CUIT / CUIL no este repetido//

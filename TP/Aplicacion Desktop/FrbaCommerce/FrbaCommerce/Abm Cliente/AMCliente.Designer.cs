@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label11 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.cliCiudad = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,17 +64,9 @@
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.lblUsu = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(226, 242);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 13);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "(solo numeros)";
             // 
             // buttonCancel
             // 
@@ -147,7 +138,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cliCiudad);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.nroCalle);
@@ -414,6 +405,15 @@
             this.lblEstado.TabIndex = 32;
             this.lblEstado.Text = "Estado: ";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(228, 239);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(131, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Formato XX-XXXXXXXX-X";
+            // 
             // AMCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,7 +436,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox cliCiudad;
         private System.Windows.Forms.Label label4;
@@ -473,6 +472,7 @@
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label lblUsu;
         private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Label label5;
 
     }
 }

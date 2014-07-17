@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label11 = new System.Windows.Forms.Label();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.empNroCalle = new System.Windows.Forms.TextBox();
@@ -60,16 +59,8 @@
             this.razonSocial = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblUsu = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(282, 325);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 13);
-            this.label11.TabIndex = 61;
-            this.label11.Text = "(solo numeros)";
             // 
             // btnGrabar
             // 
@@ -329,14 +320,23 @@
             this.lblUsu.TabIndex = 62;
             this.lblUsu.Text = "Usuario: ";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(282, 324);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 13);
+            this.label11.TabIndex = 64;
+            this.label11.Text = "Formato XX-XXXXXXXX-X";
+            // 
             // AMEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 517);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblUsu);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.empNroCalle);
@@ -376,7 +376,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnGrabar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox empNroCalle;
@@ -408,5 +407,6 @@
         private System.Windows.Forms.Label razonSocial;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblUsu;
+        private System.Windows.Forms.Label label11;
     }
 }
