@@ -14,11 +14,13 @@ namespace FrbaCommerce.Gestion_de_Preguntas
     public partial class Gestion_de_Preguntas : Form
     {
         private int usuario;
+        private DateTime fecha_sistema;
 
-        public Gestion_de_Preguntas(int id_usuario)
+        public Gestion_de_Preguntas(int id_usuario, DateTime fecha)
         {
             InitializeComponent();
             usuario = id_usuario;
+            fecha_sistema = fecha;
         }
 
         private void Gestion_de_Preguntas_Load(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             respuesta = txt_respuesta.Text;
 
             //llamada al SP
-            resultado = ConectorSQL.ejecutarProcedureWithReturnValue("GP_RESPONDER_PREGUNTA", id_pregunta, respuesta);
+            resultado = ConectorSQL.ejecutarProcedureWithReturnValue("GP_RESPONDER_PREGUNTA", id_pregunta, respuesta, fecha_sistema);
 
             if (resultado.Equals(0))
             {

@@ -4,6 +4,7 @@ CREATE PROCEDURE LOS_GESTORES.CP_CREAR_PUBLICACION_INMEDIATA(
 ,@id_visibilidad int
 ,@tipo_publicacion int
 ,@descripcion varchar(255)
+,@fecha_hoy datetime
 ,@flag_preguntas int
 
 
@@ -73,8 +74,8 @@ BEGIN
 		,(SELECT TOP 1 precio FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad)
 		,(SELECT TOP 1 (MAX(id_publicacion)+1) FROM LOS_GESTORES.Publicacion)
 		,@descripcion
-		,GETDATE()
-		,DATEADD(day,(SELECT cant_dias FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad),GETDATE())
+		,@fecha_hoy
+		,DATEADD(day,(SELECT cant_dias FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad),@fecha_hoy)
 		,@flag_preguntas
 		,@flag_bonificada
 		,1

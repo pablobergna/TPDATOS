@@ -15,11 +15,13 @@ namespace FrbaCommerce.Generar_Publicacion
     {
 
         private Publicacion publicacion = new Publicacion();
+        private DateTime fecha_de_sistema;
 
-        public Form1(int id_usuario)
+        public Form1(int id_usuario, DateTime fecha_sistema)
         {
             InitializeComponent();
             publicacion.id_usuario = id_usuario;
+            fecha_de_sistema = fecha_sistema;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -178,12 +180,12 @@ namespace FrbaCommerce.Generar_Publicacion
             //llamar SP de creacion publicacion
             if (rb_compra_inmediata.Checked)
             {
-                publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion,publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
+                publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion, fecha_de_sistema, publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
             }
             else {
                 if (rb_subasta.Checked)
                 {
-                    publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_SUBASTA", publicacion.id_usuario, publicacion.estado, publicacion.visibilidad, publicacion.tipo_publicacion, publicacion.descripcion, publicacion.permitir_preguntas, publicacion.precio);
+                    publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_SUBASTA", publicacion.id_usuario, publicacion.estado, publicacion.visibilidad, publicacion.tipo_publicacion, publicacion.descripcion, fecha_de_sistema, publicacion.permitir_preguntas, publicacion.precio);
                 } else {
                     MessageBox.Show("Error, ningun tipo de publicacion seleccionado", "Frba Commerce", MessageBoxButtons.OK);
                     return;
