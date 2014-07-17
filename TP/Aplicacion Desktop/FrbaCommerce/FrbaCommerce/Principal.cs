@@ -312,7 +312,7 @@ namespace FrbaCommerce
                     break;
                 
                 case "Visualizar Historial":
-                    Historial_Cliente.Form1 fHis = new FrbaCommerce.Historial_Cliente.Form1();
+                    Historial_Cliente.Form1 fHis = new FrbaCommerce.Historial_Cliente.Form1(ppal_id_usuario);
                     fHis.ShowDialog();
                     break;
                 
