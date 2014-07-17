@@ -13,6 +13,9 @@ namespace FrbaCommerce.Generar_Publicacion
 {
     public partial class Form1 : Form
     {
+
+        private Publicacion publicacion;
+
         public Form1()
         {
             InitializeComponent();
@@ -67,6 +70,10 @@ namespace FrbaCommerce.Generar_Publicacion
                     MessageBox.Show("El stock no puede ser cero o menor", "Frba Commerce", MessageBoxButtons.OK);
                     return;
                 }
+                else
+                {
+                    publicacion.stock = a;
+                }
             }
             else
             {
@@ -83,6 +90,11 @@ namespace FrbaCommerce.Generar_Publicacion
                     MessageBox.Show("El precio no puede ser cero o menor", "Frba Commerce", MessageBoxButtons.OK);
                     return;
                 }
+                else
+                {
+                    publicacion.precio = b;
+                }
+
             }
             else
             {
@@ -104,7 +116,7 @@ namespace FrbaCommerce.Generar_Publicacion
                 return;
             }
             
-            //fechas
+            //fecha vencimiento mayor igual a actual
             if (DateTime.Compare(DateTime.Now.Date,cal_fechaVencimiento.SelectionRange.Start.Date) > 0)
             {
                 MessageBox.Show("Se debe seleccionar una fecha de vencimmiento mayor o igual al dia actual", "Frba Commerce", MessageBoxButtons.OK);
@@ -117,9 +129,116 @@ namespace FrbaCommerce.Generar_Publicacion
                 MessageBox.Show("Se debe seleccionar al menos un rubro de la lista", "Frba Commerce", MessageBoxButtons.OK);
                 return;
             }
-            
-            //llamar SP de creacion
 
+            //estados de publicacion
+            if (!rb_activa.Checked && !rb_pausada.Checked && !rb_borrador.Checked)
+            {
+                MessageBox.Show("Se debe seleccionar un estado inicial de publicacion", "Frba Commerce", MessageBoxButtons.OK);
+                return;
+            }
+
+            //asignaciones de variables
+            publicacion.descripcion = txt_descripcion.Text;
+            if (rb_subasta.Checked)
+            {
+                publicacion.tipo_publicacion = 2;
+            }
+            if (rb_compra_inmediata.Checked)
+            {
+                publicacion.tipo_publicacion = 1;
+            }
+            //precio y stock ya seteados en validaciones
+            string visibStr = ((DataRowView)lst_rubros.SelectedItem)["id_visibilidad"].ToString();
+            int visibInt = -1;
+            if (int.TryParse(visibStr, out visibInt))
+            {
+                publicacion.visibilidad = visibInt;
+            }
+
+            if (cmb_preguntas.Text.Equals("SI"))
+            {
+                publicacion.permitir_preguntas = 0;
+            }
+            else { publicacion.permitir_preguntas = 1; }
+
+            publicacion.vencimiento = cal_fechaVencimiento.SelectionRange.Start;
+
+            if (rb_borrador.Checked)
+            { publicacion.estado = rb_borrador.Text; }
+        
+            if (rb_activa.Checked)
+            { publicacion.estado = rb_activa.Text; }
+            
+            if (rb_pausada.Checked)
+            { publicacion.estado = rb_pausada.Text; }
+
+            //SETEO DEL USUARIO
+           
+            //<FALTA>
+            //publicacion.id_usuario = algo;
+
+            publicacion.id = 0;
+
+            //llamar SP de creacion publicacion
+            if (rb_compra_inmediata.Checked)
+            {
+                publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion,publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
+            }
+            else {
+                if (rb_subasta.Checked)
+                {
+                    publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_SUBASTA");
+                } else {
+                    MessageBox.Show("Error, ningun tipo de publicacion seleccionado", "Frba Commerce", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+
+            //una vez cargada la publicacion vinculamos los rubros
+            if (publicacion.id > 0)
+            {
+                foreach (var item in lst_rubros.SelectedItems)
+                {
+                    string varStr = ((DataRowView)item)["id_rubro"].ToString();
+                    int varInt = -1;
+                    if (int.TryParse(varStr, out varInt))
+                    {
+                        ConectorSQL.ejecutarProcedure("CP_INSERTAR_PUBLICACION_RUBRO", publicacion.id, varInt);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al vincular rubro " + ((DataRowView)item)["descripcion"].ToString() + " a la publicacion", "Frba Commerce", MessageBoxButtons.OK);
+                    }
+                }
+            }
+        }
+
+        private void rb_subasta_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_subasta.Checked)
+            {
+                txt_stock.Hide();
+                lbl_stock.Hide();
+                txt_stock.Text = "1";
+            }
+        }
+
+        private void rb_compra_inmediata_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_compra_inmediata.Checked)
+            {
+                txt_stock.Show();
+                lbl_stock.Show();
+                txt_stock.Text = "";
+            }
+        }
+
+        private void txt_descripcion_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_descripcion.Text.Length > 255)
+            {
+                txt_descripcion.Text = txt_descripcion.Text.Substring(0, 255);
+            }
         }
 
     }

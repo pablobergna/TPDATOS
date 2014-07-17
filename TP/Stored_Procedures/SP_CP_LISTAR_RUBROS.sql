@@ -1,5 +1,7 @@
 CREATE PROCEDURE LOS_GESTORES.CP_LISTAR_RUBROS
 AS
 BEGIN
-	SELECT R.id_rubro, R.descripcion FROM LOS_GESTORES.Rubro R;
+	SELECT R.id_rubro, R.descripcion 
+	FROM LOS_GESTORES.Rubro R
+	ORDER BY R.descripcion;
 END
