@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abm Admin\AMAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Admin\AMAdmin.Designer.cs">
+      <DependentUpon>AMAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Cliente\AMCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Abm Admin\AMAdmin.resx">
+      <DependentUpon>AMAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\AMCliente.resx">
       <DependentUpon>AMCliente.cs</DependentUpon>
     </EmbeddedResource>

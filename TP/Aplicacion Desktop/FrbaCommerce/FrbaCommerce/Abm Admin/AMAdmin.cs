@@ -8,9 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
-namespace FrbaCommerce.Abm_Empresa
+namespace FrbaCommerce.Abm_Admin
 {
-    public partial class AMEmpresa : Form
+    public partial class AMAdmin : Form
     {
         private string usr_nombre;
         private string usr_pass;
@@ -22,19 +22,20 @@ namespace FrbaCommerce.Abm_Empresa
 
         public int idusuario { get { return id_usuario; } set { id_usuario = value; } }
 
-        public AMEmpresa()
+ 
+        public AMAdmin()
         {
             InitializeComponent();
         }
 
-        private void AMEmpresa_Load(object sender, EventArgs e)
+        private void AMAdmin_Load(object sender, EventArgs e)
         {
             //Chequeo si es una modificacion
             if (this.id_usuario != -1)
             {
 
                 //Traigo la informacion del usuario
-                System.Data.SqlClient.SqlCommand comUsu = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioEmpresaXId");
+                System.Data.SqlClient.SqlCommand comUsu = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getUsuarioAdminXId");
 
                 //Defino los parametros
                 System.Data.SqlClient.SqlParameter pUsu = new System.Data.SqlClient.SqlParameter("@id", this.id_usuario);
@@ -54,20 +55,16 @@ namespace FrbaCommerce.Abm_Empresa
                 usuario.Read();
                 this.lblUsu.Text += usuario.GetString(0);
                 this.lblEstado.Text += usuario.GetString(1);
-                this.empRazSocial.Text = usuario.GetString(2);
-                this.empMail.Text = usuario.GetString(3).Trim();
-                this.empTelefono.Text = usuario.GetString(4).Trim();
-                this.empDireccion.Text = usuario.GetString(5).Trim();
-                this.empNroCalle.Text = usuario.GetDecimal(6).ToString().Trim();
-                this.empNroPiso.Text = usuario.GetDecimal(7).ToString().Trim();
-                this.empDpto.Text = usuario.GetString(8).Trim();
-                this.empLocalidad.Text = usuario.GetString(9).Trim();
-                this.empCodPostal.Text = usuario.GetString(10).Trim();
-                this.ciudad.Text = usuario.GetString(11).Trim();
-                this.empCuit.Text = usuario.GetString(12).Trim();
-                this.empFechaCre.Value = usuario.GetDateTime(13);
-                this.empContacto.Text = usuario.GetString(14);
-                
+                this.txtLegajo.Text = usuario.GetString(2);
+                this.txtSuc.Text = usuario.GetString(3).Trim();
+                this.txtMail.Text = usuario.GetString(4).Trim();
+                this.txtCalle.Text = usuario.GetString(5).Trim();
+                this.txtNroCalle.Text = usuario.GetDecimal(6).ToString().Trim();
+                this.txtNroPiso.Text = usuario.GetDecimal(7).ToString().Trim();
+                this.txtDepto.Text = usuario.GetString(8).Trim();
+                this.txtLocalidad.Text = usuario.GetString(9).Trim();
+                this.txtCP.Text = usuario.GetString(10).Trim();
+                this.txtCiudad.Text = usuario.GetString(11).Trim();
 
                 // Cierro la conexion
                 usuario.Close();
@@ -94,51 +91,39 @@ namespace FrbaCommerce.Abm_Empresa
             List<string> listaValidacion = new List<string>();
 
             //Validamos los campos obligatorios
-            if (this.empRazSocial.Text == String.Empty)
+            if (this.txtLegajo.Text == String.Empty)
             {
-                listaValidacion.Add("El campo Razon social es obligatorio");
+                listaValidacion.Add("El campo Legajo es obligatorio");
             }
-            if (this.empMail.Text == String.Empty)
+            if (this.txtSuc.Text == String.Empty)
             {
-                listaValidacion.Add("El campo Email es obligatorio");
+                listaValidacion.Add("El campo Sucursal es obligatorio");
             }
-            if (this.empTelefono.Text == String.Empty)
+            if (this.txtMail.Text == String.Empty)
             {
-                listaValidacion.Add("El campo Telefono es obligatorio");
+                listaValidacion.Add("El campo Correo electronico es obligatorio");
             }
-            if (this.empDireccion.Text == String.Empty)
+            if (this.txtCalle.Text == String.Empty)
             {
                 listaValidacion.Add("El campo Calle es obligatorio");
             }
-            if (this.empNroCalle.Text == String.Empty)
+            if (this.txtNroCalle.Text == String.Empty)
             {
                 listaValidacion.Add("El campo Nro. Calle es obligatorio");
             }
-            if (this.empLocalidad.Text == String.Empty)
+            if (this.txtLocalidad.Text == String.Empty)
             {
                 listaValidacion.Add("El campo Localidad es obligatorio");
             }
-            if (this.ciudad.Text == String.Empty)
+            if (this.txtCiudad.Text == String.Empty)
             {
                 listaValidacion.Add("El campo Ciudad es obligatorio");
-            }
-            if (this.empCuit.Text == String.Empty)
-            {
-                listaValidacion.Add("El campo CUIT es obligatorio");
-            }
-            if (this.empContacto.Text == String.Empty)
-            {
-                listaValidacion.Add("El campo Nombre de contacto es obligatorio");
-            }
-            if (this.empFechaCre.Text == String.Empty)
-            {
-                listaValidacion.Add("El campo Fecha de creacion es obligatorio");
             }
 
             //Valido los campos numericos
             try
             {
-                nro_calle_val = Convert.ToInt32(this.empNroCalle.Text);
+                nro_calle_val = Convert.ToInt32(this.txtNroCalle.Text);
             }
             catch
             {
@@ -147,19 +132,15 @@ namespace FrbaCommerce.Abm_Empresa
 
             try
             {
-                if (this.empNroPiso.Text != String.Empty)
-                    nro_piso_val = Convert.ToInt32(this.empNroPiso.Text);
+                if (this.txtNroPiso.Text != String.Empty)
+                    nro_piso_val = Convert.ToInt32(this.txtNroPiso.Text);
             }
             catch
             {
                 listaValidacion.Add("El Piso debe ser numerico");
             }
 
-            //Valido el formato del CUIL
-            if (Tools.Validacion.validarCUIT(this.empCuit.Text) == -1)
-                listaValidacion.Add("El CUIL esta mal formado");
-            
-            //Muestro un mensaje con los datos mal cargados
+             //Muestro un mensaje con los datos mal cargados
             if (listaValidacion.Count > 0)
             {
                 StringBuilder error = new StringBuilder();
@@ -256,7 +237,7 @@ namespace FrbaCommerce.Abm_Empresa
                 txt_confirmacion = "Se ha modificado el usuario correctamente";
             }
 
-                        
+
             ////////////////////////
             // Persisto la Empresa//
             ////////////////////////
@@ -339,10 +320,9 @@ namespace FrbaCommerce.Abm_Empresa
 
             // Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
-            
+
             MessageBox.Show(txt_confirmacion);
             this.Close();
-
         }
     }
 }

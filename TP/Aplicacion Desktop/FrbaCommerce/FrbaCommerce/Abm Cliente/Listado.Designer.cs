@@ -66,11 +66,26 @@
             this.txtEmpRazon = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPageAdmin = new System.Windows.Forms.TabPage();
+            this.btnBuscarAdm = new System.Windows.Forms.Button();
+            this.lnkLimpiarAdm = new System.Windows.Forms.LinkLabel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtAdminLeg = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnHabAdm = new System.Windows.Forms.Button();
+            this.btnInhabAdm = new System.Windows.Forms.Button();
+            this.btnBajaAdm = new System.Windows.Forms.Button();
+            this.btnModifAdm = new System.Windows.Forms.Button();
+            this.btnCrearAdm = new System.Windows.Forms.Button();
+            this.dataGridAdm = new System.Windows.Forms.DataGridView();
+            this.txtAdmSuc = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.tabUsuarios.SuspendLayout();
             this.tabPageCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
             this.tabPageEmpresa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmpresa)).BeginInit();
+            this.tabPageAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAdm)).BeginInit();
             this.SuspendLayout();
             // 
             // tabUsuarios
@@ -495,12 +510,164 @@
             // tabPageAdmin
             // 
             this.tabPageAdmin.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPageAdmin.Controls.Add(this.btnBuscarAdm);
+            this.tabPageAdmin.Controls.Add(this.lnkLimpiarAdm);
+            this.tabPageAdmin.Controls.Add(this.label11);
+            this.tabPageAdmin.Controls.Add(this.txtAdminLeg);
+            this.tabPageAdmin.Controls.Add(this.label13);
+            this.tabPageAdmin.Controls.Add(this.btnHabAdm);
+            this.tabPageAdmin.Controls.Add(this.btnInhabAdm);
+            this.tabPageAdmin.Controls.Add(this.btnBajaAdm);
+            this.tabPageAdmin.Controls.Add(this.btnModifAdm);
+            this.tabPageAdmin.Controls.Add(this.btnCrearAdm);
+            this.tabPageAdmin.Controls.Add(this.dataGridAdm);
+            this.tabPageAdmin.Controls.Add(this.txtAdmSuc);
+            this.tabPageAdmin.Controls.Add(this.label14);
             this.tabPageAdmin.Location = new System.Drawing.Point(4, 25);
             this.tabPageAdmin.Name = "tabPageAdmin";
             this.tabPageAdmin.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageAdmin.Size = new System.Drawing.Size(702, 459);
             this.tabPageAdmin.TabIndex = 2;
             this.tabPageAdmin.Text = "Administradores";
+            // 
+            // btnBuscarAdm
+            // 
+            this.btnBuscarAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarAdm.Location = new System.Drawing.Point(424, 80);
+            this.btnBuscarAdm.Name = "btnBuscarAdm";
+            this.btnBuscarAdm.Size = new System.Drawing.Size(88, 30);
+            this.btnBuscarAdm.TabIndex = 80;
+            this.btnBuscarAdm.Text = "Buscar";
+            this.btnBuscarAdm.UseVisualStyleBackColor = true;
+            this.btnBuscarAdm.Click += new System.EventHandler(this.btnBuscarAdm_Click);
+            // 
+            // lnkLimpiarAdm
+            // 
+            this.lnkLimpiarAdm.AutoSize = true;
+            this.lnkLimpiarAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkLimpiarAdm.Location = new System.Drawing.Point(573, 20);
+            this.lnkLimpiarAdm.Name = "lnkLimpiarAdm";
+            this.lnkLimpiarAdm.Size = new System.Drawing.Size(109, 17);
+            this.lnkLimpiarAdm.TabIndex = 79;
+            this.lnkLimpiarAdm.TabStop = true;
+            this.lnkLimpiarAdm.Text = "Limpiar Campos";
+            this.lnkLimpiarAdm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLimpiarAdm_LinkClicked);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(22, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(279, 17);
+            this.label11.TabIndex = 78;
+            this.label11.Text = "Seleccione el filtro y presione Buscar";
+            // 
+            // txtAdminLeg
+            // 
+            this.txtAdminLeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdminLeg.Location = new System.Drawing.Point(203, 102);
+            this.txtAdminLeg.Name = "txtAdminLeg";
+            this.txtAdminLeg.Size = new System.Drawing.Size(129, 23);
+            this.txtAdminLeg.TabIndex = 75;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(134, 105);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 17);
+            this.label13.TabIndex = 74;
+            this.label13.Text = "Legajo";
+            // 
+            // btnHabAdm
+            // 
+            this.btnHabAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHabAdm.Location = new System.Drawing.Point(424, 409);
+            this.btnHabAdm.Name = "btnHabAdm";
+            this.btnHabAdm.Size = new System.Drawing.Size(125, 30);
+            this.btnHabAdm.TabIndex = 73;
+            this.btnHabAdm.Text = "Habilitar";
+            this.btnHabAdm.UseVisualStyleBackColor = true;
+            this.btnHabAdm.Click += new System.EventHandler(this.btnHabAdm_Click);
+            // 
+            // btnInhabAdm
+            // 
+            this.btnInhabAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInhabAdm.Location = new System.Drawing.Point(291, 409);
+            this.btnInhabAdm.Name = "btnInhabAdm";
+            this.btnInhabAdm.Size = new System.Drawing.Size(125, 30);
+            this.btnInhabAdm.TabIndex = 72;
+            this.btnInhabAdm.Text = "Inhabilitar";
+            this.btnInhabAdm.UseVisualStyleBackColor = true;
+            this.btnInhabAdm.Click += new System.EventHandler(this.btnInhabAdm_Click);
+            // 
+            // btnBajaAdm
+            // 
+            this.btnBajaAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBajaAdm.Location = new System.Drawing.Point(557, 409);
+            this.btnBajaAdm.Name = "btnBajaAdm";
+            this.btnBajaAdm.Size = new System.Drawing.Size(125, 30);
+            this.btnBajaAdm.TabIndex = 71;
+            this.btnBajaAdm.Text = "Dar de Baja";
+            this.btnBajaAdm.UseVisualStyleBackColor = true;
+            this.btnBajaAdm.Click += new System.EventHandler(this.btnBajaAdm_Click);
+            // 
+            // btnModifAdm
+            // 
+            this.btnModifAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifAdm.Location = new System.Drawing.Point(158, 409);
+            this.btnModifAdm.Name = "btnModifAdm";
+            this.btnModifAdm.Size = new System.Drawing.Size(125, 30);
+            this.btnModifAdm.TabIndex = 70;
+            this.btnModifAdm.Text = "Modificar";
+            this.btnModifAdm.UseVisualStyleBackColor = true;
+            this.btnModifAdm.Click += new System.EventHandler(this.btnModifAdm_Click);
+            // 
+            // btnCrearAdm
+            // 
+            this.btnCrearAdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearAdm.Location = new System.Drawing.Point(25, 409);
+            this.btnCrearAdm.Name = "btnCrearAdm";
+            this.btnCrearAdm.Size = new System.Drawing.Size(125, 30);
+            this.btnCrearAdm.TabIndex = 69;
+            this.btnCrearAdm.Text = "Crear";
+            this.btnCrearAdm.UseVisualStyleBackColor = true;
+            this.btnCrearAdm.Click += new System.EventHandler(this.btnCrearAdm_Click);
+            // 
+            // dataGridAdm
+            // 
+            this.dataGridAdm.AllowUserToAddRows = false;
+            this.dataGridAdm.AllowUserToDeleteRows = false;
+            this.dataGridAdm.AllowUserToResizeRows = false;
+            this.dataGridAdm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridAdm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridAdm.Location = new System.Drawing.Point(24, 146);
+            this.dataGridAdm.MultiSelect = false;
+            this.dataGridAdm.Name = "dataGridAdm";
+            this.dataGridAdm.ReadOnly = true;
+            this.dataGridAdm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridAdm.Size = new System.Drawing.Size(658, 257);
+            this.dataGridAdm.TabIndex = 68;
+            // 
+            // txtAdmSuc
+            // 
+            this.txtAdmSuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdmSuc.Location = new System.Drawing.Point(203, 59);
+            this.txtAdmSuc.Name = "txtAdmSuc";
+            this.txtAdmSuc.Size = new System.Drawing.Size(161, 23);
+            this.txtAdmSuc.TabIndex = 67;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(134, 62);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 17);
+            this.label14.TabIndex = 66;
+            this.label14.Text = "Sucursal";
             // 
             // Listado
             // 
@@ -518,6 +685,9 @@
             this.tabPageEmpresa.ResumeLayout(false);
             this.tabPageEmpresa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmpresa)).EndInit();
+            this.tabPageAdmin.ResumeLayout(false);
+            this.tabPageAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAdm)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -562,6 +732,19 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtMailEmp;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnBuscarAdm;
+        private System.Windows.Forms.LinkLabel lnkLimpiarAdm;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtAdminLeg;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnHabAdm;
+        private System.Windows.Forms.Button btnInhabAdm;
+        private System.Windows.Forms.Button btnBajaAdm;
+        private System.Windows.Forms.Button btnModifAdm;
+        private System.Windows.Forms.Button btnCrearAdm;
+        private System.Windows.Forms.DataGridView dataGridAdm;
+        private System.Windows.Forms.TextBox txtAdmSuc;
+        private System.Windows.Forms.Label label14;
 
 
     }
