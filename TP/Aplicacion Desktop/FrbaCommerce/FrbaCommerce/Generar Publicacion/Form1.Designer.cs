@@ -264,7 +264,7 @@
             this.Controls.Add(this.txt_descripcion);
             this.Controls.Add(this.txt_stock);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Generacion de Publicacion";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gb_estado_inicial.ResumeLayout(false);
             this.gb_estado_inicial.PerformLayout();

@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce.Editar_Publicacion
 {
-    partial class Form1
+    partial class Editar_Publicacion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Editar_Publicacion
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(829, 396);
+            this.Name = "Editar_Publicacion";
+            this.Text = "Editar Publicacion";
+            this.Load += new System.EventHandler(this.Editar_Publicacion_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
