@@ -16,9 +16,13 @@ namespace FrbaCommerce.Historial_Cliente
 {
     public partial class Form1 : Form
     {
-        public Form1()
+
+        private int id_usuario;
+
+        public Form1(int p_id_usuario)
         {
             InitializeComponent();
+            id_usuario = p_id_usuario;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -57,9 +61,9 @@ namespace FrbaCommerce.Historial_Cliente
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            dgCompras.DataSource        = ConectorSQL.traerDataTable("getComprasHC", 12); // Reemplazar Usuario
-            dgOfertas.DataSource        = ConectorSQL.traerDataTable("getOfertasHC", 12); // Reemplazar Usuario
-            dgCalificaciones.DataSource = ConectorSQL.traerDataTable("getCalificacionesHC", 73); // Reemplazar Usuario
+            dgCompras.DataSource        = ConectorSQL.traerDataTable("getComprasHC", id_usuario); // Test User: 12
+            dgOfertas.DataSource        = ConectorSQL.traerDataTable("getOfertasHC", id_usuario); // Test User: 12
+            dgCalificaciones.DataSource = ConectorSQL.traerDataTable("getCalificacionesHC", id_usuario); // Test User: 73
 
             dgCompras.Hide();
             dgOfertas.Hide();

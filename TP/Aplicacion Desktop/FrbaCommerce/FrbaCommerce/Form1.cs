@@ -44,14 +44,14 @@ namespace FrbaCommerce
 			*/
 			//hasta aca YP
 			//esta logica no debería ir acá
-            Form hc = new Historial_Cliente.Form1();
-			 hc.Show();
+            //Form hc = new Historial_Cliente.Form1();
+			//hc.Show();
         }
 
         private void CalificarVendedor_Click(object sender, EventArgs e)
         {
-            Form cv = new Calificar_Vendedor.Form1();
-            cv.Show();
+            //Form cv = new Calificar_Vendedor.Form1();
+            //cv.Show();
         }
 		
 		

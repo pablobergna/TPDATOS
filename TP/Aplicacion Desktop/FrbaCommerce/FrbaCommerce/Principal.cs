@@ -313,7 +313,7 @@ namespace FrbaCommerce
                     break;
                 
                 case "Visualizar Historial":
-                    Historial_Cliente.Form1 fHis = new FrbaCommerce.Historial_Cliente.Form1();
+                    Historial_Cliente.Form1 fHis = new FrbaCommerce.Historial_Cliente.Form1(ppal_id_usuario);
                     fHis.ShowDialog();
                     break;
                 
@@ -332,6 +332,11 @@ namespace FrbaCommerce
                 
                 case "ABM Visibilidad":
                 
+                    break;
+
+                case "Calificar Vendedor":
+                    Calificar_Vendedor.Form1 fCalVen = new FrbaCommerce.Calificar_Vendedor.Form1(ppal_id_usuario);
+                    fCalVen.ShowDialog();
                     break;
                 
                 default:
