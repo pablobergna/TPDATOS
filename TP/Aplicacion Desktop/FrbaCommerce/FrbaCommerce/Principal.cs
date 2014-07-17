@@ -202,6 +202,19 @@ namespace FrbaCommerce
                 return;
             }
 
+            //guardo el id_usuario en el aplicativo
+            this.ppal_id_usuario = id_usuario;
+
+            if (forzar_cambio == 1)
+            {
+                MessageBox.Show("Debe modificar su contraseña.");
+
+                Pass.ModPass fPass = new FrbaCommerce.Pass.ModPass();
+                fPass.idusuario = this.ppal_id_usuario;
+                fPass.ShowDialog();
+                return;
+            }
+            
             //Si tiene mas de un rol despliego el form de seleccion
             int id_rol_seleccionado;
             if (listaRoles.Count > 1)
@@ -215,18 +228,8 @@ namespace FrbaCommerce
                 id_rol_seleccionado = ((DTO.RolDTO)listaRoles[0]).idRol;
             }
 
-            if (forzar_cambio == 1)
-            {
-                MessageBox.Show("Debe modificar su contraseña.");
-
-                Pass.ModPass fPass = new FrbaCommerce.Pass.ModPass();
-                fPass.idusuario = this.ppal_id_usuario;
-                fPass.ShowDialog();
-                return;
-            }
-
+            //guardo el id_rol en el aplicativo
             this.ppal_id_rol = id_rol_seleccionado;
-            this.ppal_id_usuario = id_usuario;
 
             //Traigo las funciones asociadas al rol
             System.Data.SqlClient.SqlCommand comFunc = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getFuncionesRol");
