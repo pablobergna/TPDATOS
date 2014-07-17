@@ -16,9 +16,10 @@ namespace FrbaCommerce.Generar_Publicacion
 
         private Publicacion publicacion;
 
-        public Form1()
+        public Form1(int id_usuario)
         {
             InitializeComponent();
+            publicacion.id_usuario = id_usuario;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,9 +33,9 @@ namespace FrbaCommerce.Generar_Publicacion
             lst_rubros.DataSource = ConectorSQL.traerDataTable("CP_LISTAR_RUBROS");
             lst_rubros.DisplayMember = "descripcion";
             lst_rubros.ValueMember = "id_rubro";
-
+            
             //cargar combo visibilidad
-            lst_visibilidad.DataSource = ConectorSQL.traerDataTable("CP_LISTAR_VISIBILIDADES");
+            lst_visibilidad.DataSource = ConectorSQL.traerDataTable("CP_LISTAR_VISIBILIDADES",publicacion.id_usuario);
             lst_visibilidad.DisplayMember = "descripcion";
             lst_visibilidad.ValueMember = "id_visibilidad";
 
