@@ -206,6 +206,11 @@ namespace FrbaCommerce.Generar_Publicacion
                         MessageBox.Show("Error al vincular rubro " + ((DataRowView)item)["descripcion"].ToString() + " a la publicacion", "Frba Commerce", MessageBoxButtons.OK);
                     }
                 }
+
+                MessageBox.Show("Publicacion generada exitosamente!", "Frba Commerce", MessageBoxButtons.OK);
+            }
+            else {
+                MessageBox.Show("Ocurrio algun error al generar la publicacion", "Frba Commerce", MessageBoxButtons.OK);    
             }
         }
 
