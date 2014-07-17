@@ -15,7 +15,7 @@ namespace FrbaCommerce.Model
         public float precio { get; set; }
         public int visibilidad { get; set; }
         public int permitir_preguntas { get; set; }
-        public DateTime vencimiento { get; set; }
+        public DateTime fecha_publicacion { get; set; }
         public string estado { get; set; }
         public Queue<int> rubros { get; set; }
     }

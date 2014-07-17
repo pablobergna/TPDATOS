@@ -17,6 +17,18 @@ BEGIN
 		
 		DECLARE @desc_tipo varchar(50)
 		DECLARE @flag_bonificada int
+		DECLARE @fecha_vencimiento datetime
+		
+		--Si el estado inicial es borrador no se registra la fecha de publicacion ni vencimiento
+		IF (UPPER(@estado) = 'BORRADOR')
+		BEGIN
+			SET @fecha_hoy = null
+			SET @fecha_vencimiento = null
+		END
+		ELSE
+		BEGIN
+			SET @fecha_vencimiento = DATEADD(day,(SELECT cant_dias FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad),@fecha_hoy)
+		END
 		
 		--descripcion de tipo de publicacion
 		IF (@tipo_publicacion = 1) SET @desc_tipo = 'COMPRA INMEDIATA'
