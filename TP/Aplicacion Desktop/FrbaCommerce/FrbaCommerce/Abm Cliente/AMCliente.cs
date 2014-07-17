@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Security.Cryptography;
 
 namespace FrbaCommerce.Abm_Cliente
 {
@@ -17,8 +18,7 @@ namespace FrbaCommerce.Abm_Cliente
         private string usr_nombre;
         private string usr_pass;
         private int id_usuario = -1;
-
-
+        
         public string nombre { get { return usr_nombre; } set { usr_nombre = value; } }
 
         public string pass { get { return usr_pass; } set { usr_pass = value; } }
@@ -57,6 +57,7 @@ namespace FrbaCommerce.Abm_Cliente
             cliTipoDoc.DisplayMember = "descRol";
             cliTipoDoc.ValueMember = "idRol";
 
+            //Chequeo si es una modificacion
             if(this.id_usuario != -1)
             {
 
@@ -100,10 +101,6 @@ namespace FrbaCommerce.Abm_Cliente
                 // Cierro la conexion
                 usuario.Close();
                 AccesoDatos.getInstancia().cerrarConexion();
-
-
-
-
             }
 
         }
@@ -118,6 +115,8 @@ namespace FrbaCommerce.Abm_Cliente
             int nro_piso_val = 0;
             int cuil_val = 0;
             string tipoDoc = "";
+            SHA256Managed encriptacionSha256 = new SHA256Managed();
+
 
             List<string> listaValidacion = new List<string>();
 
@@ -235,6 +234,12 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlParameter pTel = new System.Data.SqlClient.SqlParameter("@telefono", cliTelefono.Text.Trim());
             comDupTel.Parameters.Add(pTel);
 
+            if (this.id_usuario != -1)
+            {
+                System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                comDupTel.Parameters.Add(pid_usu);
+            }
+            
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
 
@@ -265,6 +270,12 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlParameter pcuit1 = new System.Data.SqlClient.SqlParameter("@cuit", cuil.Text.Trim());
             comDupCUIT.Parameters.Add(pcuit1);
 
+            if (this.id_usuario != -1)
+            {
+                System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                comDupCUIT.Parameters.Add(pid_usu);
+            }
+
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
 
@@ -294,6 +305,13 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlParameter p2 = new System.Data.SqlClient.SqlParameter("@nro_doc", documento);
             comDup.Parameters.Add(p2);
 
+            if (this.id_usuario != -1)
+            {
+                System.Data.SqlClient.SqlParameter pid_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                comDup.Parameters.Add(pid_usu);
+            }
+
+            
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
 
@@ -312,24 +330,51 @@ namespace FrbaCommerce.Abm_Cliente
             dup.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
+            string sql_qry = "";
+            string txt_confirmacion = "";
+
+            if (this.id_usuario == -1)
+            {
+                // Nombre del SP para creacion
+                sql_qry = "LOS_GESTORES.sp_app_creaUsuarioCliente";
+                txt_confirmacion = "Se ha creado el usuario correctamente";
+            }
+            else 
+            {
+                // Nombre del SP para modificacion
+                sql_qry = "LOS_GESTORES.sp_app_modificaUsuarioCliente";
+                txt_confirmacion = "Se ha modificado el usuario correctamente";
+            }
+            
             ///////////////////////////////
             //Persisto el usuario cliente//
             ///////////////////////////////
 
             tipoDoc = this.cliTipoDoc.SelectedValue.ToString();
 
-            // Nombre del SP
-            string sql_qry = "LOS_GESTORES.sp_app_creaUsuarioCliente";
-
             //comando pasado como parametro
             System.Data.SqlClient.SqlCommand com = new System.Data.SqlClient.SqlCommand(sql_qry);
 
             //Defino los parametros y los agrego a la lista de parametros
-            System.Data.SqlClient.SqlParameter nombre_usu = new System.Data.SqlClient.SqlParameter("@nombre_usu", this.usr_nombre);
-            com.Parameters.Add(nombre_usu);
+            if (this.id_usuario == -1)
+            {
+                // Solo paso nombre usuario y pass si es un usuario nuevo
+                // Los genero automaticamente
+                string nombre_generado = "AUTO_" + this.cliTipoDoc.Text.Trim() + this.cliDni.Text.Trim();
+                string pass_generada = Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes("inicio1234"))); ;
 
-            System.Data.SqlClient.SqlParameter pass_usu = new System.Data.SqlClient.SqlParameter("@pass", this.usr_pass);
-            com.Parameters.Add(pass_usu);
+                System.Data.SqlClient.SqlParameter nombre_usu = new System.Data.SqlClient.SqlParameter("@nombre_usu", nombre_generado);
+                com.Parameters.Add(nombre_usu);
+
+                System.Data.SqlClient.SqlParameter pass_usu = new System.Data.SqlClient.SqlParameter("@pass", pass_generada);
+                com.Parameters.Add(pass_usu);
+            }
+            else
+            {
+                // Solo paso nombre id si es una modificacion
+                System.Data.SqlClient.SqlParameter id_usu = new System.Data.SqlClient.SqlParameter("@id_usuario", this.id_usuario);
+                com.Parameters.Add(id_usu);
+            }
 
             System.Data.SqlClient.SqlParameter calle_usu = new System.Data.SqlClient.SqlParameter("@calle", this.cliDireccion.Text);
             com.Parameters.Add(calle_usu);
@@ -386,7 +431,7 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlDataReader datos
                 = AccesoDatos.getInstancia().ejecutaSP(com);
 
-            MessageBox.Show("Felicitaciones se ha registrado exitosamente");
+            MessageBox.Show(txt_confirmacion);
 
             // Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
