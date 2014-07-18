@@ -29,16 +29,22 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             lbl_usuario.Text = "Usuario :" + usuario;
             gb_responder_preguntas.Hide();
             gb_ver_respuestas.Hide();
+
+            //carga la lista con las preguntas pendientes
+            lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS", usuario);
+            lst_preguntas.DisplayMember = "txt_pregunta";
+            lst_preguntas.ValueMember = "id_pregunta";
+
+            //carga las respuestas
+            dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS", usuario);
+
+
         }
 
         private void btn_ver_respuestas_Click(object sender, EventArgs e)
         {
             gb_responder_preguntas.Hide();
             gb_ver_respuestas.Show();
-            dg_respuestas.Rows.Clear();
-            dg_respuestas.Refresh();
-            //carga las respuestas
-            dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS", usuario);
         }
 
         private void btn_responder_preguntas_Click(object sender, EventArgs e)
@@ -46,11 +52,6 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             gb_responder_preguntas.Show();
             gb_ver_respuestas.Hide();
             txt_respuesta.Text = "";
-            lst_preguntas.Items.Clear();
-            //carga la lista con las preguntas pendientes
-            lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS", usuario);
-            lst_preguntas.DisplayMember = "txt_pregunta";
-            lst_preguntas.ValueMember = "id_pregunta";
         }
 
         private void btn_responder_Click(object sender, EventArgs e)
