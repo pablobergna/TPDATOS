@@ -143,7 +143,7 @@ namespace FrbaCommerce.Generar_Publicacion
                 publicacion.tipo_publicacion = 1;
             }
             //precio y stock ya seteados en validaciones
-            string visibStr = ((DataRowView)lst_rubros.SelectedItem)["id_visibilidad"].ToString();
+            string visibStr = ((DataRowView)lst_visibilidad.SelectedItem)["id_visibilidad"].ToString();
             int visibInt = -1;
             if (int.TryParse(visibStr, out visibInt))
             {
