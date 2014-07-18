@@ -16,8 +16,8 @@ namespace FrbaCommerce
         {
             if (instancia == null)
             {
-                //con.ConnectionString = ConfigurationManager.AppSettings["GD1C2014"].ToString();
-                con.ConnectionString = "Data Source=localhost\\SQLSERVER2008;User ID=gd;Password=gd2014";
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
+
                 instancia = new AccesoDatos();
             }
 
