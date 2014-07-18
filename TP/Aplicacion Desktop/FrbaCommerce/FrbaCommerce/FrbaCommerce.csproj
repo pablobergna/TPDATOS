@@ -236,6 +236,9 @@
     <EmbeddedResource Include="Abm Visibilidad\Form1.resx">
       <DependentUpon>AltaVisibilidad_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion.resx">
       <DependentUpon>Editar_Publicacion.cs</DependentUpon>
     </EmbeddedResource>

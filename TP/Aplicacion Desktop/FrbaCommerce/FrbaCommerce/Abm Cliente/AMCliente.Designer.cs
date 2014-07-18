@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.Nombre = new System.Windows.Forms.Label();
             this.FechaNac = new System.Windows.Forms.Label();
             this.cliFechaNac = new System.Windows.Forms.DateTimePicker();
@@ -64,7 +65,6 @@
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.lblUsu = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,6 +176,15 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(228, 239);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(131, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Formato XX-XXXXXXXX-X";
             // 
             // Nombre
             // 
@@ -381,7 +390,7 @@
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 30;
-            this.buttonGuardar.Text = "Guardar";
+            this.buttonGuardar.Text = "Siguiente";
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
@@ -404,15 +413,6 @@
             this.lblEstado.Size = new System.Drawing.Size(60, 17);
             this.lblEstado.TabIndex = 32;
             this.lblEstado.Text = "Estado: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(228, 239);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 13);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Formato XX-XXXXXXXX-X";
             // 
             // AMCliente
             // 

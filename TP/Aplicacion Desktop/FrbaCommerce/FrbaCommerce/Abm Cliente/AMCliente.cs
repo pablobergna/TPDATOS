@@ -324,6 +324,19 @@ namespace FrbaCommerce.Abm_Cliente
             dup.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
+            ///////////////////////////////
+            //Persisto el usuario cliente//
+            ///////////////////////////////
+
+            //Traigo los roles seleccionados usuario
+            Usuario_Rol.SeleccionRol fRol = new FrbaCommerce.Usuario_Rol.SeleccionRol();
+            fRol.ShowDialog();
+            ArrayList roles = fRol.getRolesSeleccionados();
+            if (roles.Count < 1) return;
+            int id_usu_rol = -1;           
+            ///hasta aca roles
+
+
             string sql_qry = "";
             string txt_confirmacion = "";
 
@@ -338,20 +351,14 @@ namespace FrbaCommerce.Abm_Cliente
                 // Nombre del SP para modificacion
                 sql_qry = "LOS_GESTORES.sp_app_modificaUsuarioCliente";
                 txt_confirmacion = "Se ha modificado el usuario correctamente";
-            }
-            
-            ///////////////////////////////
-            //Persisto el usuario cliente//
-            ///////////////////////////////
+                // Para Rol    
+                id_usu_rol = this.id_usuario;
+            }            
 
             tipoDoc = this.cliTipoDoc.SelectedValue.ToString();
 
             //comando pasado como parametro
             System.Data.SqlClient.SqlCommand com = new System.Data.SqlClient.SqlCommand(sql_qry);
-
-            //Fuerzo el cambio de pass
-            System.Data.SqlClient.SqlParameter forzar_cambio = new System.Data.SqlClient.SqlParameter("@forzar", Convert.ToInt16(1));
-            com.Parameters.Add(forzar_cambio);
 
             //Defino los parametros y los agrego a la lista de parametros
             if (this.id_usuario == -1)
@@ -363,7 +370,11 @@ namespace FrbaCommerce.Abm_Cliente
 
                 // Los agrego al txt de confirmacion
                 txt_confirmacion += "\nUsuario: " + nombre_generado + "\nPass: inicio1234";
-                
+
+                //Fuerzo el cambio de pass
+                System.Data.SqlClient.SqlParameter forzar_cambio = new System.Data.SqlClient.SqlParameter("@forzar", Convert.ToInt16(1));
+                com.Parameters.Add(forzar_cambio);
+
                 System.Data.SqlClient.SqlParameter nombre_usu = new System.Data.SqlClient.SqlParameter("@nombre_usu", nombre_generado);
                 com.Parameters.Add(nombre_usu);
 
@@ -432,8 +443,35 @@ namespace FrbaCommerce.Abm_Cliente
             System.Data.SqlClient.SqlDataReader datos
                 = AccesoDatos.getInstancia().ejecutaSP(com);
 
-            // Cierro la conexion
+            // Asignacion de Roles
+            if (id_usu_rol == -1)
+            {
+                datos.Read();
+                id_usu_rol = datos.GetInt32(0);
+            }
+
+            //Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
+            
+            foreach (string id_rol in roles)
+            {
+                //Abro la conexion
+                AccesoDatos.getInstancia().abrirConexion();
+
+                System.Data.SqlClient.SqlCommand comRoles = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_setClientesRoles");
+                
+                System.Data.SqlClient.SqlParameter p1Rol = new System.Data.SqlClient.SqlParameter("@id_usuario", id_usu_rol);
+                comRoles.Parameters.Add(p1Rol);
+
+                System.Data.SqlClient.SqlParameter p2Rol = new System.Data.SqlClient.SqlParameter("@id_rol", Convert.ToInt32(id_rol));
+                comRoles.Parameters.Add(p2Rol);
+                
+                System.Data.SqlClient.SqlDataReader rolReader = AccesoDatos.getInstancia().ejecutaSP(comRoles);
+
+                //Cierro la conexion
+                AccesoDatos.getInstancia().cerrarConexion();
+
+            }
 
 
             MessageBox.Show(txt_confirmacion);
