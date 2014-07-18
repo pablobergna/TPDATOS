@@ -1,7 +1,11 @@
-CREATE PROCEDURE LOS_GESTORES.GP_RESPONDER_PREGUNTA(@id_pregunta int,@respuesta varchar(255), @fecha_hoy datetime, @RETURN_VALUE int OUTPUT)
+CREATE PROCEDURE LOS_GESTORES.GP_RESPONDER_PREGUNTA(
+@id_pregunta int
+,@respuesta varchar(255)
+,@fecha_hoy datetime)
 AS
 BEGIN
-
+	DECLARE @RETURN_VALUE int;
+	
 	IF EXISTS(	SELECT 1 FROM GD1C2014.LOS_GESTORES.Pregunta P 
 				,GD1C2014.LOS_GESTORES.Estado E 
 				WHERE E.id_estado = P.id_estado 
@@ -18,4 +22,6 @@ BEGIN
 		SET @RETURN_VALUE = 0
 	END
 	ELSE SET @RETURN_VALUE = -1
+	
+	SELECT @RETURN_VALUE;
 END

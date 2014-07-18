@@ -8,13 +8,14 @@ CREATE PROCEDURE LOS_GESTORES.CP_CREAR_PUBLICACION_SUBASTA(
 ,@flag_preguntas int
 
 ,@precio_inicial numeric(18,2)
-, @RETURN_VALUE int OUTPUT)
+)
 AS
 BEGIN
 		
 		DECLARE @desc_tipo varchar(50)
 		DECLARE @flag_bonificada int
 		DECLARE @fecha_vencimiento datetime
+		DECLARE @RETURN_VALUE int
 		
 		--Si el estado inicial es borrador no se registra la fecha de publicacion ni vencimiento
 		IF (UPPER(@estado) = 'BORRADOR')
@@ -92,6 +93,8 @@ BEGIN
 		SET @RETURN_VALUE = SCOPE_IDENTITY();
 		
 		INSERT INTO LOS_GESTORES.Publicacion_Subasta (id_publicacion,precio_inicial)
-		VALUES((SELECT SCOPE_IDENTITY()),@precio_inicial);
+		VALUES(@RETURN_VALUE,@precio_inicial);
+		
+		SELECT @RETURN_VALUE;
 		
 END

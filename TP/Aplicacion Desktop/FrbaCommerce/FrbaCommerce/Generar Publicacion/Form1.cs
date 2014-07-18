@@ -173,12 +173,14 @@ namespace FrbaCommerce.Generar_Publicacion
             //llamar SP de creacion publicacion
             if (rb_compra_inmediata.Checked)
             {
-                publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion, publicacion.fecha_publicacion , publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
+                DataTable dt_publicacion = ConectorSQL.traerDataTable("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion, publicacion.fecha_publicacion , publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
+                publicacion.id = Convert.ToInt32(dt_publicacion.Rows[0][0]);
             }
             else {
                 if (rb_subasta.Checked)
                 {
-                    publicacion.id = ConectorSQL.ejecutarProcedureWithReturnValue("CP_CREAR_PUBLICACION_SUBASTA", publicacion.id_usuario, publicacion.estado, publicacion.visibilidad, publicacion.tipo_publicacion, publicacion.descripcion, publicacion.fecha_publicacion , publicacion.permitir_preguntas, publicacion.precio);
+                    DataTable dt_publicacion = ConectorSQL.traerDataTable("CP_CREAR_PUBLICACION_SUBASTA", publicacion.id_usuario, publicacion.estado, publicacion.visibilidad, publicacion.tipo_publicacion, publicacion.descripcion, publicacion.fecha_publicacion , publicacion.permitir_preguntas, publicacion.precio);
+                    publicacion.id = Convert.ToInt32(dt_publicacion.Rows[0][0]);
                 } else {
                     MessageBox.Show("Error, ningun tipo de publicacion seleccionado", "Frba Commerce", MessageBoxButtons.OK);
                     return;

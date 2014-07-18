@@ -77,9 +77,11 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             respuesta = txt_respuesta.Text;
 
             //llamada al SP
-            resultado = ConectorSQL.ejecutarProcedureWithReturnValue("GP_RESPONDER_PREGUNTA", id_pregunta, respuesta, fecha_sistema);
+            DataTable dt_responder = ConectorSQL.traerDataTable("GP_RESPONDER_PREGUNTA", id_pregunta, respuesta, fecha_sistema);
 
-            if (resultado.Equals(0))
+            resultado = Convert.ToInt32(dt_responder.Rows[0][0]);
+
+            if (resultado == 0)
             {
                 MessageBox.Show("Respuesta grabada correctamente", "Frba Commerce", MessageBoxButtons.OK);
                 btn_responder_preguntas_Click(null,null);

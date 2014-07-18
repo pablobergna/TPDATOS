@@ -7,17 +7,16 @@ CREATE PROCEDURE LOS_GESTORES.CP_CREAR_PUBLICACION_INMEDIATA(
 ,@fecha_hoy datetime
 ,@flag_preguntas int
 
-
 ,@precio numeric(18,2)
 ,@stock numeric(18,2)
-
-, @RETURN_VALUE int OUTPUT)
+)
 AS
 BEGIN
 		
 		DECLARE @desc_tipo varchar(50)
 		DECLARE @flag_bonificada int
 		DECLARE @fecha_vencimiento datetime
+		DECLARE @RETURN_VALUE int
 		
 		--Si el estado inicial es borrador no se registra la fecha de publicacion ni vencimiento
 		IF (UPPER(@estado) = 'BORRADOR')
@@ -98,5 +97,7 @@ BEGIN
 		
 		INSERT INTO LOS_GESTORES.Publicacion_Inmediata(id_publicacion, precio, stock)
 		VALUES (@RETURN_VALUE, @precio, @stock);
+		
+		SELECT @RETURN_VALUE;
 
 END
