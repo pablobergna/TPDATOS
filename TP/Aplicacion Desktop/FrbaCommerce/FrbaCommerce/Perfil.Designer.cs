@@ -74,6 +74,7 @@
             this.Controls.Add(this.buttonAceptar);
             this.Name = "Perfil";
             this.Text = "Perfil";
+            this.Load += new System.EventHandler(this.Perfil_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
