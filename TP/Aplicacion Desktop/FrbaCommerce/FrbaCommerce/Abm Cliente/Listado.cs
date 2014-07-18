@@ -181,7 +181,7 @@ namespace FrbaCommerce.Abm_Cliente
                    == DialogResult.Yes)
             {
                 string sql_qry = "UPDATE LOS_GESTORES.Usuario SET id_estado = (select id_estado from LOS_GESTORES.Estado where descripcion = 'Habilitado') " +
-                    " WHERE id_usuario = " + id_usuario.ToString();
+                    " ,intentos_fallidos = 0 WHERE id_usuario = " + id_usuario.ToString();
 
                 // Abro la conexion
                 AccesoDatos.getInstancia().abrirConexion();
@@ -290,7 +290,7 @@ namespace FrbaCommerce.Abm_Cliente
                    == DialogResult.Yes)
             {
                 string sql_qry = "UPDATE LOS_GESTORES.Usuario SET id_estado = (select id_estado from LOS_GESTORES.Estado where descripcion = 'Habilitado') " +
-                    " WHERE id_usuario = " + id_usuario.ToString();
+                    " ,intentos_fallidos = 0 WHERE id_usuario = " + id_usuario.ToString();
 
                 // Abro la conexion
                 AccesoDatos.getInstancia().abrirConexion();
@@ -430,7 +430,7 @@ namespace FrbaCommerce.Abm_Cliente
                    == DialogResult.Yes)
             {
                 string sql_qry = "UPDATE LOS_GESTORES.Usuario SET id_estado = (select id_estado from LOS_GESTORES.Estado where descripcion = 'Habilitado') " +
-                    " WHERE id_usuario = " + id_usuario.ToString();
+                    " ,intentos_fallidos = 0 WHERE id_usuario = " + id_usuario.ToString();
 
                 // Abro la conexion
                 AccesoDatos.getInstancia().abrirConexion();

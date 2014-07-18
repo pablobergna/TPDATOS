@@ -49,7 +49,7 @@ namespace FrbaCommerce.Pass
                 pass_encriptado = Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(txtPass.Text.Trim())));
 
                 string sql_qry = "UPDATE LOS_GESTORES.Usuario SET password = '" + pass_encriptado +
-                    "' WHERE id_usuario = " + this.id_usuario.ToString();
+                    "', forzar_cambio = 0 WHERE id_usuario = " + this.id_usuario.ToString();
 
                 // Abro la conexion
                 AccesoDatos.getInstancia().abrirConexion();

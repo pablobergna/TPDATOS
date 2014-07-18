@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panelPpal = new System.Windows.Forms.Panel();
+            this.btnModifPass = new System.Windows.Forms.Button();
             this.linkSalirLogueado = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSeleccion = new System.Windows.Forms.Button();
@@ -170,6 +171,7 @@
             // 
             // panelPpal
             // 
+            this.panelPpal.Controls.Add(this.btnModifPass);
             this.panelPpal.Controls.Add(this.linkSalirLogueado);
             this.panelPpal.Controls.Add(this.label6);
             this.panelPpal.Controls.Add(this.btnSeleccion);
@@ -180,6 +182,17 @@
             this.panelPpal.Name = "panelPpal";
             this.panelPpal.Size = new System.Drawing.Size(684, 462);
             this.panelPpal.TabIndex = 1;
+            // 
+            // btnModifPass
+            // 
+            this.btnModifPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifPass.Location = new System.Drawing.Point(108, 375);
+            this.btnModifPass.Name = "btnModifPass";
+            this.btnModifPass.Size = new System.Drawing.Size(213, 42);
+            this.btnModifPass.TabIndex = 8;
+            this.btnModifPass.Text = "Modificar mi contraseña";
+            this.btnModifPass.UseVisualStyleBackColor = true;
+            this.btnModifPass.Click += new System.EventHandler(this.btnModifPass_Click);
             // 
             // linkSalirLogueado
             // 
@@ -206,11 +219,11 @@
             // btnSeleccion
             // 
             this.btnSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccion.Location = new System.Drawing.Point(172, 384);
+            this.btnSeleccion.Location = new System.Drawing.Point(361, 375);
             this.btnSeleccion.Name = "btnSeleccion";
-            this.btnSeleccion.Size = new System.Drawing.Size(340, 42);
+            this.btnSeleccion.Size = new System.Drawing.Size(213, 42);
             this.btnSeleccion.TabIndex = 4;
-            this.btnSeleccion.Text = "Seleccionar";
+            this.btnSeleccion.Text = "Seleccionar Funcion";
             this.btnSeleccion.UseVisualStyleBackColor = true;
             this.btnSeleccion.Click += new System.EventHandler(this.btnSeleccion_Click);
             // 
@@ -240,8 +253,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 462);
-            this.Controls.Add(this.panelPpal);
             this.Controls.Add(this.panelInicio);
+            this.Controls.Add(this.panelPpal);
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
@@ -272,5 +285,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSeleccion;
         private System.Windows.Forms.LinkLabel linkSalirLogueado;
+        private System.Windows.Forms.Button btnModifPass;
     }
 }
