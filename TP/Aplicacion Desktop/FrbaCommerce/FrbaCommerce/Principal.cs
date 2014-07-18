@@ -328,7 +328,7 @@ namespace FrbaCommerce
                     break;
                 
                 case "Facturar Publicaciones":
-                    Facturar_Publicaciones.FacturarPublicaciones fFact = new FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones();
+                    Facturar_Publicaciones.FacturarPublicaciones fFact = new FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones(ppal_id_usuario);
                     fFact.ShowDialog();
                     break;
                 
