@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lstRubros = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxFin = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPublicaciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             this.btnVerPublicacion.TabIndex = 71;
             this.btnVerPublicacion.Text = "Ver Publicacion";
             this.btnVerPublicacion.UseVisualStyleBackColor = true;
+            this.btnVerPublicacion.Click += new System.EventHandler(this.btnVerPublicacion_Click);
             // 
             // linkLimpiar
             // 
@@ -112,7 +114,7 @@
             // txtDesc
             // 
             this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc.Location = new System.Drawing.Point(43, 115);
+            this.txtDesc.Location = new System.Drawing.Point(44, 91);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(257, 23);
             this.txtDesc.TabIndex = 55;
@@ -121,7 +123,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(130, 92);
+            this.label1.Location = new System.Drawing.Point(131, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 17);
             this.label1.TabIndex = 54;
@@ -146,11 +148,23 @@
             this.label3.TabIndex = 73;
             this.label3.Text = "Modulo de Compra y Oferta";
             // 
+            // checkBoxFin
+            // 
+            this.checkBoxFin.AutoSize = true;
+            this.checkBoxFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxFin.Location = new System.Drawing.Point(44, 132);
+            this.checkBoxFin.Name = "checkBoxFin";
+            this.checkBoxFin.Size = new System.Drawing.Size(138, 21);
+            this.checkBoxFin.TabIndex = 75;
+            this.checkBoxFin.Text = "Filtrar Finalizadas";
+            this.checkBoxFin.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 513);
+            this.Controls.Add(this.checkBoxFin);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lstRubros);
             this.Controls.Add(this.btnVerPublicacion);
@@ -182,5 +196,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstRubros;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBoxFin;
     }
 }

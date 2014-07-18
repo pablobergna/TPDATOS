@@ -11,6 +11,10 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     public partial class Form1 : Form
     {
+        private DateTime fecha_hoy;
+
+        public DateTime fechaHoy { get { return fecha_hoy; } set { fecha_hoy = value;} }
+
         public Form1()
         {
             InitializeComponent();
@@ -18,15 +22,19 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string sql_qry = "select P.codigo CODIGO, P.descripcion DESCRIPCION, U.nombre_usuario USUARIO,"+
-		                    " P.descripcion_tipo TIPO, P.fecha_venc FECHA_VENCIMIENTO"+
-                            " from LOS_GESTORES.Publicacion P"+
-                            " join LOS_GESTORES.Usuario U on U.id_usuario = P.id_usuario WHERE"+
-                            " P.id_estado = (select E.id_estado from LOS_GESTORES.Estado E where E.descripcion = 'Finalizada')";
+            string sql_qry = "select P.id_publicacion, P.codigo CODIGO, P.descripcion DESCRIPCION," +
+                            " P.descripcion_tipo TIPO, P.fecha_venc FECHA_VENCIMIENTO" +
+                            " from LOS_GESTORES.Publicacion P" +
+                            " join LOS_GESTORES.Visibilidad V on V.id_visibilidad = P.id_visibilidad " +
+                            " left join LOS_GESTORES.Publicacion_Inmediata PI on PI.id_publicacion = P.id_publicacion and PI.stock > 0" +
+                            " WHERE" +
+                            " P.fecha_venc >= '" + new DateTime(2013, 01, 10).ToShortDateString() + "'";
+                            //" AND P.fecha_venc >= "+ fecha_hoy.Date.ToShortDateString();
 
-            // HACER LEFT JOIN CON PUBLICACION INMEDIATA PARA VERIFICAR STOCK
-
-
+            //FUNCIONALIDAD ADICIONAL PARA CONTEMPLAR ESTRATEGIA DE MIGRACION TOMADA
+            if(this.checkBoxFin.Checked)
+                sql_qry += " AND P.id_estado = (select E.id_estado from LOS_GESTORES.Estado E where E.descripcion = 'Activa')";
+                            
             //Armo el string de acuerdo a los parametros de busqueda
             if (txtDesc.Text.Trim() != string.Empty)
             {
@@ -58,8 +66,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             }
 
-            // Aca tengo que definir el ORDER BY POR PESO
-
+            // Defino el order by por el precio de la visibilidad
+            sql_qry = sql_qry + " ORDER BY V.precio desc";
 
             // Abro la conexion
             AccesoDatos.getInstancia().abrirConexion();
@@ -96,6 +104,17 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             this.lstRubros.ClearSelected();
             this.txtDesc.Clear();
+        }
+
+        private void btnVerPublicacion_Click(object sender, EventArgs e)
+        {
+            if (dataGridPublicaciones.SelectedRows.Count != 1) return;
+
+            int id_pub = Convert.ToInt32(this.dataGridPublicaciones.SelectedRows[0].Cells[0].Value);
+
+            Comprar_Ofertar.VisualizarPub fVis = new VisualizarPub();
+            fVis.idPublicacion = id_pub;
+            fVis.ShowDialog();
         }
 
         
