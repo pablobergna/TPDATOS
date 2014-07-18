@@ -113,11 +113,11 @@
     <Compile Include="Abm Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Visibilidad\Form1.cs">
+    <Compile Include="Abm Visibilidad\AltaVisibilidad_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Visibilidad\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+      <DependentUpon>AltaVisibilidad_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="Calificar Vendedor\Form1.cs">
@@ -234,7 +234,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+      <DependentUpon>AltaVisibilidad_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion.resx">
       <DependentUpon>Editar_Publicacion.cs</DependentUpon>

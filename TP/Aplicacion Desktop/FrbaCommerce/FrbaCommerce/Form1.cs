@@ -75,8 +75,8 @@ namespace FrbaCommerce
 
         private void FacturarPublicaciones_Click(object sender, EventArgs e)
         {
-            Form fp = new Facturar_Publicaciones.FacturarPublicaciones();
-            fp.Show();
+            //Form fp = new Facturar_Publicaciones.FacturarPublicaciones();
+            //fp.Show();
         }
 
         private void ListadoEstadistico_Click(object sender, EventArgs e)
