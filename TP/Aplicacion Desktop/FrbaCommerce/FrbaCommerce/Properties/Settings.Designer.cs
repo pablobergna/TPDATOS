@@ -22,24 +22,5 @@ namespace FrbaCommerce.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost\\SQLSERVER2008;User ID=gd;Password=gd2014")]
-        public string GD1C2014 {
-            get {
-                return ((string)(this["GD1C2014"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2014-07-15")]
-        public global::System.DateTime FechaHoy {
-            get {
-                return ((global::System.DateTime)(this["FechaHoy"]));
-            }
-        }
     }
 }

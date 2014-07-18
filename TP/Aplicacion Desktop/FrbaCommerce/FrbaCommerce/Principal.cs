@@ -15,6 +15,7 @@ namespace FrbaCommerce
     {
         private int ppal_id_usuario;
         private int ppal_id_rol;
+        private DateTime ppal_fecha_sistema;
         
         public Principal()
         {
@@ -35,6 +36,8 @@ namespace FrbaCommerce
             string pass_ingresada;
             int id_usuario;
             int intentos_fallidos;
+            string estado_usu;
+            int forzar_cambio;
             SHA256Managed encriptacionSha256 = new SHA256Managed();
 
             //Validamos los campos obligatorios
@@ -63,9 +66,9 @@ namespace FrbaCommerce
                 return;
             }
             
-            ///////////////////////////
-            //Validacion del password
-            ////////////////////////////
+            /////////////////////////
+            //Validacion del login //
+            /////////////////////////
             pass_ingresada =
                 Convert.ToBase64String(encriptacionSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(this.login_txtpass.Text)));
 
@@ -96,14 +99,16 @@ namespace FrbaCommerce
             dup.Read();
             pass_BD = dup.GetString(0);
             intentos_fallidos = dup.GetInt16(1);
+            estado_usu = dup.GetString(2);
+            forzar_cambio = dup.GetInt16(3);
 
             // Cierro la conexion
             dup.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
-            if (intentos_fallidos == 3)
+            if (!estado_usu.Equals("Habilitado"))
             {
-                MessageBox.Show("Su usuario esta inhabilitado, contactese con los administradores");
+                MessageBox.Show("Su usuario no puede ingresar al sistema, contactese con los administradores");
                 return;
             }
             
@@ -188,9 +193,28 @@ namespace FrbaCommerce
             }
 
             // Cierro la conexion
-            reset.Close();
+            roles.Close();
             AccesoDatos.getInstancia().cerrarConexion();
 
+            if (listaRoles.Count == 0)
+            {
+                MessageBox.Show("No posee roles habilitados en el sistema. Contactese con los administradores");
+                return;
+            }
+
+            //guardo el id_usuario en el aplicativo
+            this.ppal_id_usuario = id_usuario;
+
+            if (forzar_cambio == 1)
+            {
+                MessageBox.Show("Debe modificar su contraseña.");
+
+                Pass.ModPass fPass = new FrbaCommerce.Pass.ModPass();
+                fPass.idusuario = this.ppal_id_usuario;
+                fPass.ShowDialog();
+                return;
+            }
+            
             //Si tiene mas de un rol despliego el form de seleccion
             int id_rol_seleccionado;
             if (listaRoles.Count > 1)
@@ -204,11 +228,37 @@ namespace FrbaCommerce
                 id_rol_seleccionado = ((DTO.RolDTO)listaRoles[0]).idRol;
             }
 
+            //guardo el id_rol en el aplicativo
             this.ppal_id_rol = id_rol_seleccionado;
-            this.ppal_id_usuario = id_usuario;
+
+            //Traigo las funciones asociadas al rol
+            System.Data.SqlClient.SqlCommand comFunc = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_getFuncionesRol");
+            System.Data.SqlClient.SqlParameter pFunc = new System.Data.SqlClient.SqlParameter("@id_rol", ppal_id_rol);
+            comFunc.Parameters.Add(pFunc);
+
+            // Abro la conexion
+            AccesoDatos.getInstancia().abrirConexion();
+            System.Data.SqlClient.SqlDataReader funciones = AccesoDatos.getInstancia().ejecutaSP(comFunc);
+
+            //Cargo el array del resultado
+            ArrayList listaFunc = new ArrayList();
+            while (funciones.Read())
+            {
+                listaFunc.Add(new DTO.RolDTO(funciones.GetInt32(0), funciones.GetString(1)));
+            }
+
+            // Cierro la conexion
+            funciones.Close();
+            AccesoDatos.getInstancia().cerrarConexion();
+
+            listaFunciones.DataSource = listaFunc;
+            listaFunciones.DisplayMember = "descRol";
+            listaFunciones.ValueMember = "idRol";
 
 
-            // Habilito el proximo panel
+            // Blanqueo y Habilito el proximo panel
+            this.login_txtUsr.Clear();
+            this.login_txtpass.Clear();
             this.panelInicio.Hide();
             this.panelPpal.Show();
         }
@@ -229,5 +279,109 @@ namespace FrbaCommerce
             this.panelPpal.Hide();
             this.panelInicio.Show();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.panelPpal.Hide();
+            this.panelInicio.Show();
+            
+        }
+
+        private void linkSalir_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MessageBox.Show("¿Desea salir del sistema?", "Salir", MessageBoxButtons.YesNo)
+                  == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
+
+        private void linkSalirLogueado_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (MessageBox.Show("¿Desea cerrar la sesion?", "Salir", MessageBoxButtons.YesNo)
+                  == DialogResult.Yes)
+            {
+                this.panelPpal.Hide();
+                this.panelInicio.Show();
+            }
+        }
+
+        private void btnSeleccion_Click(object sender, EventArgs e)
+        {
+            string funcion = listaFunciones.Text.Trim();
+
+            //Muestro el form que corresponda segun la seleccion
+            switch (funcion)
+            {
+                case "Gestionar Preguntas":
+                    Gestion_de_Preguntas.Gestion_de_Preguntas fGpreg = new FrbaCommerce.Gestion_de_Preguntas.Gestion_de_Preguntas(ppal_id_usuario, ppal_fecha_sistema);
+                    fGpreg.ShowDialog();
+                    break;
+
+                case "Publicar":
+                    Generar_Publicacion.Form1 fPub = new FrbaCommerce.Generar_Publicacion.Form1(ppal_id_usuario, ppal_fecha_sistema);
+                    fPub.ShowDialog();
+                    break;
+                
+                case "Comprar":
+                    
+                    break;
+                
+                case "Facturar Publicaciones":
+                    Facturar_Publicaciones.FacturarPublicaciones fFact = new FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones(ppal_id_usuario);
+                    fFact.ShowDialog();
+                    break;
+                
+                case "Listar Estadisticas":
+                    Listado_Estadistico.Form1 fEst = new FrbaCommerce.Listado_Estadistico.Form1();
+                    fEst.ShowDialog();
+                    break;
+                
+                case "Visualizar Historial":
+                    Historial_Cliente.Form1 fHis = new FrbaCommerce.Historial_Cliente.Form1(ppal_id_usuario);
+                    fHis.ShowDialog();
+                    break;
+                
+                case "ABM Roles":
+                
+                    break;
+                
+                case "ABM Usuarios":
+                    Abm_Cliente.Listado fLista = new FrbaCommerce.Abm_Cliente.Listado();
+                    fLista.ShowDialog();
+                    break;
+                
+                case "ABM Rubros":
+                
+                    break;
+                
+                case "ABM Visibilidad":
+                
+                    break;
+
+                case "Calificar Vendedor":
+                    Calificar_Vendedor.Form1 fCalVen = new FrbaCommerce.Calificar_Vendedor.Form1(ppal_id_usuario);
+                    fCalVen.ShowDialog();
+                    break;
+                
+                default:
+                
+                    break;
+            }
+        }
+
+        private void btnModifPass_Click(object sender, EventArgs e)
+        {
+            Pass.ModPass fPas = new FrbaCommerce.Pass.ModPass();
+
+            fPas.idusuario = this.ppal_id_usuario;
+            fPas.ShowDialog();
+        }
+
+        
+
+        
+
+        
     }
 }

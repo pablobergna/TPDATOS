@@ -36,6 +36,12 @@ namespace FrbaCommerce
             this.Close();
         }
 
+        private void Perfil_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
 
     }

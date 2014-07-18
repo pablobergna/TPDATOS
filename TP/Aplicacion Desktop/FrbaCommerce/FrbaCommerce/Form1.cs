@@ -21,16 +21,37 @@ namespace FrbaCommerce
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+//desde aca YP
+            /* ESTE FORM NO SE USA COMENTO LO QUE TIRA ERROR
+ if (this.logUser.Text != string.Empty && this.logPassw.Text != string.Empty)
+            {
+                this.dataAccess = new DataAccessLayer();
+                QueryResult resultado;
+                resultado = this.dataAccess.BuscarUsuario(this.logUser.Text, getHashSha256(this.logPassw.Text));
+                 if (resultado.correct == true)
+                 {
+                     MessageBox.Show(resultado.mensaje, "Login");
+                     Perfil perfil = new Perfil(resultado.ID);
+                     perfil.Show();
+                     perfil.parent = this;
+                     this.Hide();
+                 }
+            }
+            else
+            {
+                MessageBox.Show("El Usuario y/o la Password no pueden estar vacios", "Error");
+            }
+			*/
 			//hasta aca YP
 			//esta logica no debería ir acá
-            Form hc = new Historial_Cliente.Form1();
-			 hc.Show();
+            //Form hc = new Historial_Cliente.Form1();
+			//hc.Show();
         }
 
         private void CalificarVendedor_Click(object sender, EventArgs e)
         {
-            Form cv = new Calificar_Vendedor.Form1();
-            cv.Show();
+            //Form cv = new Calificar_Vendedor.Form1();
+            //cv.Show();
         }
 		
 		
@@ -54,8 +75,8 @@ namespace FrbaCommerce
 
         private void FacturarPublicaciones_Click(object sender, EventArgs e)
         {
-            Form fp = new Facturar_Publicaciones.FacturarPublicaciones();
-            fp.Show();
+            //Form fp = new Facturar_Publicaciones.FacturarPublicaciones();
+            //fp.Show();
         }
 
         private void ListadoEstadistico_Click(object sender, EventArgs e)
@@ -68,11 +89,6 @@ namespace FrbaCommerce
         {
             Registro_de_Usuario.Registro_Form regF = new FrbaCommerce.Registro_de_Usuario.Registro_Form();
             regF.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
