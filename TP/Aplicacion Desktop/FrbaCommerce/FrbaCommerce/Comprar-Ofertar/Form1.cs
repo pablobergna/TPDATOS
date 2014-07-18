@@ -11,7 +11,10 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     public partial class Form1 : Form
     {
+        private int id_usuario;
         private DateTime fecha_hoy;
+
+        public int idUsu { get { return id_usuario; } set { id_usuario = value; } }
 
         public DateTime fechaHoy { get { return fecha_hoy; } set { fecha_hoy = value;} }
 
@@ -114,6 +117,15 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             Comprar_Ofertar.VisualizarPub fVis = new VisualizarPub();
             fVis.idPublicacion = id_pub;
+
+            //test
+            fVis.fechaHoy = Convert.ToDateTime("2014-02-02");
+            fVis.idComprador = 2;
+
+            //fVis.fechaHoy = this.fechaHoy;
+            //fVis.idComprador = this.id_usuario;
+            
+            
             fVis.ShowDialog();
         }
 

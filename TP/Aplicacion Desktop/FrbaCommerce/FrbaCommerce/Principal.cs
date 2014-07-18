@@ -327,6 +327,7 @@ namespace FrbaCommerce
                 case "Comprar":
                     Comprar_Ofertar.Form1 fCom = new FrbaCommerce.Comprar_Ofertar.Form1();
                     fCom.fechaHoy = this.ppal_fecha_sistema;
+                    fCom.idUsu = this.ppal_id_usuario;
                     break;
                 
                 case "Facturar Publicaciones":
