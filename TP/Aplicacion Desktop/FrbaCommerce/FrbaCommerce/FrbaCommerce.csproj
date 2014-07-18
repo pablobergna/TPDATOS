@@ -283,6 +283,9 @@
     <EmbeddedResource Include="Registro de Usuario\Registro_Form.resx">
       <DependentUpon>Registro_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usuario_Rol\SeleccionRol.resx">
+      <DependentUpon>SeleccionRol.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -306,6 +309,12 @@
       <DependentUpon>Registro_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\Validacion.cs" />
+    <Compile Include="Usuario_Rol\SeleccionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario_Rol\SeleccionRol.Designer.cs">
+      <DependentUpon>SeleccionRol.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
