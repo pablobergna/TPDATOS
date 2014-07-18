@@ -15,11 +15,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
     {
 
         private int id_usuario;
+        private DateTime fecha_sistema;
 
-        public FacturarPublicaciones(int p_id_usuario)
+        public FacturarPublicaciones(int p_id_usuario, DateTime p_fecha_sistema)
         {
             InitializeComponent();
             id_usuario = p_id_usuario;
+            fecha_sistema = p_fecha_sistema;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -112,7 +114,9 @@ namespace FrbaCommerce.Facturar_Publicaciones
             DataTable id_item = new DataTable();
 
             // Generar factura y obtener su ID
-            id_factura = ConectorSQL.traerDataTable("crearFactura", id_usuario);
+            id_factura = ConectorSQL.traerDataTable("crearFactura", id_usuario, fecha_sistema.ToString("dd/MM/yyyy"));
+            //MessageBox.Show(Convert.ToString( fecha_sistema.ToString("dd/MM/yyyy") ));
+            //MessageBox.Show(Convert.ToString(Convert.ToString(fecha_sistema.ToString("dd/mm/yyyy"))));
             //MessageBox.Show(Convert.ToString(id_factura.Rows[0][0]));
 
             int counter;

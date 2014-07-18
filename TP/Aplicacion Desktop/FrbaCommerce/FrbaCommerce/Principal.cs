@@ -16,6 +16,7 @@ namespace FrbaCommerce
         private int ppal_id_usuario;
         private int ppal_id_rol;
         private DateTime ppal_fecha_sistema;
+        //private DateTime ppal_fecha_sistema = new DateTime(2014, 07, 18);
         
         public Principal()
         {
@@ -328,7 +329,7 @@ namespace FrbaCommerce
                     break;
                 
                 case "Facturar Publicaciones":
-                    Facturar_Publicaciones.FacturarPublicaciones fFact = new FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones(ppal_id_usuario);
+                    Facturar_Publicaciones.FacturarPublicaciones fFact = new FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones(ppal_id_usuario, ppal_fecha_sistema);
                     fFact.ShowDialog();
                     break;
                 
