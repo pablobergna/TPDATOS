@@ -70,7 +70,7 @@
             // 
             this.dg_publicaciones.AllowUserToOrderColumns = true;
             this.dg_publicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_publicaciones.Location = new System.Drawing.Point(17, 30);
+            this.dg_publicaciones.Location = new System.Drawing.Point(30, 32);
             this.dg_publicaciones.Name = "dg_publicaciones";
             this.dg_publicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dg_publicaciones.Size = new System.Drawing.Size(822, 181);
