@@ -14,13 +14,13 @@ namespace FrbaCommerce.Gestion_de_Preguntas
     public partial class Gestion_de_Preguntas : Form
     {
         private int usuario;
-        private DateTime fecha_sistema;
+        private string fecha_sistema;
 
         public Gestion_de_Preguntas(int id_usuario, DateTime fecha)
         {
             InitializeComponent();
             usuario = id_usuario;
-            fecha_sistema = fecha;
+            fecha_sistema = fecha.ToString("dd/MM/yyyy");
         }
 
         private void Gestion_de_Preguntas_Load(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             lst_preguntas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_PREGUNTAS", usuario);
             lst_preguntas.DisplayMember = "txt_pregunta";
             lst_preguntas.ValueMember = "id_pregunta";
-
+            
             //carga las respuestas
             dg_respuestas.DataSource = ConectorSQL.traerDataTable("GP_LISTAR_RESPUESTAS", usuario);
 

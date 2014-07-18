@@ -1,10 +1,13 @@
 CREATE PROCEDURE LOS_GESTORES.GP_RESPONDER_PREGUNTA(
 @id_pregunta int
-,@respuesta varchar(255)
-,@fecha_hoy datetime)
+,@respuesta nvarchar(255)
+,@v_fecha_sistema nvarchar(255))
 AS
 BEGIN
 	DECLARE @RETURN_VALUE int;
+	DECLARE @fecha_hoy datetime
+			
+	set @fecha_hoy = CONVERT(datetime,@v_fecha_sistema,103)	
 	
 	IF EXISTS(	SELECT 1 FROM GD1C2014.LOS_GESTORES.Pregunta P 
 				,GD1C2014.LOS_GESTORES.Estado E 

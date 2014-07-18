@@ -15,14 +15,14 @@ namespace FrbaCommerce.Editar_Publicacion
     {
         private Publicacion publicacion_actual = new Publicacion();
         private Publicacion publicacion_modificada = new Publicacion();
-        private DateTime fecha_sistema;
+        private string fecha_sistema;
 
         public Editar_Publicacion(int usuario, DateTime fecha)
         {
             InitializeComponent();
             publicacion_actual.id_usuario = usuario;
             publicacion_modificada.id_usuario = usuario;
-            fecha_sistema = fecha;
+            fecha_sistema = fecha.ToString("dd/MM/yyyy");
         }
 
         private void Editar_Publicacion_Load(object sender, EventArgs e)
@@ -38,6 +38,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void dg_publicaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //obtiene id de la publicacion clickeada
             string idStr = dg_publicaciones.Rows[e.RowIndex].Cells["id_publicacion"].Value.ToString();
             int idInt = -1;
             if (int.TryParse(idStr, out idInt))

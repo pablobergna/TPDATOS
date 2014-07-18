@@ -20,7 +20,8 @@ namespace FrbaCommerce.Generar_Publicacion
         {
             InitializeComponent();
             publicacion.id_usuario = id_usuario;
-            publicacion.fecha_publicacion = fecha_sistema;
+            publicacion.fecha_publicacion = fecha_sistema.ToString("dd/MM/yyyy");
+
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

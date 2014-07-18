@@ -1,10 +1,10 @@
 CREATE PROCEDURE LOS_GESTORES.CP_CREAR_PUBLICACION_INMEDIATA(
 @id_usuario int
-,@estado varchar(50)
+,@estado nvarchar(50)
 ,@id_visibilidad int
 ,@tipo_publicacion int
-,@descripcion varchar(255)
-,@fecha_hoy datetime
+,@descripcion nvarchar(255)
+,@v_fecha_sistema nvarchar(255)
 ,@flag_preguntas int
 
 ,@precio numeric(18,2)
@@ -17,6 +17,9 @@ BEGIN
 		DECLARE @flag_bonificada int
 		DECLARE @fecha_vencimiento datetime
 		DECLARE @RETURN_VALUE int
+		DECLARE @fecha_hoy datetime
+			
+		SET @fecha_hoy = CONVERT(datetime,@v_fecha_sistema,103)	
 		
 		--Si el estado inicial es borrador no se registra la fecha de publicacion ni vencimiento
 		IF (UPPER(@estado) = 'BORRADOR')
