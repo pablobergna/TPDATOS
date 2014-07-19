@@ -89,7 +89,7 @@ BEGIN
 		,(SELECT TOP 1 (MAX(id_publicacion)+1) FROM LOS_GESTORES.Publicacion)
 		,@descripcion
 		,@fecha_hoy
-		,DATEADD(day,(SELECT cant_dias FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad),@fecha_hoy)
+		,@fecha_vencimiento
 		,@flag_preguntas
 		,@flag_bonificada
 		,1
