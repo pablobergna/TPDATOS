@@ -253,8 +253,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 462);
-            this.Controls.Add(this.panelInicio);
             this.Controls.Add(this.panelPpal);
+            this.Controls.Add(this.panelInicio);
             this.Name = "Principal";
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);

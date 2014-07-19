@@ -67,7 +67,7 @@ namespace FrbaCommerce.Abm_Visibilidad
 
             if (dupVisib.HasRows)
             {
-                MessageBox.Show("Ya existe un usuario con ese numero de Telefono.");
+                MessageBox.Show("Ya existe una visibilidad con ese codigo.");
                 // Cierro la conexion
                 dupVisib.Close();
                 AccesoDatos.getInstancia().cerrarConexion();

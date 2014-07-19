@@ -132,6 +132,24 @@
     <Compile Include="Comprar-Ofertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\Preguntar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\Preguntar.Designer.cs">
+      <DependentUpon>Preguntar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VisualizarPub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VisualizarPub.Designer.cs">
+      <DependentUpon>VisualizarPub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VisVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VisVendedor.Designer.cs">
+      <DependentUpon>VisVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccessLayer.cs" />
     <Compile Include="DTO\RolDTO.cs" />
     <Compile Include="Editar Publicacion\Editar_Publicacion.cs">
@@ -235,6 +253,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Form1.resx">
       <DependentUpon>AltaVisibilidad_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\Preguntar.resx">
+      <DependentUpon>Preguntar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\VisualizarPub.resx">
+      <DependentUpon>VisualizarPub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\VisVendedor.resx">
+      <DependentUpon>VisVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion.resx">
       <DependentUpon>Editar_Publicacion.cs</DependentUpon>
