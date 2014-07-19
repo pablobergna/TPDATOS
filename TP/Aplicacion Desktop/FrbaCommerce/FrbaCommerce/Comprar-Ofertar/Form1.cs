@@ -30,9 +30,9 @@ namespace FrbaCommerce.Comprar_Ofertar
                             " from LOS_GESTORES.Publicacion P" +
                             " join LOS_GESTORES.Visibilidad V on V.id_visibilidad = P.id_visibilidad " +
                             " left join LOS_GESTORES.Publicacion_Inmediata PI on PI.id_publicacion = P.id_publicacion and PI.stock > 0" +
-                            " WHERE" +
-                            " P.fecha_venc >= '" + new DateTime(2013, 01, 10).ToShortDateString() + "'";
-                            //" AND P.fecha_venc >= "+ fecha_hoy.Date.ToShortDateString();
+                            " WHERE P.id_usuario <> "+ this.idUsu.ToString().Trim() +
+                            " AND P.fecha_venc >= '" + new DateTime(2013, 01, 10).ToShortDateString() + "'";
+                          //" AND P.fecha_venc >= '"+ fecha_hoy.Date.ToShortDateString()+ "'";
 
             //FUNCIONALIDAD ADICIONAL PARA CONTEMPLAR ESTRATEGIA DE MIGRACION TOMADA
             if(this.checkBoxFin.Checked)
@@ -119,11 +119,11 @@ namespace FrbaCommerce.Comprar_Ofertar
             fVis.idPublicacion = id_pub;
 
             //test
-            fVis.fechaHoy = Convert.ToDateTime("2014-02-02");
-            fVis.idComprador = 2;
+            //fVis.fechaHoy = Convert.ToDateTime("2014-02-02");
+            //fVis.idComprador = 2;
 
-            //fVis.fechaHoy = this.fechaHoy;
-            //fVis.idComprador = this.id_usuario;
+            fVis.fechaHoy = this.fechaHoy;
+            fVis.idComprador = this.id_usuario;
             
             
             fVis.ShowDialog();

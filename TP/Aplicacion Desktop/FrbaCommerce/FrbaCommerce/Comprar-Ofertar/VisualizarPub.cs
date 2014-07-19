@@ -65,6 +65,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 this.lblStock.Text = pub.GetDecimal(3).ToString();
                 this.lblPrecio.Text = pub.GetDecimal(4).ToString();
                 this.btnOfertar.Enabled = false;
+                this.txtOferta.Enabled = false;
             }
 
             this.lblFecVen.Text = pub.GetDateTime(6).ToShortDateString();
@@ -124,13 +125,76 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             //Cierro la conexion
             AccesoDatos.getInstancia().cerrarConexion();
-            
-            
+                        
             Comprar_Ofertar.VisVendedor fVend = new VisVendedor();
             fVend.idVendedor = this.id_vendedor;
             fVend.ShowDialog();
             this.Close();
         }
+
+        private void btnOfertar_Click(object sender, EventArgs e)
+        {
+            int oferta = 0;
+            //Valido los campos numericos
+            try
+            {
+                oferta = int.Parse(this.txtOferta.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Debe ingresar una oferta numerica");
+                return;
+            }
+
+            //VALIDAR MAYOR QUE ULTIMA OFERTA
+            if (oferta < double.Parse(this.lblPrecio.Text))
+            {
+                MessageBox.Show("Debe ingresar una oferta mayor al precio actual");
+                return;
+            }
+
+
+            // Creo la oferta
+
+            //Abro la conexion
+            AccesoDatos.getInstancia().abrirConexion();
+
+            System.Data.SqlClient.SqlCommand comVenta = new System.Data.SqlClient.SqlCommand("LOS_GESTORES.sp_app_creaOferta");
+
+            System.Data.SqlClient.SqlParameter p1V = new System.Data.SqlClient.SqlParameter("@id_publ", this.id_pub);
+            comVenta.Parameters.Add(p1V);
+
+            System.Data.SqlClient.SqlParameter p2V = new System.Data.SqlClient.SqlParameter("@id_comprador", this.id_comprador);
+            comVenta.Parameters.Add(p2V);
+
+            System.Data.SqlClient.SqlParameter p3V = new System.Data.SqlClient.SqlParameter("@fecha", this.fecha_hoy);
+            comVenta.Parameters.Add(p3V);
+
+            System.Data.SqlClient.SqlParameter p4V = new System.Data.SqlClient.SqlParameter("@monto", oferta);
+            comVenta.Parameters.Add(p4V);
+
+            System.Data.SqlClient.SqlDataReader rolReader = AccesoDatos.getInstancia().ejecutaSP(comVenta);
+
+            //Cierro la conexion
+            AccesoDatos.getInstancia().cerrarConexion();
+
+            MessageBox.Show("Su oferta se ha registrado con exito");
+            this.Close();
+            
+        }
+
+        private void btnPreg_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.Preguntar fPreg = new Preguntar();
+            fPreg.idComprador = this.idComprador;
+            fPreg.idPublicacion = this.idPublicacion;
+            fPreg.fechaHoy = this.fecha_hoy;
+            fPreg.ShowDialog();
+            this.Close();
+
+        }
+
+        
 
         
     }

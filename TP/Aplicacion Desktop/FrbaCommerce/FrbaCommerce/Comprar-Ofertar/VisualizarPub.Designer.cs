@@ -46,6 +46,8 @@
             this.btnOfertar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCant = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtOferta = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -84,9 +86,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(320, 211);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
+            this.label4.Size = new System.Drawing.Size(102, 20);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Precio";
+            this.label4.Text = "Precio Actual";
             // 
             // label5
             // 
@@ -199,6 +201,7 @@
             this.btnPreg.TabIndex = 14;
             this.btnPreg.Text = "Preguntar";
             this.btnPreg.UseVisualStyleBackColor = true;
+            this.btnPreg.Click += new System.EventHandler(this.btnPreg_Click);
             // 
             // btnOfertar
             // 
@@ -209,12 +212,13 @@
             this.btnOfertar.TabIndex = 15;
             this.btnOfertar.Text = "Ofertar";
             this.btnOfertar.UseVisualStyleBackColor = true;
+            this.btnOfertar.Click += new System.EventHandler(this.btnOfertar_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(41, 315);
+            this.label8.Location = new System.Drawing.Point(41, 317);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(148, 20);
             this.label8.TabIndex = 16;
@@ -222,16 +226,35 @@
             // 
             // txtCant
             // 
-            this.txtCant.Location = new System.Drawing.Point(218, 315);
+            this.txtCant.Location = new System.Drawing.Point(196, 317);
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(100, 20);
             this.txtCant.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(321, 317);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 20);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Monto a ofertar";
+            // 
+            // txtOferta
+            // 
+            this.txtOferta.Location = new System.Drawing.Point(458, 317);
+            this.txtOferta.Name = "txtOferta";
+            this.txtOferta.Size = new System.Drawing.Size(100, 20);
+            this.txtOferta.TabIndex = 19;
             // 
             // VisualizarPub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 442);
+            this.Controls.Add(this.txtOferta);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCant);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnOfertar);
@@ -278,5 +301,7 @@
         private System.Windows.Forms.Button btnOfertar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCant;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtOferta;
     }
 }
