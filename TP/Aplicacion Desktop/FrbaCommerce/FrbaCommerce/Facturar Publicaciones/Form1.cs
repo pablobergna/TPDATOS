@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using FrbaCommerce.Model;
+using System.Collections;
 
 namespace FrbaCommerce.Facturar_Publicaciones
 {
@@ -107,8 +108,61 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 }
             }
 
+            /*
+            
+            int cont;
+            int id_publicacion_sel;
+            int id_publicacion_dg;
+
+            //DataGridView mi_dg = new DataGridView();
+            //DataGridViewSelectedRowCollection mi_dg
+
+            //mi_dg.DataSource = dgFacturarPublicaciones.SelectedRows;
+
+            //MessageBox.Show(Convert.ToString( mi_dg.Rows[0].Cells[1] ));
+
+            //mi_dg.Sort(mi_dg.Columns[4], ListSortDirection.Ascending);
+
+
+
+
+
+
+            DataTable dt = new DataTable();
+            foreach (DataGridViewColumn column in dgFacturarPublicaciones.Columns)
+                dt.Columns.Add(column.Name, column.CellType); //better to have cell type
+            for (int i = 0; i < dgFacturarPublicaciones.SelectedRows.Count; i++)
+            {
+                dt.Rows.Add();
+                for (int j = 0; j < dgFacturarPublicaciones.Columns.Count; j++)
+                {
+                    dt.Rows[i][j] = dgFacturarPublicaciones.SelectedRows[i].Cells[j];
+                    //^^^^^^^^^^^
+                }
+            }
+
+            MessageBox.Show(Convert.ToString(dt.Rows[0][0]));
+
+
 
             
+            for (cont = 0; cont < (dgFacturarPublicaciones.SelectedRows.Count); cont++)
+            {
+                id_publicacion_sel = Convert.ToInt32(dt.Rows[cont][1].ToString());
+                //id_publicacion_sel = Convert.ToInt32(mi_dg.Rows[cont].Cells[1].Value);
+                id_publicacion_dg = Convert.ToInt32(this.dgFacturarPublicaciones.Rows[cont].Cells[1].Value);
+
+                if (id_publicacion_sel != id_publicacion_dg)
+                {
+                    MessageBox.Show("No se puede saltear comisiones por rendir");
+                    return;
+                }
+
+            }
+            ¨*/
+
+            // END Validacion
+         
             // Creo los objetos
             DataTable id_factura = new DataTable();
             DataTable id_item = new DataTable();
@@ -119,8 +173,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
             //MessageBox.Show(Convert.ToString(Convert.ToString(fecha_sistema.ToString("dd/mm/yyyy"))));
             //MessageBox.Show(Convert.ToString(id_factura.Rows[0][0]));
 
+            
             int counter;
-
             int id_publicacion;
             string tipo_comision;
             double monto;
