@@ -8,6 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Collections;
+using System.Configuration;
+using System.Globalization;
+
+
 
 namespace FrbaCommerce
 {
@@ -15,8 +19,8 @@ namespace FrbaCommerce
     {
         private int ppal_id_usuario;
         private int ppal_id_rol;
-        //private DateTime ppal_fecha_sistema;
-        private DateTime ppal_fecha_sistema = new DateTime(2014, 07, 18);
+        private DateTime ppal_fecha_sistema;
+        //private DateTime ppal_fecha_sistema = new DateTime(2014, 07, 18);
         
         public Principal()
         {
@@ -309,6 +313,12 @@ namespace FrbaCommerce
 
         private void btnSeleccion_Click(object sender, EventArgs e)
         {
+
+            DateTimeFormatInfo esp = new CultureInfo("es-ES", true).DateTimeFormat;
+            ppal_fecha_sistema = Convert.ToDateTime(ConfigurationSettings.AppSettings["fechaSistema"], esp);
+
+            //MessageBox.Show(ppal_fecha_sistema.ToShortDateString());
+
             string funcion = listaFunciones.Text.Trim();
 
             //Muestro el form que corresponda segun la seleccion
@@ -363,11 +373,11 @@ namespace FrbaCommerce
                 
                     break;
 
-                case "Calificar Vendedor":
+                case "Calificar Vendedores":
                     Calificar_Vendedor.Form1 fCalVen = new FrbaCommerce.Calificar_Vendedor.Form1(ppal_id_usuario);
                     fCalVen.ShowDialog();
                     break;
-                
+
                 default:
                 
                     break;
