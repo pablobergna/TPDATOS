@@ -729,7 +729,7 @@ namespace FrbaCommerce.Editar_Publicacion
         {
 
             int a = validaciones_de_datos();
-            if (a == -1) return
+            if (a == -1) return;
 
         }
 
