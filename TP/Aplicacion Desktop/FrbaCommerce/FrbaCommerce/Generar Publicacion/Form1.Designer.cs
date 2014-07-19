@@ -76,6 +76,7 @@
             // 
             // cmb_preguntas
             // 
+            this.cmb_preguntas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_preguntas.FormattingEnabled = true;
             this.cmb_preguntas.Location = new System.Drawing.Point(115, 521);
             this.cmb_preguntas.Name = "cmb_preguntas";

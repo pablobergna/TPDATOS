@@ -363,7 +363,7 @@ namespace FrbaCommerce
                 
                     break;
 
-                case "Calificar Vendedor":
+                case "Calificar Vendedores":
                     Calificar_Vendedor.Form1 fCalVen = new FrbaCommerce.Calificar_Vendedor.Form1(ppal_id_usuario);
                     fCalVen.ShowDialog();
                     break;
