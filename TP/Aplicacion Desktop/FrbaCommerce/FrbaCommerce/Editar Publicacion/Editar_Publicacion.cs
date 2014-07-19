@@ -17,6 +17,8 @@ namespace FrbaCommerce.Editar_Publicacion
         private Publicacion publicacion_modificada = new Publicacion();
         private string fecha_sistema;
         private bool flag_rubros_modificados = false;
+        DataTable dt_pool_rubros;
+        DataTable dt_rubros_actuales;
 
         public Editar_Publicacion(int usuario, DateTime fecha)
         {
@@ -441,11 +443,13 @@ namespace FrbaCommerce.Editar_Publicacion
         {
 
             //Cargar en la lista de rubros los que haya en tabla
-            lst_pool_rubros.DataSource = ConectorSQL.traerDataTable("EP_LISTAR_RUBROS_FALTANTES", publicacion_actual.id);
+            dt_pool_rubros = ConectorSQL.traerDataTable("EP_LISTAR_RUBROS_FALTANTES", publicacion_actual.id);
+            lst_pool_rubros.DataSource = dt_pool_rubros;
             lst_pool_rubros.DisplayMember = "descripcion";
             lst_pool_rubros.ValueMember = "id_rubro";
 
-            lst_rubros_actuales.DataSource = ConectorSQL.traerDataTable("EP_LISTAR_RUBROS_PUBLICACION", publicacion_actual.id);
+            dt_rubros_actuales = ConectorSQL.traerDataTable("EP_LISTAR_RUBROS_PUBLICACION", publicacion_actual.id);
+            lst_rubros_actuales.DataSource = dt_rubros_actuales;
             lst_rubros_actuales.DisplayMember = "descripcion";
             lst_rubros_actuales.ValueMember = "id_rubro";
 
@@ -542,28 +546,31 @@ namespace FrbaCommerce.Editar_Publicacion
 
         }
 
-        private void bloquear_campos()
-        {
-
-        }
-
         private void btn_agregar_rubro_Click(object sender, EventArgs e)
         {
             flag_rubros_modificados = true;
+
             if (lst_pool_rubros.SelectedItems.Count > 0)
             {
                 DataRowView rowView = lst_pool_rubros.SelectedItem as DataRowView;
+                DataRowView rowView1 = lst_pool_rubros.SelectedItem as DataRowView;
 
                 if (null == rowView)
                 {
                     return;
                 }
 
-                //da.Rows.Remove(rowView.Row);
 
-                //DataRowView aux = lst_pool_rubros.SelectedItem;
-                //lst_rubros_actuales.Items.Add(aux);
-                //lst_pool_rubros.Items.Remove(aux);
+                dt_pool_rubros.Rows.Remove(rowView.Row);
+
+                lst_pool_rubros.DataSource = dt_pool_rubros;
+                lst_pool_rubros.Refresh();
+
+                //agregar al otro dt
+                dt_rubros_actuales.Rows.Add(rowView1.Row);
+                lst_rubros_actuales.DataSource = dt_rubros_actuales;
+                lst_rubros_actuales.Refresh();
+
             }
         }
 
@@ -838,6 +845,23 @@ namespace FrbaCommerce.Editar_Publicacion
         private void btn_sacar_rubro_Click(object sender, EventArgs e)
         {
             flag_rubros_modificados = true;
+
+            if (lst_rubros_actuales.SelectedItems.Count > 0)
+            {
+                DataRowView rowView = lst_rubros_actuales.SelectedItem as DataRowView;
+
+                if (null == rowView)
+                {
+                    return;
+                }
+
+                dt_rubros_actuales.Rows.Remove(rowView.Row);
+
+                lst_rubros_actuales.DataSource = dt_pool_rubros;
+                lst_rubros_actuales.Refresh();
+
+            }
+            
         }
     }
 }
