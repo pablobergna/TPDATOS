@@ -174,7 +174,9 @@ namespace FrbaCommerce.Generar_Publicacion
             //llamar SP de creacion publicacion
             if (rb_compra_inmediata.Checked)
             {
-                DataTable dt_publicacion = ConectorSQL.traerDataTable("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion, publicacion.fecha_publicacion , publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
+
+                DataTable dt_publicacion = new DataTable();
+                dt_publicacion = ConectorSQL.traerDataTable("CP_CREAR_PUBLICACION_INMEDIATA",publicacion.id_usuario,publicacion.estado,publicacion.visibilidad,publicacion.tipo_publicacion,publicacion.descripcion, publicacion.fecha_publicacion , publicacion.permitir_preguntas,publicacion.precio,publicacion.stock);
                 publicacion.id = Convert.ToInt32(dt_publicacion.Rows[0][0]);
             }
             else {

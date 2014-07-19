@@ -34,7 +34,7 @@ BEGIN
 		
 		--descripcion de tipo de publicacion
 		IF (@tipo_publicacion = 1) SET @desc_tipo = 'COMPRA INMEDIATA'
-		ELSE SET @desc_tipo = 'SUBASTA';
+		ELSE SET @desc_tipo = 'SUBASTA'
 		
 		--si la visibilidad elegida no es gratis
 		IF EXISTS(SELECT 1 FROM LOS_GESTORES.Visibilidad
@@ -47,7 +47,7 @@ BEGIN
 			UPDATE LOS_GESTORES.Usu_Vis_Gratificacion
 			SET contador = contador + 1
 			WHERE id_usuario = @id_usuario
-			AND id_visibilidad = @id_visibilidad;
+			AND id_visibilidad = @id_visibilidad
 			
 			--flag de publicacion bonificada
 			IF EXISTS(SELECT 1 FROM LOS_GESTORES.Usu_Vis_Gratificacion 
@@ -55,12 +55,12 @@ BEGIN
 						AND id_visibilidad = @id_visibilidad
 						AND contador >= 10) 
 			BEGIN
-				SET @flag_bonificada = 0;
+				SET @flag_bonificada = 0
 				--vuelve a 0 el contador
 				UPDATE LOS_GESTORES.Usu_Vis_Gratificacion
 				SET contador = 0
 				WHERE id_usuario = @id_usuario
-				AND id_visibilidad = @id_visibilidad;
+				AND id_visibilidad = @id_visibilidad
 			END
 			ELSE SET @flag_bonificada = 1
 		
@@ -86,21 +86,21 @@ BEGIN
 		,@tipo_publicacion
 		,@desc_tipo
 		,(SELECT TOP 1 precio FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad)
-		,(SELECT TOP 1 (MAX(id_publicacion)+1) FROM LOS_GESTORES.Publicacion)
+		,(SELECT TOP 1 (MAX(codigo)+1) FROM LOS_GESTORES.Publicacion)
 		,@descripcion
 		,@fecha_hoy
 		,@fecha_vencimiento
 		,@flag_preguntas
 		,@flag_bonificada
 		,1
-		);
+		)
 		
 		--prepara para devolver el id de publicacion ingresado
-		SET @RETURN_VALUE = SCOPE_IDENTITY();
+		SET @RETURN_VALUE = SCOPE_IDENTITY()
 		
 		INSERT INTO LOS_GESTORES.Publicacion_Inmediata(id_publicacion, precio, stock)
-		VALUES (@RETURN_VALUE, @precio, @stock);
+		VALUES (@RETURN_VALUE, @precio, @stock)
 		
-		SELECT @RETURN_VALUE;
+		SELECT @RETURN_VALUE
 
 END

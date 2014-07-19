@@ -85,7 +85,7 @@ BEGIN
 		,@tipo_publicacion
 		,@desc_tipo
 		,(SELECT TOP 1 precio FROM LOS_GESTORES.Visibilidad WHERE id_visibilidad = @id_visibilidad)
-		,(SELECT TOP 1 (MAX(id_publicacion)+1) FROM LOS_GESTORES.Publicacion)
+		,(SELECT TOP 1 (MAX(codigo)+1) FROM LOS_GESTORES.Publicacion)
 		,@descripcion
 		,@fecha_hoy
 		,@fecha_vencimiento

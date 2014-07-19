@@ -553,24 +553,24 @@ namespace FrbaCommerce.Editar_Publicacion
             if (lst_pool_rubros.SelectedItems.Count > 0)
             {
                 DataRowView rowView = lst_pool_rubros.SelectedItem as DataRowView;
-                DataRowView rowView1 = lst_pool_rubros.SelectedItem as DataRowView;
-
+                
                 if (null == rowView)
                 {
                     return;
                 }
 
+                string _value = rowView.Row.ToString();
 
                 dt_pool_rubros.Rows.Remove(rowView.Row);
 
                 lst_pool_rubros.DataSource = dt_pool_rubros;
                 lst_pool_rubros.Refresh();
-
+                /*
                 //agregar al otro dt
                 dt_rubros_actuales.Rows.Add(rowView1.Row);
                 lst_rubros_actuales.DataSource = dt_rubros_actuales;
                 lst_rubros_actuales.Refresh();
-
+                */
             }
         }
 
