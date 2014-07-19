@@ -338,6 +338,7 @@
             this.btn_sacar_rubro.TabIndex = 42;
             this.btn_sacar_rubro.Text = "<<";
             this.btn_sacar_rubro.UseVisualStyleBackColor = true;
+            this.btn_sacar_rubro.Click += new System.EventHandler(this.btn_sacar_rubro_Click);
             // 
             // btn_agregar_rubro
             // 

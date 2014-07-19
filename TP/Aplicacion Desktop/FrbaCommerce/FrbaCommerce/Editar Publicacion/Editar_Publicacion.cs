@@ -16,6 +16,7 @@ namespace FrbaCommerce.Editar_Publicacion
         private Publicacion publicacion_actual = new Publicacion();
         private Publicacion publicacion_modificada = new Publicacion();
         private string fecha_sistema;
+        private bool flag_rubros_modificados = false;
 
         public Editar_Publicacion(int usuario, DateTime fecha)
         {
@@ -73,11 +74,6 @@ namespace FrbaCommerce.Editar_Publicacion
                 llenar_interfaz_subasta();
             }
                 
-
-       
-
-            bloquear_campos();
-
             //cargar los combos y listas con todas las posibilidades
             cargar_listas_combos();
 
@@ -111,7 +107,7 @@ namespace FrbaCommerce.Editar_Publicacion
                 rb_activa.Enabled = true;
                 rb_activa.Checked = false;
 
-                rb_pausada.Enabled = true;
+                rb_pausada.Enabled = false;
                 rb_pausada.Checked = false;
 
                 rb_finalizada.Enabled = false;
@@ -319,7 +315,7 @@ namespace FrbaCommerce.Editar_Publicacion
                 rb_activa.Enabled = true;
                 rb_activa.Checked = false;
 
-                rb_pausada.Enabled = true;
+                rb_pausada.Enabled = false;
                 rb_pausada.Checked = false;
 
                 rb_finalizada.Enabled = false;
@@ -463,13 +459,6 @@ namespace FrbaCommerce.Editar_Publicacion
             cmb_preguntas.Items.Add("SI");
             cmb_preguntas.Items.Add("NO");
 
-            //agregar que seleccione de cada lista y combo el valor de la publicacion actual
-
-
-
-            //cargar rubros vinculados
-            DataTable tb_rubros = ConectorSQL.traerDataTable("EP_TRAER_RUBROS", publicacion_actual.id);
-
         }
 
         private void cargar_pub_actual_compra_inmediata(DataTable pub)
@@ -560,6 +549,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void btn_agregar_rubro_Click(object sender, EventArgs e)
         {
+            flag_rubros_modificados = true;
             if (lst_pool_rubros.SelectedItems.Count > 0)
             {
                 DataRowView rowView = lst_pool_rubros.SelectedItem as DataRowView;
@@ -729,7 +719,43 @@ namespace FrbaCommerce.Editar_Publicacion
         {
 
             int a = validaciones_de_datos();
-            if (a == -1) return
+            if (a == -1) return;
+
+
+            //llamar SP de modificar publicacion
+            DataTable dt_publicacion = ConectorSQL.traerDataTable("EP_MODIFICAR_PUBLICACION", publicacion_modificada.id,publicacion_modificada.id_usuario, publicacion_modificada.estado, publicacion_modificada.visibilidad, publicacion_modificada.tipo_publicacion, publicacion_modificada.descripcion, publicacion_modificada.fecha_publicacion, publicacion_modificada.permitir_preguntas, publicacion_modificada.precio, publicacion_modificada.stock);  
+
+            //una vez cargada la publicacion vinculamos los rubros
+            if (flag_rubros_modificados == true)
+            {
+                //borra las vinculaciones y crea nuevamente todo
+                ConectorSQL.ejecutarProcedure("EP_BORRAR_RUBROS_PUBLICACION", publicacion_modificada.id);
+                foreach (var item in lst_rubros_actuales.Items)
+                {
+                    string varStr = ((DataRowView)item)["id_rubro"].ToString();
+                    int varInt = -1;
+                    if (int.TryParse(varStr, out varInt))
+                    {
+                        ConectorSQL.ejecutarProcedure("CP_INSERTAR_PUBLICACION_RUBRO", publicacion_modificada.id, varInt);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al vincular rubro " + ((DataRowView)item)["descripcion"].ToString() + " a la publicacion", "Frba Commerce", MessageBoxButtons.OK);
+                    }
+                }
+
+                MessageBox.Show("Publicacion Editada exitosamente!", "Frba Commerce", MessageBoxButtons.OK);
+
+                Editar_Publicacion_Load(null,null);
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio algun error al generar la publicacion", "Frba Commerce", MessageBoxButtons.OK);
+            }
+
+
+
+
 
         }
 
@@ -812,6 +838,11 @@ namespace FrbaCommerce.Editar_Publicacion
 
             return 0;
 
+        }
+
+        private void btn_sacar_rubro_Click(object sender, EventArgs e)
+        {
+            flag_rubros_modificados = true;
         }
     }
 }
