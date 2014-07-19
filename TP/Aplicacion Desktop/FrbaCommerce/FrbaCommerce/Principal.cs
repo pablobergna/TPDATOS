@@ -16,7 +16,7 @@ namespace FrbaCommerce
         private int ppal_id_usuario;
         private int ppal_id_rol;
         //private DateTime ppal_fecha_sistema;
-        private DateTime ppal_fecha_sistema = new DateTime(2014, 07, 18);
+        private DateTime ppal_fecha_sistema = new DateTime(2013, 07, 18);
         
         public Principal()
         {
@@ -347,7 +347,8 @@ namespace FrbaCommerce
                     break;
                 
                 case "ABM Roles":
-                
+                    ABM_Rol.Alta_Rol fRol = new FrbaCommerce.ABM_Rol.Alta_Rol();
+                    fRol.ShowDialog();
                     break;
                 
                 case "ABM Usuarios":
@@ -356,16 +357,22 @@ namespace FrbaCommerce
                     break;
                 
                 case "ABM Rubros":
-                
+                    MessageBox.Show("No se debe implementar");
                     break;
                 
                 case "ABM Visibilidad":
-                
+                    Abm_Visibilidad.Alta_Visibilidad fVis = new FrbaCommerce.Abm_Visibilidad.Alta_Visibilidad();
+                    fVis.ShowDialog();
                     break;
 
                 case "Calificar Vendedor":
                     Calificar_Vendedor.Form1 fCalVen = new FrbaCommerce.Calificar_Vendedor.Form1(ppal_id_usuario);
                     fCalVen.ShowDialog();
+                    break;
+
+                case "Editar Publicacion":
+                    Editar_Publicacion.Editar_Publicacion fEdit = new FrbaCommerce.Editar_Publicacion.Editar_Publicacion(this.ppal_id_usuario, this.ppal_fecha_sistema);
+                    fEdit.ShowDialog();
                     break;
 
                 default:
