@@ -721,9 +721,8 @@ namespace FrbaCommerce.Editar_Publicacion
             int a = validaciones_de_datos();
             if (a == -1) return;
 
-
             //llamar SP de modificar publicacion
-            DataTable dt_publicacion = ConectorSQL.traerDataTable("EP_MODIFICAR_PUBLICACION", publicacion_modificada.id,publicacion_modificada.id_usuario, publicacion_modificada.estado, publicacion_modificada.visibilidad, publicacion_modificada.tipo_publicacion, publicacion_modificada.descripcion, publicacion_modificada.fecha_publicacion, publicacion_modificada.permitir_preguntas, publicacion_modificada.precio, publicacion_modificada.stock);  
+            DataTable dt_publicacion = ConectorSQL.traerDataTable("EP_MODIFICAR_PUBLICACION", publicacion_modificada.id, publicacion_modificada.id_usuario, publicacion_modificada.estado, publicacion_modificada.visibilidad, publicacion_modificada.tipo_publicacion, publicacion_modificada.descripcion, publicacion_modificada.fecha_publicacion, publicacion_modificada.permitir_preguntas, publicacion_modificada.precio, publicacion_modificada.stock);  
 
             //una vez cargada la publicacion vinculamos los rubros
             if (flag_rubros_modificados == true)
@@ -752,10 +751,6 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 MessageBox.Show("Ocurrio algun error al generar la publicacion", "Frba Commerce", MessageBoxButtons.OK);
             }
-
-
-
-
 
         }
 
